@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <head>
+  <!-- Meta Pixel Code -->
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '571053619377842');
+    fbq('track', 'PageView');
+  </script>
+  <noscript>
+    <img height="1" width="1" style="display:none"
+         src="https://www.facebook.com/tr?id=571053619377842&ev=PageView&noscript=1"/>
+  </noscript>
+  <!-- End Meta Pixel Code -->
+
+  <!-- existing meta, title, CSS links, etc. -->
+</head>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Not Just Clicks — Facebook Ads That Convert</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #000;
+      color: #fff;
+      text-align: center;
+    }
+
+    header {
+      padding: 3em 1em 0.5em;
+    }
+
+    .title-group {
+      display: inline-block;
+      line-height: 1.4em;
+      margin-bottom: 0.2em;
+    }
+
+    .title-group span {
+      font-size: 2.8em;
+      font-weight: 700;
+      color: #FFDD00;
+      display: block;
+      letter-spacing: 1px;
+      line-height: 1.4em;
+    }
+
+    h2 {
+      font-size: 1.4em;
+      color: #ccc;
+      font-weight: normal;
+      margin-top: 0.8em;
+    }
+
+    /* fluorescent course-bar styling (same as other page) */
+    .course-bar {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.4em 1em;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #00f8ff, #ff00d0);
+      font-weight: 700;
+      font-size: 0.95em;
+      color: #fff;
+      margin-top: 0.6em;
+    }
+    .course-bar span + span {
+      margin-left: 0.5em;
+    }
+
+    @media (max-width: 600px) {
+      .title-group span { font-size: 2em; }
+      h2 { font-size: 1.2em; }
+      .arrow-up { font-size: 1.8em; }
+      .access-message { font-size: 1.2em; }
+      .stat-message { font-size: 0.95em; }
+      .course-bar { font-size: 0.85em; }
+    }
+
+    main {
+      max-width: 850px;
+      margin: auto;
+      padding: 1em 1em 3em;
+    }
+
+    .electric-frame {
+      position: relative;
+      padding: 10px;
+      border-radius: 12px;
+      margin: 2em auto;
+      background-color: #000;
+      box-shadow:
+        0 0 10px #fdf200,
+        0 0 16px #ffe600,
+        0 0 22px #fff000;
+      animation: flicker 1.5s infinite alternate;
+      max-width: 800px;
+    }
+
+    @keyframes flicker {
+      0% {
+        box-shadow:
+          0 0 8px #ffeb3b,
+          0 0 12px #fdf200,
+          0 0 18px #ffe600;
+      }
+      100% {
+        box-shadow:
+          0 0 12px #fdf200,
+          0 0 18px #fff000,
+          0 0 24px #ffeb3b;
+      }
+    }
+
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      border-radius: 8px;
+    }
+    .video-wrapper {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: #000;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .placeholder-frame {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-image: url('https://img.youtube.com/vi/KcRib2gRo2s/maxresdefault.jpg');
+      background-size: cover;
+      background-position: center;
+      cursor: pointer;
+      z-index: 100;
+    }
+    .play-button {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 80px; height: 80px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.85);
+      box-shadow: 0 0 15px #ffeb3b;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 101;
+    }
+    .play-button::after {
+      content: '';
+      display: block;
+      width: 0; height: 0;
+      border-left: 25px solid #000;
+      border-top: 15px solid transparent;
+      border-bottom: 15px solid transparent;
+    }
+    #player {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      display: none;
+      z-index: 0;
+    }
+    .click-overlay {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: 200;
+      cursor: pointer;
+    }
+
+    #popup-form {
+      display: none;
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.85);
+      color: #fff;
+      z-index: 300;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 1em;
+    }
+    #popup-form h3 {
+      margin-bottom: 0.5em;
+      font-size: 1.4em;
+      font-weight: 700;
+    }
+    #popup-form input {
+      width: 80%; max-width: 300px;
+      padding: 0.8em; margin: 0.4em 0;
+      border: none; border-radius: 4px;
+      background: #222; color: #fff;
+      font-size: 1em;
+    }
+    #popup-form button {
+      padding: 0.8em 1.2em;
+      margin-top: 0.5em;
+      border: none; border-radius: 4px;
+      background: #FFDD00; color: #000;
+      font-weight: 700; cursor: pointer;
+    }
+
+    .sign-up-btn {
+      display: none;
+      position: absolute;
+      bottom: 15%;
+      left: 10%;
+      padding: 0.8em 1.2em;
+      border: none; border-radius: 4px;
+      background: #00FF00; color: #000;
+      font-weight: 700; box-shadow: 0 0 8px rgba(0,255,0,0.7);
+      cursor: pointer; z-index: 250;
+    }
+
+    .arrow-up {
+      font-size: 2.2em;
+      color: #FFA500;
+      text-shadow: 0 0 6px #ffcc66;
+      letter-spacing: 0.5em;
+      margin: 0.3em 0 0;
+    }
+
+    .access-message {
+      font-size: 1.35em;
+      font-weight: 700;
+      color: #fff;
+      font-family: 'Segoe UI Semibold', sans-serif;
+      margin-top: 0.3em;
+    }
+
+    .stat-message {
+      font-size: 1.05em;
+      color: #ccc;
+      margin-top: 1.2em;
+      padding: 0 1em;
+      line-height: 1.5em;
+    }
+
+    footer {
+      font-size: 0.85em;
+      color: #bbb;
+      padding: 2em 1em;
+      border-top: 1px solid #333;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="title-group">
+      <span>Not Just Clicks.</span>
+      <span>Ads That Convert.</span>
+    </div>
+    <h2>Strategy → Traffic → Measurable ROI</h2>
+    <div class="course-bar">
+      <span>Facebook Ads</span>
+      <span>|</span>
+      <span>Pinterest Ads</span>
+      <span>|</span>
+      <span>Templates & more</span>
+    </div>
+  </header>
+
+  <main>
+    <div class="electric-frame">
+      <div class="video-container" id="video-container">
+        <div class="video-wrapper">
+          <div class="placeholder-frame" id="placeholder"></div>
+          <div class="play-button" id="playBtn"></div>
+          <div id="player"></div>
+          <div class="click-overlay"></div>
+        </div>
+      </div>
+
+      <div id="popup-form">
+        <h3>Enter your details to continue watching</h3>
+        <input type="text" name="name" placeholder="Your Name" required />
+        <input type="email" name="email" placeholder="Your Email" required />
+        <button id="submitForm">Submit & Continue</button>
+      </div>
+
+      <button class="sign-up-btn" id="signUpBtn">
+        Sign Up Now
+      </button>
+    </div>
+
+    <div class="arrow-up">↑↑↑↑</div>
+    <div class="access-message">Watch Video for Access Details</div>
+
+    <!-- Reviews Loader Under video -->
+<div id="reviews-container" style="margin-top:1.5em;"></div>
+
+<!-- Reviews loader script -->
+<script>
+  (async () => {
+    const slug    = 'facebookads';
+    const csvUrl  = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRSWqhCcu_XZW7SW5uZ3UZdKzvLm2zNw8DvMZV2TD_gcts6K-DBrLwd88pnXVn0xl0fxRRfGW0Y4iyN/pub?output=csv';
+    const formUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSd0lD5dU8nsUbBzfqqRkLflTkJVrAQyvZXI81uXXyOPXpoUdA/viewform?usp=header';
+
+    // Fetch and parse CSV
+    const res  = await fetch(csvUrl);
+    const text = await res.text();
+    const rows = text.trim()
+      .split('\n').slice(1)
+      .map(r => r.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/)
+                 .map(c => c.replace(/^"|"$/g, '')));
+
+    // Filter & sort reviews
+    const reviews = rows
+      .filter(r => r[4] && r[4].toLowerCase() === slug)
+      .sort((a, b) => new Date(b[3]) - new Date(a[3]));
+    if (!reviews.length) return;
+
+    const count = reviews.length;
+    const avg   = (reviews.reduce((s,r) => s + (parseFloat(r[2])||0), 0) / count).toFixed(1);
+
+    // Build markup
+    const wrapper = document.createElement('div');
+    wrapper.style = 'border-top:1px solid #444; padding-top:1em; font-family:inherit; color:#ccc;';
+    wrapper.innerHTML = `
+      <div style="margin-bottom:0.5em;">
+        <span style="
+          background:#2e7d32; color:#fff;
+          padding:0.3em 0.8em; border-radius:20px;
+          font-size:0.9em; font-weight:bold;
+        ">
+          Purchased by students worldwide
+        </span>
+      </div>
+      <h3 style="margin:0.8em 0 0.6em; color:#fff; font-weight:600;">
+        <span style="color:#FFD700; font-size:1.2em;">★</span>
+        ${avg} (${count} review${count>1?'s':''})
+      </h3>
+      <div style="display:flex; gap:0.8em; margin:1em 0;">
+        <button id="toggle-reviews" style="
+          padding:0.5em 1em; background:#222; color:#f1f1f1;
+          border:1px solid #555; border-radius:6px; cursor:pointer;
+        ">See all reviews</button>
+        <button id="submit-review" style="
+          padding:0.5em 1em; background:#222; color:#f1f1f1;
+          border:1px solid #555; border-radius:6px; cursor:pointer;
+        ">Submit a review</button>
+      </div>
+      <div id="reviews-body" style="display:none;">
+        ${reviews.map(r => `
+          <div style="margin-bottom:1.5em;">
+            <strong style="color:#eee;">${r[0]||'Anonymous'}</strong>
+            <div>
+              ${'★'.repeat(+r[2]).padEnd(5,'☆')
+                .replace(/★/g, '<span style="color:#FFD700;">★</span>')
+                .replace(/☆/g, '<span style="color:#ccc;">★</span>')}
+            </div>
+            <small style="color:#aaa;">
+              ${new Date(r[3]).toLocaleDateString()}
+            </small>
+            <p style="margin:0.4em 0 0; color:#ccc; line-height:1.4;">
+              ${r[1]}
+            </p>
+            ${r[5] ? `
+            <div style="margin:0.3em 0 0 1em;">
+              <div style="font-size:0.85em; color:#89c4ff; font-weight:600;">
+                Instructor Reply:
+              </div>
+              <div style="font-size:0.85em; color:#7fbfff; font-style:italic;">
+                ${r[5]}
+              </div>
+            </div>` : ''}
+          </div>
+        `).join('')}
+      </div>
+    `;
+    document.getElementById('reviews-container').appendChild(wrapper);
+
+    // Button events
+    document.getElementById('submit-review')
+      .addEventListener('click', () => window.open(formUrl, '_blank'));
+    document.getElementById('toggle-reviews')
+      .addEventListener('click', e => {
+        const body = document.getElementById('reviews-body');
+        const isOpen = body.style.display === 'block';
+        body.style.display = isOpen ? 'none' : 'block';
+        e.target.textContent = isOpen ? 'See all reviews' : 'Hide reviews';
+      });
+  })();
+</script>
+<!-- Reviews loader script End -->
+    
+  <script>
+    const tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    document.head.appendChild(tag);
+
+    let player,
+        started    = false,
+        pauseTime  = 173,  // 2:53
+        signUpTime = 266,  // 4:26
+        intervalId,
+        flags = { form: false, signUp: false };
+
+    function onYouTubeIframeAPIReady() {
+      player = new YT.Player('player', {
+        host: 'https://www.youtube-nocookie.com',
+        videoId: 'KcRib2gRo2s',
+        playerVars: {
+          controls: 0,
+          disablekb: 1,
+          modestbranding: 1,
+          rel: 0,
+          iv_load_policy: 3,
+          enablejsapi: 1,
+          autoplay: 0
+        },
+        events: {
+          onReady: onPlayerReady,
+          onStateChange: onPlayerStateChange
+        }
+      });
+    }
+
+    function onPlayerReady() {
+      const placeholder = document.getElementById('placeholder');
+      const playBtn     = document.getElementById('playBtn');
+      const clickOv     = document.querySelector('.click-overlay');
+      const playerDiv   = document.getElementById('player');
+
+      clickOv.addEventListener('click', () => {
+        if (!started) {
+          started = true;
+          placeholder.style.display = 'none';
+          playBtn.style.display     = 'none';
+          playerDiv.style.display   = 'block';
+          player.playVideo();
+        } else if (player.getPlayerState() === YT.PlayerState.PLAYING) {
+          player.pauseVideo();
+        } else {
+          player.playVideo();
+        }
+      });
+    }
+
+    function onPlayerStateChange(event) {
+      const placeholder = document.getElementById('placeholder');
+      const playBtn     = document.getElementById('playBtn');
+      if (event.data === YT.PlayerState.PLAYING) {
+        placeholder.style.display = 'none';
+        playBtn.style.display     = 'none';
+        intervalId = setInterval(checkMilestones, 500);
+      } else if (event.data === YT.PlayerState.PAUSED) {
+        placeholder.style.display = 'block';
+        playBtn.style.display     = 'flex';
+        clearInterval(intervalId);
+      }
+    }
+
+    function checkMilestones() {
+      const t = player.getCurrentTime();
+      if (!flags.form && t >= pauseTime) {
+        flags.form = true;
+        clearInterval(intervalId);
+        player.pauseVideo();
+        document.getElementById('popup-form').style.display = 'flex';
+      }
+      if (!flags.signUp && t >= signUpTime) {
+        flags.signUp = true;
+        document.getElementById('signUpBtn').style.display = 'block';
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('submitForm').addEventListener('click', () => {
+        document.getElementById('popup-form').style.display = 'none';
+        player.playVideo();
+
+        const formData = new FormData();
+        formData.append('name', document.querySelector('#popup-form input[name="name"]').value);
+        formData.append('email', document.querySelector('#popup-form input[name="email"]').value);
+
+        fetch(
+          'https://script.google.com/macros/s/AKfycbxE9j8YIo-M_VtpwzoylRaVIbO5gUI6KSv0IFOtkzRFRq6LGVNUheh4HG5AqY3-Obuc/exec',
+          { method: 'POST', body: formData, mode: 'no-cors' }
+        );
+      });
+
+      document.getElementById('signUpBtn').addEventListener('click', () => {
+        window.location = 'https://buy.stripe.com/3cI3cuevT3PS35Jdk333W3h';
+      });
+    });
+  </script>
+</body>
+</html>
+
+<!-- START: Global Impact + Benefits Block -->
+<section style="background-color: #FFFDE7; width: 100%; padding: 3em 1.5em; text-align: center;">
+  <div style="max-width: 750px; margin: 0 auto;">
+    <h2 style="font-weight: bold; font-size: 1.5em; margin-bottom: 1em; color: #000;">
+      We’ve helped 
+      <span style="background: linear-gradient(120deg, #00bfff, #007fff); -webkit-background-clip: text; color: transparent; text-decoration: underline; font-weight: bold;">
+        380+
+      </span> 
+      businesses across the globe, and have enrolled over 
+      <span style="background: linear-gradient(120deg, #00bfff, #007fff); -webkit-background-clip: text; color: transparent; text-decoration: underline; font-weight: bold;">
+        60,000+
+      </span> 
+      students in our ads course.
+    </h2>
+    <ul style="list-style: none; padding: 0; margin: 2em auto 0; text-align: left; color: #000;">
+      <li style="margin-bottom: 1em;">
+        <span style="display: inline-block; width: 1.2em; height: 1.2em; border-radius: 50%; background: linear-gradient(120deg, #00bfff, #007fff); color: #fff; text-align: center; line-height: 1.2em; font-weight: bold; font-size: 0.85em;">✔</span>
+        Our ad strategies help you resonate with your audience while delivering measurable growth.
+      </li>
+      <li style="margin-bottom: 1em;">
+        <span style="display: inline-block; width: 1.2em; height: 1.2em; border-radius: 50%; background: linear-gradient(120deg, #00bfff, #007fff); color: #fff; text-align: center; line-height: 1.2em; font-weight: bold; font-size: 0.85em;">✔</span>
+        We use data-backed creative approaches to elevate performance across platforms.
+      </li>
+      <li style="margin-bottom: 1em;">
+        <span style="display: inline-block; width: 1.2em; height: 1.2em; border-radius: 50%; background: linear-gradient(120deg, #00bfff, #007fff); color: #fff; text-align: center; line-height: 1.2em; font-weight: bold; font-size: 0.85em;">✔</span>
+        You gain automated systems that scale impact without draining resources.
+      </li>
+      <li style="margin-bottom: 1em;">
+        <span style="display: inline-block; width: 1.2em; height: 1.2em; border-radius: 50%; background: linear-gradient(120deg, #00bfff, #007fff); color: #fff; text-align: center; line-height: 1.2em; font-weight: bold; font-size: 0.85em;">✔</span>
+        Every campaign reflects regional nuance so you stand out in any market.
+      </li>
+      <li style="margin-bottom: 1em;">
+        <span style="display: inline-block; width: 1.2em; height: 1.2em; border-radius: 50%; background: linear-gradient(120deg, #00bfff, #007fff); color: #fff; text-align: center; line-height: 1.2em; font-weight: bold; font-size: 0.85em;">✔</span>
+        Our clients consistently outperform larger agencies with leaner budgets.
+      </li>
+    </ul>
+  </div>
+</section>
+<!-- END: Global Impact + Benefits Block -->
+
+<!-- START: Niche Diversity Block -->
+<section style="background-color: #FFF4F7; width: 100%; padding: 3em 1.5em; text-align: center;">
+  <div style="max-width: 750px; margin: 0 auto;">
+
+    <h2 style="font-weight: bold; font-size: 1.5em; color: #000; margin-bottom: 1em;">
+      Partnered with Businesses in Over 
+      <span style="background: linear-gradient(120deg, #00bfff, #007fff); -webkit-background-clip: text; color: transparent; text-decoration: underline; font-weight: bold;">
+        70+ Industries
+      </span>: From Small Shops to Fast-Growing Brands
+    </h2>
+
+    <p style="font-size: 1em; color: #000; margin-bottom: 2em;">
+      Our ad strategies have empowered entrepreneurs across service sectors, brick-and-mortar storefronts, and ecommerce platforms to scale with clarity, creativity, and measurable impact.
+    </p>
+
+    <!-- High-Impact Services -->
+    <div style="text-align: left; margin-bottom: 2em;">
+      <h3 style="font-weight: bold; font-size: 1.25em; color: #000; margin-bottom: 0.75em;">
+        High-Impact Services
+      </h3>
+      <div style="padding-left: 1.5em; color: #000;">
+        <p>✔ Business and Credit Consultants</p>
+        <p>✔ Online Coaches and Educators</p>
+        <p>✔ Financial Strategists and Advisors</p>
+        <p>✔ Digital Marketing Specialists</p>
+        <p>✔ SEO and Funnel Experts</p>
+        <p>✔ Hypnotherapists and Wellness Practitioners</p>
+      </div>
+    </div>
+
+    <!-- Brick & Mortar Businesses -->
+    <div style="text-align: left; margin-bottom: 2em;">
+      <h3 style="font-weight: bold; font-size: 1.25em; color: #000; margin-bottom: 0.75em;">
+        Brick & Mortar Businesses
+      </h3>
+      <div style="padding-left: 1.5em; color: #000;">
+        <p>✔ Restaurants and Hospitality Groups</p>
+        <p>✔ Physical Therapy and Chiropractic Clinics</p>
+        <p>✔ Construction Companies and Carpenters</p>
+        <p>✔ Automotive Dealerships</p>
+        <p>✔ Local Event Services and Repair Shops</p>
+        <p>✔ Barber Shops and Salons</p>
+        <p>✔ Pet Stores</p>
+        <p>✔ Retail Shops</p>
+      </div>
+    </div>
+
+    <!-- Ecommerce Stores -->
+    <div style="text-align: left;">
+      <h3 style="font-weight: bold; font-size: 1.25em; color: #000; margin-bottom: 0.75em;">
+        Ecommerce Stores
+      </h3>
+      <div style="padding-left: 1.5em; color: #000;">
+        <p>✔ Skincare and Wellness Brands</p>
+        <p>✔ Apparel and Accessories Stores</p>
+        <p>✔ Gourmet and Nutrition-Based Products</p>
+        <p>✔ Investing and Cryptocurrency Platforms</p>
+        <p>✔ Affiliate Shops and Niche Market Retailers</p>
+        <p>✔ 1-Product Stores</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+<!-- END: Niche Diversity Block -->
+
+<!-- START PRICING TIERS -->
+<style>
+  /* prevent any element from pushing page wider */
+  *, *::before, *::after { box-sizing: border-box; }
+  body { margin: 0; overflow-x: hidden; }
+
+  /* Pulsate + glow keyframes */
+  @keyframes pulsate {
+    0%,100% { transform: scale(1); }
+    50%     { transform: scale(1.04); }
+  }
+  @keyframes glow {
+    0%,100% {
+      box-shadow: 0 0 6px rgba(50,205,50,0.6), 0 0 12px rgba(50,205,50,0.4);
+    }
+    50% {
+      box-shadow: 0 0 12px rgba(50,205,50,0.8), 0 0 24px rgba(50,205,50,0.6);
+    }
+  }
+
+  /* Container */
+  .pricing-tiers {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+    padding: 0 1em;
+  }
+  .pricing-tier {
+    flex: 1 1 30%;
+    max-width: 30%;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 24px;
+    text-align: left;
+  }
+
+  /* Tier Title now metallic red */
+  .pricing-tier h3 {
+    font-size: 1.4em;
+    margin-top: 0;
+    font-weight: bold;
+    background: linear-gradient(120deg, #FF4D4D, #B30000);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* Base price styling */
+  .pricing-tier p.price {
+    font-size: 1.6em;
+    font-weight: bold;
+    margin: 12px 0;
+    color: #000;
+    text-align: center;
+  }
+
+  /* Anchored price for the DWY tier only */
+  .pricing-tier.dwytier p.price .original-price {
+    text-decoration: line-through;
+    color: #aaa;
+    display: block;
+    font-size: 1em;
+    margin-bottom: 0.25em;
+  }
+  .pricing-tier.dwytier p.price .current-price {
+    color: #e63946;
+    font-size: 2em;
+    display: block;
+  }
+
+  .pricing-tier .features {
+    color: #000;
+    padding-left: 1.5em;
+    margin-bottom: 1.5em;
+  }
+  .pricing-tier .features p {
+    margin: 8px 0;
+  }
+
+  /* Pulsate + glow on buttons */
+  .pricing-tier a.button {
+    display: inline-block;
+    background: #32CD32;
+    color: #000;
+    text-decoration: none;
+    padding: 12px 24px;
+    border-radius: 4px;
+    font-weight: bold;
+    margin-top: 16px;
+    animation: pulsate 2s ease-in-out infinite,
+               glow    2s ease-in-out infinite;
+  }
+
+  /* Section wrapper */
+  section.pricing {
+    background-color: #FFFBEA;
+    width: 100%;
+    padding: 3em 1.5em;
+    text-align: center;
+  }
+  section.pricing .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  /* MOBILE FIXES */
+  @media (max-width: 768px) {
+    section.pricing { padding: 2em 1em; }
+    .pricing-tiers { gap: 1em; }
+    .pricing-tier { flex: 1 1 100%; max-width: 100%; }
+  }
+</style>
+
+<section class="pricing">
+  <div class="container">
+    <div class="pricing-tiers">
+
+      <!-- Tier 1 -->
+      <div class="pricing-tier">
+        <h3>Full Facebook Ads Course</h3>
+        <p class="price">$149</p>
+        <div class="features">
+          <p>✔ 1 year course access</p>
+          <p>✔ All 19 chapters</p>
+          <p>✔ Facebook ads</p>
+          <p>✔ Instagram ads</p>
+          <p>✔ Pinterest Ads</p>
+          <p>✔ Content Creation</p>
+          <p>✔ 7-figure copy-paste ads template (downloadable)</p>
+          <p>✔ The exact framework we use to run high-converting ads across platforms</p>
+        </div>
+        <a href="https://buy.stripe.com/3cI3cuevT3PS35Jdk333W3h" class="button" target="_blank">
+          Enroll Now
+        </a>
+      </div>
+
+      <!-- Tier 2 (Done-With-You Accelerator) with anchored pricing -->
+      <div class="pricing-tier dwytier">
+        <h3>Done-With-You Accelerator</h3>
+        <p class="price">
+          <span class="original-price">Normally $1,297</span>
+          <span class="current-price">Today $597</span>
+        </p>
+        <div class="features">
+          <p>✔ We help you launch your next ad</p>
+          <p>✔ You give us your ad creatives (videos/pictures) </p>
+          <p>✔ We set up 1 campaign (up to 3 ads included)</p>
+          <p>✔ Pixel & tracking install</p>
+          <p>✔ Audience & retargeting configuration</p>
+          <p>✔ 7-day email support</p>
+          <p>💡 Helps DIY buyers who need hands-off setup</p>
+        </div>
+        <a href="https://buy.stripe.com/9B628qbjH3PScGj93N33W3l" class="button" target="_blank">
+          Enroll Now
+        </a>
+      </div>
+
+      <!-- Tier 3 -->
+      <div class="pricing-tier">
+        <h3>CEO Strategy Workshop</h3>
+        <p class="price">$5,000</p>
+        <div class="features">
+          <p>✔ VIP Intensive Day (4h workshop or 2×2h workshops)</p>
+          <p>⚡ 4 Strategy Power hours with our CEO</p>
+          <p>✨ Custom diagnostics</p>
+          <p>✔ Ads spend leak detection</p>
+          <p>✔ Traffic precision</p>
+          <p>✔ Secret to saving thousands</p>
+          <p>✔ Your shortcut to scale</p>
+        </div>
+        <p style="margin-top: 16px; color: #000;">
+          Questions? Email
+          <a href="mailto:support@stemsphere.academy" style="color: #B30000;">
+            support@stemsphere.academy
+          </a>
+        </p>
+        <a href="https://buy.stripe.com/6oU6oG87vbikbCfeo733W3k" class="button" target="_blank">
+          Book Your CEO Strategy Workshop
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+<!-- END PRICING TIERS -->
+
+<!-- START: 100% Risk-Free Guarantee Block -->
+<section class="guarantee-section">
+  <div class="guarantee-wrapper">
+    <!-- Ribbon / Badge -->
+    <div class="guarantee-badge">
+      <img
+        src="https://i.postimg.cc/BZgN0mXb/1000064108.png"
+        alt="100% Money Back Guarantee"
+      />
+    </div>
+
+    <!-- Text -->
+    <div class="guarantee-text">
+      <h3>100% Risk Free</h3>
+      <p>
+        If you do not see an increase in traffic after implementing our system and can show proof that you have implemented everything covered in the course, we will refund 100% of your investment—no questions asked.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Styles -->
+<style>
+  /* Section wrapper */
+  .guarantee-section {
+    background: #F0FCFF;
+    padding: 3em 1.5em;
+    text-align: center;
+    overflow: visible;
+  }
+
+  /* Flex container */
+  .guarantee-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2em;
+    max-width: 800px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+  }
+
+  /* Badge styling */
+  .guarantee-badge img {
+    width: 140px;
+    height: auto;
+    display: block;
+  }
+
+  /* Text styling */
+  .guarantee-text {
+    color: #004a66;
+    font-size: 0.9em;
+    line-height: 1.4;
+    text-align: left;
+    max-width: 500px;
+  }
+  .guarantee-text h3 {
+    margin: 0 0 0.5em;
+    font-size: 1.5em;
+    font-weight: 800;
+    background: linear-gradient(120deg, #00bfff, #007fff);
+    -webkit-background-clip: text;
+    color: transparent;
+  }
+  .guarantee-text p {
+    margin: 0;
+  }
+
+  /* Mobile adjustments */
+  @media (max-width: 600px) {
+    .guarantee-wrapper {
+      gap: 1em;
+    }
+    .guarantee-text {
+      text-align: center;
+      max-width: 100%;
+    }
+  }
+</style>
+<!-- END: 100% Risk-Free Guarantee Block -->
+
+<!-- START: FAQ Section -->
+<section class="faq-section">
+  <h2 class="faq-title">Frequently Asked Questions</h2>
+  <div class="faq-container">
+    <details>
+      <summary>What results can I expect from this course?</summary>
+      <p>Most students begin seeing measurable improvements in ad performance within 30–60 days after launching their ads. Results vary based on implementation, niche, and budget—but we provide templates and strategies proven to drive ROI.</p>
+    </details>
+    <details>
+      <summary>Do I need prior experience with ads to succeed?</summary>
+      <p>No prior experience is required. The course is beginner-friendly and includes step-by-step walkthroughs, templates, and support to help you launch confidently.</p>
+    </details>
+    <details>
+      <summary>Does this cover more than just Facebook Ads?</summary>
+      <p>Yes! You’ll learn strategies for Facebook, Instagram, Pinterest, and even YouTube—plus how to repurpose creatives across platforms for maximum impact.</p>
+    </details>
+    <details>
+      <summary>Will I get help setting up my pixel, funnel, or tracking?</summary>
+      <p>Absolutely. Our Done-With-You Accelerator includes hands-on support for pixel installation, funnel setup, and audience configuration.</p>
+    </details>
+    <details>
+      <summary>What if I’m in a niche you haven’t worked with before?</summary>
+      <p>We’ve helped over 60,000 students across 70+ industries—from ecommerce to coaching to brick-and-mortar businesses. Our frameworks are flexible and adaptable.</p>
+    </details>
+    <details>
+      <summary>Is retargeting expensive or hard to set up?</summary>
+      <p>Retargeting is one of the most cost-effective strategies. We show you how to set it up using simple tools and scripts that convert cold traffic into buyers.</p>
+    </details>
+    <details>
+      <summary>Why not just use email marketing instead of ads?</summary>
+      <p>Email is powerful—but ads help you reach new audiences instantly. We teach you how to combine both for a scalable, omnipresent strategy.</p>
+    </details>
+    <details>
+      <summary>What if I don’t get results?</summary>
+      <p>We offer a 100% money-back guarantee if you implement the system and don’t see an increase in traffic. Your success is our priority.</p>
+    </details>
+  </div>
+</section>
+
+<!-- Styles -->
+<style>
+  .faq-section {
+    background: #111;
+    color: #fff;
+    padding: 3em 1.5em;
+    text-align: left;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .faq-title {
+    font-size: 1.8em;
+    font-weight: 700;
+    margin-bottom: 1em;
+    text-align: center;
+    color: #FFD700;
+  }
+
+  .faq-container details {
+    background: #222;
+    border: 1px solid #333;
+    border-radius: 6px;
+    margin-bottom: 1em;
+    padding: 1em;
+    cursor: pointer;
+  }
+
+  .faq-container summary {
+    font-weight: 600;
+    font-size: 1.1em;
+    color: #00f8ff;
+  }
+
+  .faq-container p {
+    margin-top: 0.8em;
+    font-size: 0.95em;
+    line-height: 1.5;
+    color: #ccc;
+  }
+
+  @media (max-width: 600px) {
+    .faq-title {
+      font-size: 1.5em;
+    }
+    .faq-container summary {
+      font-size: 1em;
+    }
+    .faq-container p {
+      font-size: 0.9em;
+    }
+  }
+</style>
+<!-- END: FAQ Section -->
+
+<!-- START: Footer -->
+<footer style="background: #000; color: #bbb; padding: 2em 1em; text-align: center; font-size: 0.85em;">
+  <p>© 2025 STEMSphere Academy. All rights reserved.</p>
+  <p>
+    <a href="#faq" style="color: #00bfff; text-decoration: underline; margin-right: 1em;">FAQs</a>
+    <a href="#privacy-policy" style="color: #00bfff; text-decoration: underline;">Privacy Policy</a>
+  </p>
+  <p>Need help? Contact us at <a href="mailto:support@stemsphere.academy" style="color: #FFD700;">support@stemsphere.academy</a></p>
+</footer>
+<!-- END: Footer -->
