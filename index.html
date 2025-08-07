@@ -989,6 +989,253 @@
 </style>
 <!-- END: 100% Risk-Free Guarantee Block -->
 
+<!-- START FINAL OFFER COUNTDOWN BLOCK -->
+<div style="background-color: #FFFBEA; padding: 24px; text-align: center; font-size: 1.4em; font-weight: bold; color: #B30000;">
+  If you’ve scrolled this far, then you mean business.<br>
+  Here’s our final offer — this deal expires tonight at 11:59 PM EST.
+</div>
+
+<div class="flip-countdown" style="margin-top: 12px;">
+  <div>
+    <div id="final-hours" class="flip-unit">00</div>
+    <div class="flip-label">Hours</div>
+  </div>
+  <div>
+    <div id="final-minutes" class="flip-unit">00</div>
+    <div class="flip-label">Minutes</div>
+  </div>
+  <div>
+    <div id="final-seconds" class="flip-unit">00</div>
+    <div class="flip-label">Seconds</div>
+  </div>
+</div>
+
+<script>
+  const finalDeadline = new Date();
+  finalDeadline.setHours(23, 59, 0, 0); // Today at 11:59 PM EST
+
+  function updateFinalCountdown() {
+    const now = new Date();
+    const timeLeft = finalDeadline - now;
+
+    if (timeLeft <= 0) {
+      document.querySelector(".flip-countdown").innerHTML = "<div style='font-size:1.2em;'>This deal has expired!</div>";
+      return;
+    }
+
+    const hours = Math.floor(timeLeft / (1000 * 60 * 60));
+    const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+    updateUnit("final-hours", hours);
+    updateUnit("final-minutes", minutes);
+    updateUnit("final-seconds", seconds);
+  }
+
+  function updateUnit(id, value) {
+    const el = document.getElementById(id);
+    const current = el.textContent;
+    const formatted = String(value).padStart(2, '0');
+    if (current !== formatted) {
+      el.textContent = formatted;
+      el.classList.add("flip-animate");
+      setTimeout(() => el.classList.remove("flip-animate"), 600);
+    }
+  }
+
+  updateFinalCountdown();
+  setInterval(updateFinalCountdown, 1000);
+</script>
+<!-- END FINAL OFFER COUNTDOWN BLOCK -->
+
+
+<!-- START FINAL DISCOUNT PRICING TIERS -->
+<style>
+  /* prevent any element from pushing page wider */
+  *, *::before, *::after { box-sizing: border-box; }
+  body { margin: 0; overflow-x: hidden; }
+
+  @keyframes pulsate {
+    0%,100% { transform: scale(1); }
+    50%     { transform: scale(1.04); }
+  }
+  @keyframes glow {
+    0%,100% {
+      box-shadow: 0 0 6px rgba(50,205,50,0.6), 0 0 12px rgba(50,205,50,0.4);
+    }
+    50% {
+      box-shadow: 0 0 12px rgba(50,205,50,0.8), 0 0 24px rgba(50,205,50,0.6);
+    }
+  }
+
+  .pricing-tiers {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+    padding: 0 1em;
+  }
+  .pricing-tier {
+    flex: 1 1 30%;
+    max-width: 30%;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 24px;
+    text-align: left;
+  }
+
+  .pricing-tier h3 {
+    font-size: 1.4em;
+    margin-top: 0;
+    font-weight: bold;
+    background: linear-gradient(120deg, #FF4D4D, #B30000);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .pricing-tier p.price {
+    font-size: 1.6em;
+    font-weight: bold;
+    margin: 12px 0;
+    color: #000;
+    text-align: center;
+  }
+
+  .pricing-tier.dwytier p.price .original-price {
+    text-decoration: line-through;
+    color: #aaa;
+    display: block;
+    font-size: 1em;
+    margin-bottom: 0.25em;
+  }
+  .pricing-tier.dwytier p.price .current-price {
+    color: #e63946;
+    font-size: 2em;
+    display: block;
+  }
+
+  .pricing-tier .features {
+    color: #000;
+    padding-left: 1.5em;
+    margin-bottom: 1.5em;
+  }
+  .pricing-tier .features p {
+    margin: 8px 0;
+  }
+
+  .pricing-tier a.button {
+    display: inline-block;
+    background: #32CD32;
+    color: #000;
+    text-decoration: none;
+    padding: 12px 24px;
+    border-radius: 4px;
+    font-weight: bold;
+    margin-top: 16px;
+    animation: pulsate 2s ease-in-out infinite,
+               glow    2s ease-in-out infinite;
+  }
+
+  section.pricing {
+    background-color: #FFFBEA;
+    width: 100%;
+    padding: 3em 1.5em;
+    text-align: center;
+  }
+  section.pricing .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  @media (max-width: 768px) {
+    section.pricing { padding: 2em 1em; }
+    .pricing-tiers { gap: 1em; }
+    .pricing-tier { flex: 1 1 100%; max-width: 100%; }
+  }
+</style>
+
+<section class="pricing">
+  <div class="container">
+    <div class="pricing-tiers">
+
+      <!-- Tier 1 -->
+      <div class="pricing-tier">
+        <h3>Full Facebook Ads Course</h3>
+        <p class="price">
+          <span style="text-decoration: line-through; color: #aaa;">$149</span><br>
+          <span style="color: #e63946;">Now $89 with code AUG40WIN</span>
+        </p>
+        <div class="features">
+          <p>✔ 1 year course access</p>
+          <p>✔ All 19 chapters</p>
+          <p>✔ Facebook ads</p>
+          <p>✔ Instagram ads</p>
+          <p>✔ Pinterest Ads</p>
+          <p>✔ Content Creation</p>
+          <p>✔ 7-figure copy-paste ads template (downloadable)</p>
+          <p>✔ The exact framework we use to run high-converting ads across platforms</p>
+        </div>
+        <a href="https://buy.stripe.com/3cI3cuevT3PS35Jdk333W3h" class="button" target="_blank">
+          Enroll Now
+        </a>
+      </div>
+
+      <!-- Tier 2 -->
+      <div class="pricing-tier dwytier">
+        <h3>Done-With-You Accelerator</h3>
+        <p class="price">
+          <span class="original-price">Normally $1,297</span>
+          <span style="text-decoration: line-through; color: #aaa;">Today $597</span><br>
+          <span class="current-price">Now $358 with code AUG40WIN</span>
+        </p>
+        <div class="features">
+          <p>✔ We help you launch your next ad</p>
+          <p>✔ You give us your ad creatives (videos/pictures)</p>
+          <p>✔ We set up 1 campaign (up to 3 ads included)</p>
+          <p>✔ Pixel & tracking install</p>
+          <p>✔ Audience & retargeting configuration</p>
+          <p>✔ 7-day email support</p>
+          <p>💡 Helps DIY buyers who need hands-off setup</p>
+        </div>
+        <a href="https://buy.stripe.com/9B628qbjH3PScGj93N33W3l" class="button" target="_blank">
+          Enroll Now
+        </a>
+      </div>
+
+      <!-- Tier 3 -->
+      <div class="pricing-tier">
+        <h3>CEO Strategy Workshop</h3>
+        <p class="price">
+          <span style="text-decoration: line-through; color: #aaa;">$1,500</span><br>
+          <span style="color: #e63946;">Now $900 with code AUG40WIN</span>
+        </p>
+        <p style="font-weight: bold; color: #B30000;">Limited to only 5 at this discount price</p>
+        <div class="features">
+          <p>⚡ VIP Intensive group workshop </p>
+          <p>✔ 2 hour live Zoom workshop with our CEO</p>
+          <p>✔ Real-time ad strategy breakdown</p>
+          <p>✔ Your hortcut to scale</p>
+          <p>✔ Live Q&A with Oluwasanu</p> 
+          <p>✔ Secrets to saving thousands</p>
+          <p>💡 Perfect for those who want expert eyes for guidance </p>
+        </div>
+        <p style="margin-top: 16px; color: #000;">
+          Questions? Email
+          <a href="mailto:support@stemsphere.academy" style="color: #B30000;">
+            support@stemsphere.academy
+          </a>
+        </p>
+        <a href="https://buy.stripe.com/4gMfZg3RfgCE35J5RB33W3p" class="button" target="_blank">
+          Book Your CEO Strategy Workshop
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+<!-- END FINAL DISCOUNT PRICING TIERS -->
+
 <!-- START: FAQ Section -->
 <section class="faq-section">
   <h2 class="faq-title">Frequently Asked Questions</h2>
