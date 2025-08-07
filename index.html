@@ -21,25 +21,85 @@
   </noscript>
   <!-- End Meta Pixel Code -->
 
-<!-- START RETARGETING COUNTDOWN SCRIPT -->
-<div style="background-color: #FFEB3B; color: #DC143C; padding: 16px; font-size: 1.4em; font-weight: bold; text-align: center;">
+  <!-- START RETARGETING COUNTDOWN SCRIPT -->
+<style>
+  .countdown-banner {
+    background-color: #FFEB3B;
+    color: #DC143C;
+    padding: 16px;
+    font-size: 1.4em;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  .flip-countdown {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 12px;
+    font-family: 'Courier New', Courier, monospace;
+  }
+
+  .flip-unit {
+    background: #fff;
+    border: 2px solid #DC143C;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 1.6em;
+    font-weight: bold;
+    color: #DC143C;
+    min-width: 60px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .flip-label {
+    font-size: 0.7em;
+    color: #333;
+    margin-top: 4px;
+    text-align: center;
+  }
+
+  @keyframes flip {
+    0% { transform: rotateX(0deg); }
+    50% { transform: rotateX(180deg); }
+    100% { transform: rotateX(0deg); }
+  }
+
+  .flip-animate {
+    animation: flip 0.6s ease-in-out;
+  }
+</style>
+
+<div class="countdown-banner">
   You’re built to grow. We’re built to help. Take another 40% off ANY package. Use code: <strong>SANU40</strong>
 </div>
 
-<div id="countdown" style="font-size: 1.3em; margin-top: 10px; text-align: center;"></div>
+<div class="flip-countdown">
+  <div>
+    <div id="hours" class="flip-unit">00</div>
+    <div class="flip-label">Hours</div>
+  </div>
+  <div>
+    <div id="minutes" class="flip-unit">00</div>
+    <div class="flip-label">Minutes</div>
+  </div>
+  <div>
+    <div id="seconds" class="flip-unit">00</div>
+    <div class="flip-label">Seconds</div>
+  </div>
+</div>
 
 <script>
-  const countdownElement = document.getElementById("countdown");
-
-  // Target deadline: August 8, 2025 at 11:59 PM EST
-  const deadline = new Date("August 8, 2025 23:59:00 EST");
+  const deadline = new Date("August 8, 2025 23:59:00 EST").getTime();
 
   function updateCountdown() {
-    const now = new Date();
+    const now = new Date().getTime();
     const timeLeft = deadline - now;
 
     if (timeLeft <= 0) {
-      countdownElement.innerHTML = "This deal has expired!";
+      document.querySelector(".flip-countdown").innerHTML = "<div style='font-size:1.2em;'>This deal has expired!</div>";
       return;
     }
 
@@ -47,14 +107,27 @@
     const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
     const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
 
-    countdownElement.innerHTML = `Deal expires in ${hours}h ${minutes}m ${seconds}s`;
+    updateUnit("hours", hours);
+    updateUnit("minutes", minutes);
+    updateUnit("seconds", seconds);
+  }
+
+  function updateUnit(id, value) {
+    const el = document.getElementById(id);
+    const current = el.textContent;
+    const formatted = String(value).padStart(2, '0');
+    if (current !== formatted) {
+      el.textContent = formatted;
+      el.classList.add("flip-animate");
+      setTimeout(() => el.classList.remove("flip-animate"), 600);
+    }
   }
 
   updateCountdown();
   setInterval(updateCountdown, 1000);
 </script>
 <!-- END RETARGETING COUNTDOWN SCRIPT -->
-    
+ 
   <!-- existing meta, title, CSS links, etc. -->
 </head>
 
@@ -540,112 +613,6 @@
 </body>
 </html>
 
-<!-- START: Global Impact + Benefits Block -->
-<section style="background-color: #FFFDE7; width: 100%; padding: 3em 1.5em; text-align: center;">
-  <div style="max-width: 750px; margin: 0 auto;">
-    <h2 style="font-weight: bold; font-size: 1.5em; margin-bottom: 1em; color: #000;">
-      We’ve helped 
-      <span style="background: linear-gradient(120deg, #00bfff, #007fff); -webkit-background-clip: text; color: transparent; text-decoration: underline; font-weight: bold;">
-        380+
-      </span> 
-      businesses across the globe, and have enrolled over 
-      <span style="background: linear-gradient(120deg, #00bfff, #007fff); -webkit-background-clip: text; color: transparent; text-decoration: underline; font-weight: bold;">
-        60,000+
-      </span> 
-      students in our ads course.
-    </h2>
-    <ul style="list-style: none; padding: 0; margin: 2em auto 0; text-align: left; color: #000;">
-      <li style="margin-bottom: 1em;">
-        <span style="display: inline-block; width: 1.2em; height: 1.2em; border-radius: 50%; background: linear-gradient(120deg, #00bfff, #007fff); color: #fff; text-align: center; line-height: 1.2em; font-weight: bold; font-size: 0.85em;">✔</span>
-        Our ad strategies help you resonate with your audience while delivering measurable growth.
-      </li>
-      <li style="margin-bottom: 1em;">
-        <span style="display: inline-block; width: 1.2em; height: 1.2em; border-radius: 50%; background: linear-gradient(120deg, #00bfff, #007fff); color: #fff; text-align: center; line-height: 1.2em; font-weight: bold; font-size: 0.85em;">✔</span>
-        We use data-backed creative approaches to elevate performance across platforms.
-      </li>
-      <li style="margin-bottom: 1em;">
-        <span style="display: inline-block; width: 1.2em; height: 1.2em; border-radius: 50%; background: linear-gradient(120deg, #00bfff, #007fff); color: #fff; text-align: center; line-height: 1.2em; font-weight: bold; font-size: 0.85em;">✔</span>
-        You gain automated systems that scale impact without draining resources.
-      </li>
-      <li style="margin-bottom: 1em;">
-        <span style="display: inline-block; width: 1.2em; height: 1.2em; border-radius: 50%; background: linear-gradient(120deg, #00bfff, #007fff); color: #fff; text-align: center; line-height: 1.2em; font-weight: bold; font-size: 0.85em;">✔</span>
-        Every campaign reflects regional nuance so you stand out in any market.
-      </li>
-      <li style="margin-bottom: 1em;">
-        <span style="display: inline-block; width: 1.2em; height: 1.2em; border-radius: 50%; background: linear-gradient(120deg, #00bfff, #007fff); color: #fff; text-align: center; line-height: 1.2em; font-weight: bold; font-size: 0.85em;">✔</span>
-        Our clients consistently outperform larger agencies with leaner budgets.
-      </li>
-    </ul>
-  </div>
-</section>
-<!-- END: Global Impact + Benefits Block -->
-
-<!-- START: Niche Diversity Block -->
-<section style="background-color: #FFF4F7; width: 100%; padding: 3em 1.5em; text-align: center;">
-  <div style="max-width: 750px; margin: 0 auto;">
-
-    <h2 style="font-weight: bold; font-size: 1.5em; color: #000; margin-bottom: 1em;">
-      Partnered with Businesses in Over 
-      <span style="background: linear-gradient(120deg, #00bfff, #007fff); -webkit-background-clip: text; color: transparent; text-decoration: underline; font-weight: bold;">
-        70+ Industries
-      </span>: From Small Shops to Fast-Growing Brands
-    </h2>
-
-    <p style="font-size: 1em; color: #000; margin-bottom: 2em;">
-      Our ad strategies have empowered entrepreneurs across service sectors, brick-and-mortar storefronts, and ecommerce platforms to scale with clarity, creativity, and measurable impact.
-    </p>
-
-    <!-- High-Impact Services -->
-    <div style="text-align: left; margin-bottom: 2em;">
-      <h3 style="font-weight: bold; font-size: 1.25em; color: #000; margin-bottom: 0.75em;">
-        High-Impact Services
-      </h3>
-      <div style="padding-left: 1.5em; color: #000;">
-        <p>✔ Business and Credit Consultants</p>
-        <p>✔ Online Coaches and Educators</p>
-        <p>✔ Financial Strategists and Advisors</p>
-        <p>✔ Digital Marketing Specialists</p>
-        <p>✔ SEO and Funnel Experts</p>
-        <p>✔ Hypnotherapists and Wellness Practitioners</p>
-      </div>
-    </div>
-
-    <!-- Brick & Mortar Businesses -->
-    <div style="text-align: left; margin-bottom: 2em;">
-      <h3 style="font-weight: bold; font-size: 1.25em; color: #000; margin-bottom: 0.75em;">
-        Brick & Mortar Businesses
-      </h3>
-      <div style="padding-left: 1.5em; color: #000;">
-        <p>✔ Restaurants and Hospitality Groups</p>
-        <p>✔ Physical Therapy and Chiropractic Clinics</p>
-        <p>✔ Construction Companies and Carpenters</p>
-        <p>✔ Automotive Dealerships</p>
-        <p>✔ Local Event Services and Repair Shops</p>
-        <p>✔ Barber Shops and Salons</p>
-        <p>✔ Pet Stores</p>
-        <p>✔ Retail Shops</p>
-      </div>
-    </div>
-
-    <!-- Ecommerce Stores -->
-    <div style="text-align: left;">
-      <h3 style="font-weight: bold; font-size: 1.25em; color: #000; margin-bottom: 0.75em;">
-        Ecommerce Stores
-      </h3>
-      <div style="padding-left: 1.5em; color: #000;">
-        <p>✔ Skincare and Wellness Brands</p>
-        <p>✔ Apparel and Accessories Stores</p>
-        <p>✔ Gourmet and Nutrition-Based Products</p>
-        <p>✔ Investing and Cryptocurrency Platforms</p>
-        <p>✔ Affiliate Shops and Niche Market Retailers</p>
-        <p>✔ 1-Product Stores</p>
-      </div>
-    </div>
-
-  </div>
-</section>
-<!-- END: Niche Diversity Block -->
-
 <!-- START PRICING TIERS -->
 <style>
   /* prevent any element from pushing page wider */
@@ -832,6 +799,112 @@
   </div>
 </section>
 <!-- END PRICING TIERS -->
+
+<!-- START: Global Impact + Benefits Block -->
+<section style="background-color: #FFFDE7; width: 100%; padding: 3em 1.5em; text-align: center;">
+  <div style="max-width: 750px; margin: 0 auto;">
+    <h2 style="font-weight: bold; font-size: 1.5em; margin-bottom: 1em; color: #000;">
+      We’ve helped 
+      <span style="background: linear-gradient(120deg, #00bfff, #007fff); -webkit-background-clip: text; color: transparent; text-decoration: underline; font-weight: bold;">
+        380+
+      </span> 
+      businesses across the globe, and have enrolled over 
+      <span style="background: linear-gradient(120deg, #00bfff, #007fff); -webkit-background-clip: text; color: transparent; text-decoration: underline; font-weight: bold;">
+        60,000+
+      </span> 
+      students in our ads course.
+    </h2>
+    <ul style="list-style: none; padding: 0; margin: 2em auto 0; text-align: left; color: #000;">
+      <li style="margin-bottom: 1em;">
+        <span style="display: inline-block; width: 1.2em; height: 1.2em; border-radius: 50%; background: linear-gradient(120deg, #00bfff, #007fff); color: #fff; text-align: center; line-height: 1.2em; font-weight: bold; font-size: 0.85em;">✔</span>
+        Our ad strategies help you resonate with your audience while delivering measurable growth.
+      </li>
+      <li style="margin-bottom: 1em;">
+        <span style="display: inline-block; width: 1.2em; height: 1.2em; border-radius: 50%; background: linear-gradient(120deg, #00bfff, #007fff); color: #fff; text-align: center; line-height: 1.2em; font-weight: bold; font-size: 0.85em;">✔</span>
+        We use data-backed creative approaches to elevate performance across platforms.
+      </li>
+      <li style="margin-bottom: 1em;">
+        <span style="display: inline-block; width: 1.2em; height: 1.2em; border-radius: 50%; background: linear-gradient(120deg, #00bfff, #007fff); color: #fff; text-align: center; line-height: 1.2em; font-weight: bold; font-size: 0.85em;">✔</span>
+        You gain automated systems that scale impact without draining resources.
+      </li>
+      <li style="margin-bottom: 1em;">
+        <span style="display: inline-block; width: 1.2em; height: 1.2em; border-radius: 50%; background: linear-gradient(120deg, #00bfff, #007fff); color: #fff; text-align: center; line-height: 1.2em; font-weight: bold; font-size: 0.85em;">✔</span>
+        Every campaign reflects regional nuance so you stand out in any market.
+      </li>
+      <li style="margin-bottom: 1em;">
+        <span style="display: inline-block; width: 1.2em; height: 1.2em; border-radius: 50%; background: linear-gradient(120deg, #00bfff, #007fff); color: #fff; text-align: center; line-height: 1.2em; font-weight: bold; font-size: 0.85em;">✔</span>
+        Our clients consistently outperform larger agencies with leaner budgets.
+      </li>
+    </ul>
+  </div>
+</section>
+<!-- END: Global Impact + Benefits Block -->
+
+<!-- START: Niche Diversity Block -->
+<section style="background-color: #FFF4F7; width: 100%; padding: 3em 1.5em; text-align: center;">
+  <div style="max-width: 750px; margin: 0 auto;">
+
+    <h2 style="font-weight: bold; font-size: 1.5em; color: #000; margin-bottom: 1em;">
+      Partnered with Businesses in Over 
+      <span style="background: linear-gradient(120deg, #00bfff, #007fff); -webkit-background-clip: text; color: transparent; text-decoration: underline; font-weight: bold;">
+        70+ Industries
+      </span>: From Small Shops to Fast-Growing Brands
+    </h2>
+
+    <p style="font-size: 1em; color: #000; margin-bottom: 2em;">
+      Our ad strategies have empowered entrepreneurs across service sectors, brick-and-mortar storefronts, and ecommerce platforms to scale with clarity, creativity, and measurable impact.
+    </p>
+
+    <!-- High-Impact Services -->
+    <div style="text-align: left; margin-bottom: 2em;">
+      <h3 style="font-weight: bold; font-size: 1.25em; color: #000; margin-bottom: 0.75em;">
+        High-Impact Services
+      </h3>
+      <div style="padding-left: 1.5em; color: #000;">
+        <p>✔ Business and Credit Consultants</p>
+        <p>✔ Online Coaches and Educators</p>
+        <p>✔ Financial Strategists and Advisors</p>
+        <p>✔ Digital Marketing Specialists</p>
+        <p>✔ SEO and Funnel Experts</p>
+        <p>✔ Hypnotherapists and Wellness Practitioners</p>
+      </div>
+    </div>
+
+    <!-- Brick & Mortar Businesses -->
+    <div style="text-align: left; margin-bottom: 2em;">
+      <h3 style="font-weight: bold; font-size: 1.25em; color: #000; margin-bottom: 0.75em;">
+        Brick & Mortar Businesses
+      </h3>
+      <div style="padding-left: 1.5em; color: #000;">
+        <p>✔ Restaurants and Hospitality Groups</p>
+        <p>✔ Physical Therapy and Chiropractic Clinics</p>
+        <p>✔ Construction Companies and Carpenters</p>
+        <p>✔ Automotive Dealerships</p>
+        <p>✔ Local Event Services and Repair Shops</p>
+        <p>✔ Barber Shops and Salons</p>
+        <p>✔ Pet Stores</p>
+        <p>✔ Retail Shops</p>
+      </div>
+    </div>
+
+    <!-- Ecommerce Stores -->
+    <div style="text-align: left;">
+      <h3 style="font-weight: bold; font-size: 1.25em; color: #000; margin-bottom: 0.75em;">
+        Ecommerce Stores
+      </h3>
+      <div style="padding-left: 1.5em; color: #000;">
+        <p>✔ Skincare and Wellness Brands</p>
+        <p>✔ Apparel and Accessories Stores</p>
+        <p>✔ Gourmet and Nutrition-Based Products</p>
+        <p>✔ Investing and Cryptocurrency Platforms</p>
+        <p>✔ Affiliate Shops and Niche Market Retailers</p>
+        <p>✔ 1-Product Stores</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+<!-- END: Niche Diversity Block -->
 
 <!-- START: 100% Risk-Free Guarantee Block -->
 <section class="guarantee-section">
