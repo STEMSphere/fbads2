@@ -652,7 +652,6 @@
   *, *::before, *::after { box-sizing: border-box; }
   body { margin: 0; overflow-x: hidden; }
 
-  /* Pulsate + glow keyframes */
   @keyframes pulsate {
     0%,100% { transform: scale(1); }
     50%     { transform: scale(1.04); }
@@ -666,7 +665,6 @@
     }
   }
 
-  /* Container */
   .pricing-tiers {
     display: flex;
     flex-wrap: wrap;
@@ -684,7 +682,6 @@
     text-align: left;
   }
 
-  /* Tier Title now metallic red */
   .pricing-tier h3 {
     font-size: 1.4em;
     margin-top: 0;
@@ -694,7 +691,6 @@
     -webkit-text-fill-color: transparent;
   }
 
-  /* Base price styling */
   .pricing-tier p.price {
     font-size: 1.6em;
     font-weight: bold;
@@ -703,7 +699,6 @@
     text-align: center;
   }
 
-  /* Anchored price for the DWY tier only */
   .pricing-tier.dwytier p.price .original-price {
     text-decoration: line-through;
     color: #aaa;
@@ -726,7 +721,6 @@
     margin: 8px 0;
   }
 
-  /* Pulsate + glow on buttons */
   .pricing-tier a.button {
     display: inline-block;
     background: #32CD32;
@@ -740,7 +734,6 @@
                glow    2s ease-in-out infinite;
   }
 
-  /* Section wrapper */
   section.pricing {
     background-color: #FFFBEA;
     width: 100%;
@@ -752,7 +745,6 @@
     margin: 0 auto;
   }
 
-  /* MOBILE FIXES */
   @media (max-width: 768px) {
     section.pricing { padding: 2em 1em; }
     .pricing-tiers { gap: 1em; }
@@ -767,7 +759,10 @@
       <!-- Tier 1 -->
       <div class="pricing-tier">
         <h3>Full Facebook Ads Course</h3>
-        <p class="price">$149</p>
+        <p class="price">
+          <span style="text-decoration: line-through; color: #aaa;">$149</span><br>
+          <span style="color: #e63946;">Now $89 with code SANU40</span>
+        </p>
         <div class="features">
           <p>✔ 1 year course access</p>
           <p>✔ All 19 chapters</p>
@@ -783,16 +778,17 @@
         </a>
       </div>
 
-      <!-- Tier 2 (Done-With-You Accelerator) with anchored pricing -->
+      <!-- Tier 2 -->
       <div class="pricing-tier dwytier">
         <h3>Done-With-You Accelerator</h3>
         <p class="price">
           <span class="original-price">Normally $1,297</span>
-          <span class="current-price">Today $597</span>
+          <span style="text-decoration: line-through; color: #aaa;">Today $597</span><br>
+          <span class="current-price">Now $358 with code SANU40</span>
         </p>
         <div class="features">
           <p>✔ We help you launch your next ad</p>
-          <p>✔ You give us your ad creatives (videos/pictures) </p>
+          <p>✔ You give us your ad creatives (videos/pictures)</p>
           <p>✔ We set up 1 campaign (up to 3 ads included)</p>
           <p>✔ Pixel & tracking install</p>
           <p>✔ Audience & retargeting configuration</p>
@@ -807,7 +803,11 @@
       <!-- Tier 3 -->
       <div class="pricing-tier">
         <h3>CEO Strategy Workshop</h3>
-        <p class="price">$5,000</p>
+        <p class="price">
+          <span style="text-decoration: line-through; color: #aaa;">$5,000</span><br>
+          <span style="color: #e63946;">Now $3,000 with code SANU40</span>
+        </p>
+        <p style="font-weight: bold; color: #B30000;">Limited to only 3 at this discount price</p>
         <div class="features">
           <p>✔ VIP Intensive Day (4h workshop or 2×2h workshops)</p>
           <p>⚡ 4 Strategy Power hours with our CEO</p>
