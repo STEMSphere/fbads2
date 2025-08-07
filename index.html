@@ -21,16 +21,19 @@
   </noscript>
   <!-- End Meta Pixel Code -->
 
-    <!-- START RETARGETING COUNTDOWN SCRIPT -->
-<div style="background-color: #fff; color: #ff0000; padding: 40px 20px; font-size: 2.5em; font-weight: bold;">
-  YOU FORCED US... SO HERE IT GOES: TAKE ANOTHER 40% OFF ANY PACKAGE!
+<!-- START RETARGETING COUNTDOWN SCRIPT -->
+<div style="background-color: #fff; color: #DC143C; padding: 20px; font-size: 1.8em; font-weight: bold; text-align: center; line-height: 1.4;">
+  We're confident you'll enjoy working with us.<br>
+  Take another 40% off ANY package. Use code: <strong>SANU40</strong>
 </div>
 
-<div id="countdown" style="font-size: 2em; margin-top: 20px;"></div>
+<div id="countdown" style="font-size: 1.5em; margin-top: 10px; text-align: center;"></div>
 
 <script>
   const countdownElement = document.getElementById("countdown");
-  const deadline = new Date(Date.now() + 48 * 60 * 60 * 1000); // 48 hours from now
+
+  // Target deadline: August 8, 2025 at 11:59 PM EST
+  const deadline = new Date("August 8, 2025 23:59:00 EST");
 
   function updateCountdown() {
     const now = new Date();
