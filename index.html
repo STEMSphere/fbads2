@@ -869,7 +869,8 @@
   <p style="font-size:1.1em; color:#000; margin:1em 0;">
     <strong>There’s a reason our client retention is strong:</strong> We deliver real value.<br>
     Sign up for a <strong>free live diagnostic workshop</strong> — Show us your choice of either your landing page or ad campaign.<br>
-    This is <strong>not pre-recorded</strong>. We review <strong>everyone’s</strong> actual site or ad during the call.
+    This is <strong>not pre-recorded</strong>. We review <strong style="background:linear-gradient(135deg, #B30000, #FF4D4D, #B30000); -webkit-background-clip:text; -webkit-text-fill-color:transparent;">everyone’s</strong> actual site or ad during the call.<br>
+    Sessions run daily at <strong>12PM, 4PM, and 8PM EST</strong> — and we’re hosting them for the next <strong>2 days</strong>.
   </p>
 
   <!-- Countdown Timer -->
@@ -881,7 +882,7 @@
   </div>
 
   <!-- Enroll Button -->
-  <a href="#calendly-widget" style="display:inline-block; margin:1em auto; padding:0.8em 1.5em; background-color:#28a745; color:#fff; font-weight:bold; font-size:1em; border-radius:8px; text-decoration:none;">Enroll Now</a>
+  <a href="#calendly-widget" style="display:inline-block; margin:1em auto; padding:0.8em 1.5em; background-color:#32CD32; color:#fff; font-weight:bold; font-size:1em; border-radius:8px; text-decoration:none; box-shadow:0 0 10px #32CD32; animation:pulse 1.5s infinite;">Enroll Now</a>
 
   <!-- Calendly Embed -->
   <div id="calendly-widget" style="margin-top:2em;">
@@ -902,19 +903,18 @@ function getNextSessionTime() {
   const sessionHours = [12, 16, 20];
   let nextSession = null;
 
-  for (let hour of sessionHours) {
-    const sessionTime = new Date(estNow);
-    sessionTime.setHours(hour, 0, 0, 0);
-    if (estNow < sessionTime) {
-      nextSession = sessionTime;
-      break;
+  for (let i = 0; i < 2; i++) {
+    const day = new Date(estNow);
+    day.setDate(estNow.getDate() + i);
+    for (let hour of sessionHours) {
+      const sessionTime = new Date(day);
+      sessionTime.setHours(hour, 0, 0, 0);
+      if (estNow < sessionTime) {
+        nextSession = sessionTime;
+        break;
+      }
     }
-  }
-
-  if (!nextSession) {
-    nextSession = new Date(estNow);
-    nextSession.setDate(estNow.getDate() + 1);
-    nextSession.setHours(12, 0, 0, 0);
+    if (nextSession) break;
   }
 
   return new Date(nextSession.getTime() - (estOffset - localOffset) * 60000);
@@ -939,6 +939,16 @@ function updateDiagnosticCountdown() {
 setInterval(updateDiagnosticCountdown, 1000);
 </script>
 <!-- END COUNTDOWN SCRIPT -->
+
+<!-- BEGIN PULSE ANIMATION -->
+<style>
+@keyframes pulse {
+  0% { transform: scale(1); box-shadow: 0 0 10px #32CD32; }
+  50% { transform: scale(1.05); box-shadow: 0 0 20px #32CD32; }
+  100% { transform: scale(1); box-shadow: 0 0 10px #32CD32; }
+}
+</style>
+<!-- END PULSE ANIMATION -->
 
 <!-- START: 100% Risk-Free Guarantee Block -->
 <section class="guarantee-section">
