@@ -861,80 +861,142 @@
 </section>
 <!-- END: About Me Block -->
 
-<!-- Workshop CTA + Countdown + Calendly Booking Widget -->
-<div id="workshop-cta" style="max-width: 600px; margin: 0 auto; text-align: center; font-family: sans-serif;">
+<!-- BEGIN CALENDLY ZOOM DIAGNOSTIC WORKSHOP SECTION -->
+<section
+  style="background-color:#FFFBEA; padding:2em 1em; text-align:center; font-family:'Segoe UI', sans-serif;"
+>
+  <h2
+    style="font-size:1.8em; font-weight:bold;
+           background:linear-gradient(135deg, #B30000, #FF4D4D, #B30000);
+           -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+           text-shadow:0 0 2px rgba(255,0,0,0.3);"
+  >
+    If you’ve scrolled this far, then you mean business.
+  </h2>
 
-  <!-- Workshop Pitch -->
-  <p style="font-size: 1.2rem; line-height: 1.4; color: #333;">
-    There’s a reason our client retention is strong — show us your choice of either your landing page or ad campaign during our <strong>free live diagnostic workshop</strong>. This is <strong>not pre-recorded</strong>. We review <span style="background: linear-gradient(135deg, #B30000, #FF4D4D, #B30000); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">everyone’s</span> actual site or ad during the call. Sessions run daily at <strong>12 PM, 4 PM, and 8 PM EST</strong> — over the next <strong>2 days</strong>.
+  <p style="font-size:1.1em; color:#000; margin:1em 0;">
+    <strong>There’s a reason our client retention is strong —</strong>
+    Show us your choice of either your landing page or ad campaign during our
+    <strong>free live diagnostic workshop</strong>.<br>
+    This is <strong>not pre-recorded</strong>. We review
+    <strong style="background:linear-gradient(135deg, #B30000, #FF4D4D, #B30000);
+                    -webkit-background-clip:text;
+                    -webkit-text-fill-color:transparent;">
+      everyone’s
+    </strong>
+    actual site or ad during the call.<br>
+    Sessions run daily at <strong>12 PM, 4 PM, and 8 PM EST</strong>
+    — over the next <strong>2 days</strong>.
   </p>
 
   <!-- Countdown Timer -->
-  <div id="countdown" style="font-size: 2rem; font-weight: bold; color: #B30000; margin: 1rem 0;">
-    Loading next session…
+  <div style="font-size:1.2em; color:#B30000; margin-bottom:1em;">
+    Next session starts in:
+  </div>
+  <div
+    id="diagnostic-countdown"
+    style="display:flex; justify-content:center; gap:10px;
+           font-size:2em; font-weight:bold; color:#B30000;"
+  >
+    <div>
+      <span id="diag-hours">00</span>
+      <div style="font-size:0.6em;">Hours</div>
+    </div>
+    <div>
+      <span id="diag-minutes">00</span>
+      <div style="font-size:0.6em;">Minutes</div>
+    </div>
+    <div>
+      <span id="diag-seconds">00</span>
+      <div style="font-size:0.6em;">Seconds</div>
+    </div>
   </div>
 
-  <!-- Calendly Inline Widget Container -->
-  <div 
-    class="calendly-inline-widget" 
-    data-url="https://calendly.com/your_username/diagnostic-workshop" 
-    style="min-width:320px;height:630px;margin:0 auto;">
+  <!-- Enroll Button -->
+  <a
+    href="#calendly-widget"
+    style="display:inline-block; margin:1em auto; padding:0.8em 1.5em;
+           background-color:#32CD32; color:#fff; font-weight:bold;
+           font-size:1em; border-radius:8px; text-decoration:none;
+           box-shadow:0 0 10px #32CD32; animation:pulse 1.5s infinite;"
+  >
+    Enroll Now
+  </a>
+
+  <!-- Calendly Embed -->
+  <div id="calendly-widget" style="margin-top:2em;">
+    <div
+      class="calendly-inline-widget"
+      data-url="https://calendly.com/stemsphere-support/live-ads-page-diagnostics-with-stemsphere-academy"
+      style="min-width:320px;height:630px;"
+    ></div>
+    <script
+      type="text/javascript"
+      src="https://assets.calendly.com/assets/external/widget.js"
+      async
+    ></script>
   </div>
-</div>
+</section>
+<!-- END CALENDLY ZOOM DIAGNOSTIC WORKSHOP SECTION -->
 
-<!-- Calendly Widget Script -->
-<script 
-  type="text/javascript" 
-  src="https://assets.calendly.com/assets/external/widget.js" 
-  async>
-</script>
-
-<!-- Dynamic Countdown Script -->
+<!-- BEGIN COUNTDOWN SCRIPT -->
 <script>
 (function(){
-  const sessionHours = [12, 16, 20];   // 12 PM, 4 PM, 8 PM EST
-  const EST_OFFSET   = -4;             // GMT offset for EDT; switch to -5 for EST
+  const sessionHours = [12, 16, 20];  // EST times: 12 PM, 4 PM, 8 PM
+  const EST_OFFSET   = -4;            // hours offset from UTC
 
   function getNowEST() {
-    const local    = new Date();
-    const utcMs    = local.getTime() + (local.getTimezoneOffset() * 60000);
-    return new Date(utcMs + EST_OFFSET * 3600000);
+    const now = new Date();
+    const utc = now.getTime() + now.getTimezoneOffset() * 60000;
+    return new Date(utc + EST_OFFSET * 3600000);
   }
 
-  function getNextSession(now) {
+  function getNextSessionEST(nowEST) {
     for (let h of sessionHours) {
-      const session = new Date(now.getFullYear(), now.getMonth(), now.getDate(), h, 0, 0, 0);
-      if (session > now) return session;
+      const session = new Date(nowEST);
+      session.setHours(h, 0, 0, 0);
+      if (session > nowEST) return session;
     }
-    // All slots passed today → roll to tomorrow at first slot
-    const tomorrow = new Date(now.getTime() + 24 * 3600000);
-    return new Date(tomorrow.getFullYear(), tomorrow.getMonth(), tomorrow.getDate(), sessionHours[0], 0, 0, 0);
+    // If we've passed all sessions today, roll to tomorrow at the first slot
+    const tomorrow = new Date(nowEST);
+    tomorrow.setDate(nowEST.getDate() + 1);
+    tomorrow.setHours(sessionHours[0], 0, 0, 0);
+    return tomorrow;
   }
 
-  function updateCountdown() {
-    const nowEST      = getNowEST();
-    const nextSession = getNextSession(nowEST);
-    let diffMs        = nextSession - nowEST;
+  function updateDiagnosticCountdown() {
+    const nowEST        = getNowEST();
+    const nextSession   = getNextSessionEST(nowEST);
+    const diffMs        = nextSession - nowEST;
+
+    if (diffMs <= 0) return;
 
     const hrs  = Math.floor(diffMs / 3600000);
     const mins = Math.floor((diffMs % 3600000) / 60000);
     const secs = Math.floor((diffMs % 60000) / 1000);
 
-    const formatted = 
-      String(hrs).padStart(2, '0')  + 'h ' +
-      String(mins).padStart(2, '0') + 'm ' +
-      String(secs).padStart(2, '0') + 's';
-
-    document.getElementById('countdown').textContent = formatted;
+    document.getElementById("diag-hours").textContent   = String(hrs).padStart(2, '0');
+    document.getElementById("diag-minutes").textContent = String(mins).padStart(2, '0');
+    document.getElementById("diag-seconds").textContent = String(secs).padStart(2, '0');
   }
 
-  document.addEventListener('DOMContentLoaded', function(){
-    updateCountdown();
-    setInterval(updateCountdown, 1000);
+  document.addEventListener("DOMContentLoaded", function(){
+    updateDiagnosticCountdown();
+    setInterval(updateDiagnosticCountdown, 1000);
   });
 })();
 </script>
+<!-- END COUNTDOWN SCRIPT -->
 
+<!-- BEGIN PULSE ANIMATION -->
+<style>
+@keyframes pulse {
+  0%   { transform: scale(1);   box-shadow: 0 0 10px #32CD32; }
+  50%  { transform: scale(1.05); box-shadow: 0 0 20px #32CD32; }
+  100% { transform: scale(1);   box-shadow: 0 0 10px #32CD32; }
+}
+</style>
+<!-- END PULSE ANIMATION -->
 
 <!-- START: 100% Risk-Free Guarantee Block -->
 <section class="guarantee-section">
