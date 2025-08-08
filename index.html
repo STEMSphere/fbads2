@@ -861,6 +861,72 @@
 </section>
 <!-- END: About Me Block -->
 
+<!-- BEGIN CALENDLY ZOOM DIAGNOSTIC MEETING SECTION -->
+<section style="background-color:#FFFBEA; padding:2em 1em; text-align:center; font-family:'Segoe UI', sans-serif;">
+  <h2 style="font-size:1.8em; font-weight:bold; color:#B30000;">If you’ve scrolled this far, then you mean business.</h2>
+  <p style="font-size:1.1em; color:#000; margin:1em 0;">
+    <strong>Calendly Zoom Diagnostic Meeting:</strong> Live review of your landing page or ads.<br>
+    We host <strong>3 daily</strong> — at <strong>12PM, 4PM, and 8PM EST</strong>.
+  </p>
+
+  <!-- Countdown Timer -->
+  <div style="font-size:1.2em; color:#DC143C; margin-bottom:1em;">Next session starts in:</div>
+  <div id="diagnostic-countdown" style="display:flex; justify-content:center; gap:10px; font-size:2em; font-weight:bold; color:#DC143C;">
+    <div><span id="diag-hours">00</span><div style="font-size:0.6em;">Hours</div></div>
+    <div><span id="diag-minutes">00</span><div style="font-size:0.6em;">Minutes</div></div>
+    <div><span id="diag-seconds">00</span><div style="font-size:0.6em;">Seconds</div></div>
+  </div>
+
+  <!-- Enroll Button -->
+  <a href="#calendly-widget" style="display:inline-block; margin:1em auto; padding:0.8em 1.5em; background-color:#B30000; color:#fff; font-weight:bold; font-size:1em; border-radius:8px; text-decoration:none;">Enroll Now</a>
+
+  <!-- Calendly Embed -->
+  <div id="calendly-widget" style="margin-top:2em;">
+    <div class="calendly-inline-widget" data-url="https://calendly.com/stemsphere-support/live-ads-page-diagnostics-with-stemsphere-academy" style="min-width:320px;height:630px;"></div>
+    <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+  </div>
+</section>
+<!-- END CALENDLY ZOOM DIAGNOSTIC MEETING SECTION -->
+
+<!-- BEGIN COUNTDOWN SCRIPT -->
+<script>
+function getNextSessionTime() {
+  const now = new Date();
+  const estOffset = -4 * 60;
+  const localOffset = now.getTimezoneOffset();
+  const estNow = new Date(now.getTime() + (estOffset - localOffset) * 60000);
+
+  const hours = estNow.getHours();
+  let nextHour;
+  if (hours < 12) nextHour = 12;
+  else if (hours < 16) nextHour = 16;
+  else if (hours < 20) nextHour = 20;
+  else nextHour = 12, estNow.setDate(estNow.getDate() + 1);
+
+  estNow.setHours(nextHour, 0, 0, 0);
+  return new Date(estNow.getTime() - (estOffset - localOffset) * 60000);
+}
+
+function updateDiagnosticCountdown() {
+  const deadline = getNextSessionTime();
+  const now = new Date();
+  const timeLeft = deadline - now;
+
+  if (timeLeft <= 0) return;
+
+  const hours = Math.floor(timeLeft / (1000 * 60 * 60));
+  const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+  document.getElementById("diag-hours").textContent = String(hours).padStart(2, '0');
+  document.getElementById("diag-minutes").textContent = String(minutes).padStart(2, '0');
+  document.getElementById("diag-seconds").textContent = String(seconds).padStart(2, '0');
+}
+
+setInterval(updateDiagnosticCountdown, 1000);
+</script>
+<!-- END COUNTDOWN SCRIPT -->
+
 <!-- START: 100% Risk-Free Guarantee Block -->
 <section class="guarantee-section">
   <div class="guarantee-wrapper">
