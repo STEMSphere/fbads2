@@ -568,7 +568,7 @@ src="https://www.facebook.com/tr?id=1251864852856693&ev=PageView&noscript=1"
 
   <!-- Enroll Button -->
   <a
-    href="#"
+    href="javascript:void(0)"
     id="enroll-button"
     style="display:inline-block; margin:1em auto; padding:0.8em 1.5em;
            background-color:#32CD32; color:#fff; font-weight:bold;
@@ -578,16 +578,86 @@ src="https://www.facebook.com/tr?id=1251864852856693&ev=PageView&noscript=1"
     Enroll Now
   </a>
 
-  <!-- Calendly Popup Script -->
-  <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+  <!-- BEGIN CALENDLY POPUP SCRIPT -->
   <script>
-    document.getElementById('enroll-button').addEventListener('click', function(e) {
-      e.preventDefault();
-      Calendly.initPopupWidget({
-        url: 'https://calendly.com/stemsphere-support/live-ads-page-diagnostics-with-stemsphere-academy'
+    document.addEventListener('DOMContentLoaded', function() {
+      var btn = document.getElementById('enroll-button');
+      var calendlyLoaded = false;
+
+      btn.addEventListener('click', function(e) {
+        e.preventDefault();
+
+        // If Calendly is already loaded, just open popup
+        if (window.Calendly && calendlyLoaded) {
+          Calendly.initPopupWidget({
+            url: 'https://calendly.com/stemsphere-support/live-ads-page-diagnostics-with-stemsphere-academy'
+          });
+          return;
+        }
+
+        // First click: load widget.js then open popup
+        if (!calendlyLoaded) {
+          calendlyLoaded = true;
+          var script = document.createElement('script');
+          script.type = 'text/javascript';
+          script.src = 'https://assets.calendly.com/assets/external/widget.js';
+          script.async = true;
+          script.onload = function() {
+            Calendly.initPopupWidget({
+              url: 'https://calendly.com/stemsphere-support/live-ads-page-diagnostics-with-stemsphere-academy'
+            });
+          };
+          document.head.appendChild(script);
+        }
       });
     });
   </script>
+  <!-- END CALENDLY POPUP SCRIPT -->
+
+  <!-- BEGIN COUNTDOWN SCRIPT -->
+  <script>
+    (function() {
+      const sessionHours = [12, 16, 20]; // 12 PM, 4 PM, 8 PM EST
+      const EST_OFFSET = -4; // UTC offset for EST
+
+      function getNowEST() {
+        const now = new Date();
+        const utc = now.getTime() + now.getTimezoneOffset() * 60000;
+        return new Date(utc + EST_OFFSET * 3600000);
+      }
+
+      function getNextSessionEST(nowEST) {
+        for (let h of sessionHours) {
+          const session = new Date(nowEST);
+          session.setHours(h, 0, 0, 0);
+          if (session > nowEST) return session;
+        }
+        // move to tomorrow's first slot
+        const tomorrow = new Date(nowEST);
+        tomorrow.setDate(nowEST.getDate() + 1);
+        tomorrow.setHours(sessionHours[0], 0, 0, 0);
+        return tomorrow;
+      }
+
+      function updateDiagnosticCountdown() {
+        const nowEST = getNowEST();
+        const next = getNextSessionEST(nowEST);
+        const diff = next - nowEST;
+
+        const hrs = Math.floor(diff / (1000 * 60 * 60));
+        const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const secs = Math.floor((diff % (1000 * 60)) / 1000);
+
+        document.getElementById('diag-hours').textContent = String(hrs).padStart(2, '0');
+        document.getElementById('diag-minutes').textContent = String(mins).padStart(2, '0');
+        document.getElementById('diag-seconds').textContent = String(secs).padStart(2, '0');
+      }
+
+      updateDiagnosticCountdown();
+      setInterval(updateDiagnosticCountdown, 1000);
+    })();
+  </script>
+  <!-- END COUNTDOWN SCRIPT -->
 </section>
 <!-- END CALENDLY ZOOM DIAGNOSTIC WORKSHOP SECTION -->
 
