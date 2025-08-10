@@ -577,41 +577,40 @@ src="https://www.facebook.com/tr?id=1251864852856693&ev=PageView&noscript=1"
   >
     Enroll Now
   </a>
+
+  <!-- Calendly Embed Container -->
+  <div id="calendly-widget" style="margin-top:2em;"></div>
 </section>
 <!-- END CALENDLY ZOOM DIAGNOSTIC WORKSHOP SECTION -->
 
-<!-- BEGIN CALENDLY POPUP SCRIPT -->
+<!-- BEGIN CALENDLY INLINE LOADER SCRIPT -->
 <script>
   document.addEventListener('DOMContentLoaded', function () {
     const enrollBtn = document.getElementById('enroll-now');
+    const calendlyContainer = document.getElementById('calendly-widget');
+
     enrollBtn.addEventListener('click', function (e) {
       e.preventDefault();
 
-      // Load Calendly script dynamically
-      if (!window.Calendly) {
-        const script = document.createElement('script');
-        script.src = 'https://assets.calendly.com/assets/external/widget.js';
-        script.onload = function () {
-          Calendly.initPopupWidget({
-            url: 'https://calendly.com/stemsphere-support/live-ads-page-diagnostics-with-stemsphere-academy'
-          });
-        };
-        document.body.appendChild(script);
-      } else {
-        Calendly.initPopupWidget({
-          url: 'https://calendly.com/stemsphere-support/live-ads-page-diagnostics-with-stemsphere-academy'
-        });
-      }
+      if (calendlyContainer.innerHTML.trim() !== '') return;
+
+      const iframe = document.createElement('iframe');
+      iframe.src = 'https://calendly.com/stemsphere-support/live-ads-page-diagnostics-with-stemsphere-academy';
+      iframe.width = '100%';
+      iframe.height = '630';
+      iframe.style.border = 'none';
+      iframe.setAttribute('title', 'Schedule your diagnostic workshop');
+      calendlyContainer.appendChild(iframe);
     });
   });
 </script>
-<!-- END CALENDLY POPUP SCRIPT -->
+<!-- END CALENDLY INLINE LOADER SCRIPT -->
 
 <!-- BEGIN COUNTDOWN SCRIPT -->
 <script>
 (function(){
-  const sessionHours = [12, 16, 20];  // EST times: 12 PM, 4 PM, 8 PM
-  const EST_OFFSET   = -4;            // hours offset from UTC
+  const sessionHours = [12, 16, 20];
+  const EST_OFFSET   = -4;
 
   function getNowEST() {
     const now = new Date();
