@@ -578,46 +578,18 @@ src="https://www.facebook.com/tr?id=1251864852856693&ev=PageView&noscript=1"
     Enroll Now
   </a>
 
-  <!-- Calendly Embed (hidden until click) -->
-  <div id="calendly-widget" style="margin-top:2em; display:none;"></div>
-
+  <!-- Calendly Popup Script -->
+  <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
   <script>
-    (function() {
-      var enrolled = false;
-      var btn = document.getElementById('enroll-button');
-      var container = document.getElementById('calendly-widget');
-      btn.addEventListener('click', function(e) {
-        e.preventDefault();
-        if (!enrolled) {
-          enrolled = true;
-          container.style.display = 'block';
-          // create inline widget container
-          var inline = document.createElement('div');
-          inline.className = 'calendly-inline-widget';
-          inline.setAttribute(
-            'data-url',
-            'https://calendly.com/stemsphere-support/live-ads-page-diagnostics-with-stemsphere-academy'
-          );
-          inline.style.minWidth = '320px';
-          inline.style.height = '630px';
-          container.appendChild(inline);
-          // load Calendly script
-          var script = document.createElement('script');
-          script.type = 'text/javascript';
-          script.src = 'https://assets.calendly.com/assets/external/widget.js';
-          script.async = true;
-          container.appendChild(script);
-        } else {
-          // if already visible, scroll into view
-          container.scrollIntoView({ behavior: 'smooth' });
-        }
+    document.getElementById('enroll-button').addEventListener('click', function(e) {
+      e.preventDefault();
+      Calendly.initPopupWidget({
+        url: 'https://calendly.com/stemsphere-support/live-ads-page-diagnostics-with-stemsphere-academy'
       });
-    })();
+    });
   </script>
 </section>
 <!-- END CALENDLY ZOOM DIAGNOSTIC WORKSHOP SECTION -->
-
-
 
 <!-- BEGIN COUNTDOWN SCRIPT -->
 <script>
