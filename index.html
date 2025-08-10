@@ -569,7 +569,7 @@ src="https://www.facebook.com/tr?id=1251864852856693&ev=PageView&noscript=1"
   <!-- Enroll Button -->
   <a
     href="#"
-    id="enroll-button"
+    id="enroll-now"
     style="display:inline-block; margin:1em auto; padding:0.8em 1.5em;
            background-color:#32CD32; color:#fff; font-weight:bold;
            font-size:1em; border-radius:8px; text-decoration:none;
@@ -579,6 +579,25 @@ src="https://www.facebook.com/tr?id=1251864852856693&ev=PageView&noscript=1"
   </a>
 </section>
 <!-- END CALENDLY ZOOM DIAGNOSTIC WORKSHOP SECTION -->
+
+<!-- BEGIN CALENDLY POPUP SCRIPT -->
+<script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const enrollBtn = document.getElementById('enroll-now');
+    enrollBtn.addEventListener('click', function (e) {
+      e.preventDefault();
+      if (window.Calendly) {
+        Calendly.initPopupWidget({
+          url: 'https://calendly.com/stemsphere-support/live-ads-page-diagnostics-with-stemsphere-academy'
+        });
+      } else {
+        alert('Calendly is still loading. Please try again in a moment.');
+      }
+    });
+  });
+</script>
+<!-- END CALENDLY POPUP SCRIPT -->
 
 <!-- BEGIN CALENDLY POPUP SCRIPT -->
 <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
