@@ -568,30 +568,56 @@ src="https://www.facebook.com/tr?id=1251864852856693&ev=PageView&noscript=1"
 
   <!-- Enroll Button -->
   <a
-    href="#calendly-widget"
+    href="#"
+    id="enroll-button"
     style="display:inline-block; margin:1em auto; padding:0.8em 1.5em;
            background-color:#32CD32; color:#fff; font-weight:bold;
            font-size:1em; border-radius:8px; text-decoration:none;
-           box-shadow:0 0 10px #32CD32; animation:pulse 1.5s infinite;"
+           box-shadow:0 0 10px #32CD32; animation:pulse 1.5s infinite; cursor:pointer;"
   >
     Enroll Now
   </a>
 
-  <!-- Calendly Embed -->
-  <div id="calendly-widget" style="margin-top:2em;">
-    <div
-      class="calendly-inline-widget"
-      data-url="https://calendly.com/stemsphere-support/live-ads-page-diagnostics-with-stemsphere-academy"
-      style="min-width:320px;height:630px;"
-    ></div>
-    <script
-      type="text/javascript"
-      src="https://assets.calendly.com/assets/external/widget.js"
-      async
-    ></script>
-  </div>
+  <!-- Calendly Embed (hidden until click) -->
+  <div id="calendly-widget" style="margin-top:2em; display:none;"></div>
+
+  <script>
+    (function() {
+      var enrolled = false;
+      var btn = document.getElementById('enroll-button');
+      var container = document.getElementById('calendly-widget');
+      btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        if (!enrolled) {
+          enrolled = true;
+          container.style.display = 'block';
+          // create inline widget container
+          var inline = document.createElement('div');
+          inline.className = 'calendly-inline-widget';
+          inline.setAttribute(
+            'data-url',
+            'https://calendly.com/stemsphere-support/live-ads-page-diagnostics-with-stemsphere-academy'
+          );
+          inline.style.minWidth = '320px';
+          inline.style.height = '630px';
+          container.appendChild(inline);
+          // load Calendly script
+          var script = document.createElement('script');
+          script.type = 'text/javascript';
+          script.src = 'https://assets.calendly.com/assets/external/widget.js';
+          script.async = true;
+          container.appendChild(script);
+        } else {
+          // if already visible, scroll into view
+          container.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    })();
+  </script>
 </section>
 <!-- END CALENDLY ZOOM DIAGNOSTIC WORKSHOP SECTION -->
+
+
 
 <!-- BEGIN COUNTDOWN SCRIPT -->
 <script>
