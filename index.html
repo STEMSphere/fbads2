@@ -710,6 +710,7 @@ src="https://www.facebook.com/tr?id=1251864852856693&ev=PageView&noscript=1"
   *, *::before, *::after { box-sizing: border-box; }
   body { margin: 0; overflow-x: hidden; }
 
+  /* Pulsate + glow keyframes */
   @keyframes pulsate {
     0%,100% { transform: scale(1); }
     50%     { transform: scale(1.04); }
@@ -723,6 +724,7 @@ src="https://www.facebook.com/tr?id=1251864852856693&ev=PageView&noscript=1"
     }
   }
 
+  /* Container */
   .pricing-tiers {
     display: flex;
     flex-wrap: wrap;
@@ -740,6 +742,7 @@ src="https://www.facebook.com/tr?id=1251864852856693&ev=PageView&noscript=1"
     text-align: left;
   }
 
+  /* Tier Title now metallic red */
   .pricing-tier h3 {
     font-size: 1.4em;
     margin-top: 0;
@@ -749,6 +752,7 @@ src="https://www.facebook.com/tr?id=1251864852856693&ev=PageView&noscript=1"
     -webkit-text-fill-color: transparent;
   }
 
+  /* Base price styling */
   .pricing-tier p.price {
     font-size: 1.6em;
     font-weight: bold;
@@ -757,6 +761,7 @@ src="https://www.facebook.com/tr?id=1251864852856693&ev=PageView&noscript=1"
     text-align: center;
   }
 
+  /* Anchored price for the DWY tier only */
   .pricing-tier.dwytier p.price .original-price {
     text-decoration: line-through;
     color: #aaa;
@@ -779,6 +784,7 @@ src="https://www.facebook.com/tr?id=1251864852856693&ev=PageView&noscript=1"
     margin: 8px 0;
   }
 
+  /* Pulsate + glow on buttons */
   .pricing-tier a.button {
     display: inline-block;
     background: #32CD32;
@@ -792,6 +798,7 @@ src="https://www.facebook.com/tr?id=1251864852856693&ev=PageView&noscript=1"
                glow    2s ease-in-out infinite;
   }
 
+  /* Section wrapper */
   section.pricing {
     background-color: #FFFBEA;
     width: 100%;
@@ -803,6 +810,7 @@ src="https://www.facebook.com/tr?id=1251864852856693&ev=PageView&noscript=1"
     margin: 0 auto;
   }
 
+  /* MOBILE FIXES */
   @media (max-width: 768px) {
     section.pricing { padding: 2em 1em; }
     .pricing-tiers { gap: 1em; }
@@ -817,10 +825,7 @@ src="https://www.facebook.com/tr?id=1251864852856693&ev=PageView&noscript=1"
       <!-- Tier 1 -->
       <div class="pricing-tier">
         <h3>Full Facebook Ads Course</h3>
-        <p class="price">
-          <span style="text-decoration: line-through; color: #aaa;">$149</span><br>
-          <span style="color: #e63946;">Now $119 with code SANU20</span>
-        </p>
+        <p class="price">$149</p>
         <div class="features">
           <p>✔ 1 year course access</p>
           <p>✔ All 19 chapters</p>
@@ -836,17 +841,16 @@ src="https://www.facebook.com/tr?id=1251864852856693&ev=PageView&noscript=1"
         </a>
       </div>
 
-      <!-- Tier 2 -->
+      <!-- Tier 2 (Done-With-You Accelerator) with anchored pricing -->
       <div class="pricing-tier dwytier">
         <h3>Done-With-You Accelerator</h3>
         <p class="price">
           <span class="original-price">Normally $1,297</span>
-          <span style="text-decoration: line-through; color: #aaa;">Today $597</span><br>
-          <span class="current-price">Now $477 with code SANU20</span>
+          <span class="current-price">Today $597</span>
         </p>
         <div class="features">
           <p>✔ We help you launch your next ad</p>
-          <p>✔ You give us your ad creatives (videos/pictures)</p>
+          <p>✔ You give us your ad creatives (videos/pictures) </p>
           <p>✔ We set up 1 campaign (up to 3 ads included)</p>
           <p>✔ Pixel & tracking install</p>
           <p>✔ Audience & retargeting configuration</p>
@@ -861,19 +865,15 @@ src="https://www.facebook.com/tr?id=1251864852856693&ev=PageView&noscript=1"
       <!-- Tier 3 -->
       <div class="pricing-tier">
         <h3>CEO Strategy Workshop</h3>
-        <p class="price">
-          <span style="text-decoration: line-through; color: #aaa;">$1,500</span><br>
-          <span style="color: #e63946;">Now $1,200 with code SANU20</span>
-        </p>
-        <p style="font-weight: bold; color: #B30000;">Limited to only 5 at this discount price</p>
+        <p class="price">$1,500</p>
         <div class="features">
-          <p>⚡ VIP Intensive group workshop </p>
+          <p>⚡ VIP Intensive group workshop</p>
           <p>✔ 2 hour live Zoom workshop with our CEO</p>
           <p>✔ Real-time ad strategy breakdown</p>
           <p>✔ Your shortcut to scale</p>
           <p>✔ Live Q&A with Oluwasanu</p> 
           <p>✔ Secrets to saving thousands</p>
-          <p>💡 Perfect for those who want expert eyes for guidance </p>
+          <p>💡 Perfect for those who want expert eyes for guidance</p>
         </div>
         <p style="margin-top: 16px; color: #000;">
           Questions? Email
