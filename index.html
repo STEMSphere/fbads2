@@ -583,10 +583,15 @@ src="https://www.facebook.com/tr?id=1251864852856693&ev=PageView&noscript=1"
 <!-- BEGIN CALENDLY POPUP SCRIPT -->
 <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
 <script>
-  document.getElementById('enroll-button').addEventListener('click', function(e) {
-    e.preventDefault();
-    Calendly.initPopupWidget({
-      url: 'https://calendly.com/stemsphere-support/live-ads-page-diagnostics-with-stemsphere-academy'
+  document.addEventListener('DOMContentLoaded', function () {
+    const btn = document.getElementById('enroll-button');
+    btn.addEventListener('click', function (e) {
+      e.preventDefault();
+      if (window.Calendly) {
+        Calendly.initPopupWidget({
+          url: 'https://calendly.com/stemsphere-support/live-ads-page-diagnostics-with-stemsphere-academy'
+        });
+      }
     });
   });
 </script>
