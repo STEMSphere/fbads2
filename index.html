@@ -21,6 +21,114 @@
   </noscript>
   <!-- End Meta Pixel Code -->
 
+  <!-- START RETARGETING COUNTDOWN SCRIPT -->
+<style>
+  .countdown-banner {
+    background-color: #FFEB3B;
+    color: #DC143C;
+    padding: 16px;
+    font-size: 1.4em;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  .flip-countdown {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 12px;
+    font-family: 'Courier New', Courier, monospace;
+  }
+
+  .flip-unit {
+    background: #fff;
+    border: 2px solid #DC143C;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 2em;
+    font-weight: 900;
+    color: #DC143C;
+    min-width: 60px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .flip-label {
+    font-size: 0.75em;
+    color: #fff;
+    margin-top: 4px;
+    text-align: center;
+    font-weight: bold;
+  }
+
+  @keyframes flip {
+    0% { transform: rotateX(0deg); }
+    50% { transform: rotateX(180deg); }
+    100% { transform: rotateX(0deg); }
+  }
+
+  .flip-animate {
+    animation: flip 0.6s ease-in-out;
+  }
+</style>
+
+<div class="countdown-banner">
+  You’re built to grow. We’re built to help. Take another 20% off ANY package. Use code: <strong>SANU20</strong>
+</div>
+
+<div class="flip-countdown">
+  <div>
+    <div id="hours" class="flip-unit">00</div>
+    <div class="flip-label">Hours</div>
+  </div>
+  <div>
+    <div id="minutes" class="flip-unit">00</div>
+    <div class="flip-label">Minutes</div>
+  </div>
+  <div>
+    <div id="seconds" class="flip-unit">00</div>
+    <div class="flip-label">Seconds</div>
+  </div>
+</div>
+
+<script>
+  const deadline = new Date("August 8, 2025 23:59:00 EST").getTime();
+
+  function updateCountdown() {
+    const now = new Date().getTime();
+    const timeLeft = deadline - now;
+
+    if (timeLeft <= 0) {
+      document.querySelector(".flip-countdown").innerHTML = "<div style='font-size:1.2em;'>This deal has expired!</div>";
+      return;
+    }
+
+    const hours = Math.floor(timeLeft / (1000 * 60 * 60));
+    const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+    updateUnit("hours", hours);
+    updateUnit("minutes", minutes);
+    updateUnit("seconds", seconds);
+  }
+
+  function updateUnit(id, value) {
+    const el = document.getElementById(id);
+    const current = el.textContent;
+    const formatted = String(value).padStart(2, '0');
+    if (current !== formatted) {
+      el.textContent = formatted;
+      el.classList.add("flip-animate");
+      setTimeout(() => el.classList.remove("flip-animate"), 600);
+    }
+  }
+
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+</script>
+<!-- END RETARGETING COUNTDOWN SCRIPT -->
+
   <!-- existing meta, title, CSS links, etc. -->
 </head>
 
@@ -29,12 +137,13 @@
   <title>Not Just Clicks — Facebook Ads That Convert</title>
   <style>
     body {
-  margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background-color: #ffffff; /* white background */
-  color: #000000;             /* black text */
-  text-align: center;
-}
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #9B111E;
+
+      color: #fff;
+      text-align: center;
+    }
 
     header {
       padding: 3em 1em 0.5em;
@@ -71,7 +180,7 @@
       background: linear-gradient(90deg, #00f8ff, #ff00d0);
       font-weight: 700;
       font-size: 0.95em;
-      color: #000;
+      color: #fff;
       margin-top: 0.6em;
     }
     .course-bar span + span {
@@ -301,7 +410,7 @@
     </div>
 
     <div class="arrow-up">↑↑↑↑</div>
-    <div class="access-message">Watch Video🔁 in Desktop Mode</div>
+    <div class="access-message">Watch Video for Access Details</div>
 
     <!-- Reviews Loader Under video -->
 <div id="reviews-container" style="margin-top:1.5em;"></div>
@@ -401,7 +510,7 @@
 </script>
 <!-- Reviews loader script End -->
     
-  <script>
+<script>
     const tag = document.createElement('script');
     tag.src = "https://www.youtube.com/iframe_api";
     document.head.appendChild(tag);
@@ -546,15 +655,11 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       text-shadow: 0 0 2px rgba(255, 0, 0, 0.3);">
-      Meet Oluwasanu “Book”
+      Meet Oluwasanu “Book” Joseph
     </h2>
 
     <p style="font-size: 1em; color: #000; margin-bottom: 1.5em;">
       My name is Oluwasanu, but most people call me “Book.” It’s a nickname that reflects my lifelong love for learning. I started my first business with just $500. It wasn’t easy, but it was possible — because I was willing to do the work. The dream is achievable for those who commit fully. It is not for those who are willing to put in the bare minimum and expect maximum results. I’ve learned that clarity, consistency, and courage are what separate those who scale from those who stall.
-    </p>
-
-    <p style="font-size: 1em; color: #000;">
-      Today, I help entrepreneurs build ad systems that reflect who they are and what they stand for. If you’re here, it’s because you’re ready to grow. And I’m here to help you do it with strategy, integrity, and impact.
     </p>
 
   </div>
@@ -1081,5 +1186,4 @@
   <p>Need help? Contact us at <a href="mailto:support@stemsphere.academy" style="color: #FFD700;">support@stemsphere.academy</a></p>
 </footer>
 <!-- END: Footer -->
-
 
