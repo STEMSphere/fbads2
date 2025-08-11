@@ -991,6 +991,122 @@ src="https://www.facebook.com/tr?id=1251864852856693&ev=PageView&noscript=1"
 <!-- END: Pulse Animation -->
 <!-- END Entire What We Offer Block -->
 
+<!-- START: Countdown Timer -->
+<script>
+(function(){
+  function getNextResetTime() {
+    const now = new Date();
+    const next = new Date(now);
+    const currentHour = now.getHours();
+    const nextHour = Math.ceil((currentHour + 1) / 6) * 6;
+    next.setHours(nextHour, 0, 0, 0);
+    if (next <= now) next.setHours(nextHour + 6, 0, 0, 0);
+    return next;
+  }
+
+  function updateCountdown() {
+    const now = new Date();
+    const resetTime = getNextResetTime();
+    const diff = resetTime - now;
+
+    const hrs = Math.floor(diff / 3600000);
+    const mins = Math.floor((diff % 3600000) / 60000);
+    const secs = Math.floor((diff % 60000) / 1000);
+
+    const display = document.getElementById("countdown-timer");
+    display.textContent =
+      String(hrs).padStart(2, '0') + ":" +
+      String(mins).padStart(2, '0') + ":" +
+      String(secs).padStart(2, '0');
+  }
+
+  document.addEventListener("DOMContentLoaded", function(){
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  });
+})();
+</script>
+<!-- END: Countdown Timer -->
+
+<!-- START: Payment Buttons -->
+<style>
+  .payment-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.4em;
+  }
+
+  .payment-buttons a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5em;
+    text-decoration: none;
+    color: #fff;
+    padding: 0.75em 1em;
+    border-radius: 999px;
+    font-weight: 700;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 1em;
+    transition: transform 0.15s ease;
+    animation: pulse 2.8s ease-in-out infinite;
+  }
+
+  .payment-buttons a:hover {
+    transform: translateY(-2px);
+  }
+
+  @keyframes pulse {
+    0%   { transform: scale(1); box-shadow: 0 0 0px rgba(255, 255, 255, 0.2); }
+    50%  { transform: scale(1.02); box-shadow: 0 0 8px rgba(255, 255, 255, 0.3); }
+    100% { transform: scale(1); box-shadow: 0 0 0px rgba(255, 255, 255, 0.2); }
+  }
+
+  .btn-usa     { background-color: #1E3A8A; }
+  .btn-india   { background-color: #ff9900; }
+  .btn-nigeria { background-color: #065F46; }
+
+  .strike-price {
+    text-decoration: line-through;
+    color: #ccc;
+    font-weight: 400;
+    margin-left: 0.5em;
+    font-size: 0.9em;
+  }
+
+  @media (max-width: 600px) {
+    .payment-buttons a {
+      display: block;
+      width: 90%;
+      margin: 0.4em auto;
+      font-size: 1em;
+    }
+  }
+</style>
+
+<div class="payment-card" style="margin-top:3em;">
+  <div style="text-align: center; font-weight: bold; font-size: 1.2em; margin-bottom: 0.6em;">
+    🚨 Limited-Time Offer — <span id="countdown-timer" style="color: #ff4d4d;">Loading...</span> remaining
+  </div>
+  <div class="payment-intro" style="text-align: center; font-size: 1em; margin-bottom: 1em;">
+    🌐 Pay in your local currency or use global conversion
+  </div>
+  <div class="payment-buttons">
+    <a href="https://buy.stripe.com/3cI3cuevT3PS35Jdk333W3h" class="btn-usa">
+      🌍 Global Conversion — Pay $75.99 USD <span class="strike-price">$149.99</span>
+    </a>
+    <a href="https://buy.stripe.com/4gMbJ03Rfeuw6hV3Jt33W3r" class="btn-india">
+      🇮🇳 Pay ₹4,999 INR <span class="strike-price">₹13,200</span>
+    </a>
+    <a href="https://paystack.com/buy/how-to-run-facebook-ads" class="btn-nigeria" target="_blank">
+      🇳🇬 Pay ₦49,999 Naira <span class="strike-price">₦230,000</span>
+    </a>
+  </div>
+</div>
+<!-- END: Payment Buttons -->
+
 <!-- START: 100% Risk-Free Guarantee Block -->
 <section class="guarantee-section">
   <div class="guarantee-wrapper">
