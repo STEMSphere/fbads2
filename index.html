@@ -910,14 +910,15 @@ src="https://www.facebook.com/tr?id=1251864852856693&ev=PageView&noscript=1"
   </h2>
   <div style="max-width:800px; margin:0 auto; text-align:left;">
     <div style="margin-bottom:2em;">
-      <h3 style="color:#00f8ff;">🟢 Starter: Full Facebook Ads Course</h3>
+      <h3 style="color:#00f8ff;">
+        🟢 Starter: Full Facebook Ads Course<br>
+        <span style="font-size:0.9em; color:#ccc;">
+          <del>$299</del> <strong style="color:#FFD700;">$149</strong>  
+          🇮🇳 ~₹12,700 &nbsp; 🇳🇬 ~₦230,000
+        </span>
+      </h3>
       <p>
         Our flagship course for beginners and intermediate learners. Includes 19 chapters covering Facebook, Instagram, and Pinterest ads — plus downloadable templates and frameworks used to run high-converting campaigns.
-      </p>
-      <p style="font-size:0.9em; color:#ccc; margin-top:0.5em;">
-        <del>$299</del> <strong style="color:#FFD700;">$149</strong>  
-        <span style="margin-left:1em;">🇮🇳 ~₹12,700</span>  
-        <span style="margin-left:1em;">🇳🇬 ~₦230,000</span>
       </p>
     </div>
 
@@ -951,14 +952,17 @@ src="https://www.facebook.com/tr?id=1251864852856693&ev=PageView&noscript=1"
 </section>
 <!-- END: What We Offer Section -->
 
-<!-- BEGIN CALENDLY INLINE LOADER SCRIPT -->
+<!-- BEGIN: Calendly Embed Script -->
 <script>
   document.addEventListener('DOMContentLoaded', function () {
     const calendlyContainer = document.getElementById('calendly-widget');
-    const buttons = ['join-done-with-you', 'join-vip'];
+    const buttons = ['enroll-now', 'join-done-with-you', 'join-vip'];
 
     buttons.forEach(id => {
-      document.getElementById(id).addEventListener('click', function (e) {
+      const btn = document.getElementById(id);
+      if (!btn) return;
+
+      btn.addEventListener('click', function (e) {
         e.preventDefault();
         if (calendlyContainer.innerHTML.trim() !== '') return;
 
@@ -973,7 +977,17 @@ src="https://www.facebook.com/tr?id=1251864852856693&ev=PageView&noscript=1"
     });
   });
 </script>
-<!-- END CALENDLY INLINE LOADER SCRIPT -->
+<!-- END: Calendly Embed Script -->
+
+<!-- BEGIN: Pulse Animation -->
+<style>
+@keyframes pulse {
+  0%   { transform: scale(1);   box-shadow: 0 0 10px #32CD32; }
+  50%  { transform: scale(1.05); box-shadow: 0 0 20px #32CD32; }
+  100% { transform: scale(1);    box-shadow: 0 0 10px #32CD32; }
+}
+</style>
+<!-- END: Pulse Animation -->
 
 <!-- START: 100% Risk-Free Guarantee Block -->
 <section class="guarantee-section">
