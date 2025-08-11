@@ -515,9 +515,7 @@ src="https://www.facebook.com/tr?id=1251864852856693&ev=PageView&noscript=1"
 
     <!-- Starter Tier -->
     <div style="margin-bottom:2em; border-left:4px solid #00CED1; padding-left:1em;">
-      <h3 style="font-size:1.3em; font-weight:700; color:#fff;">
-        Full Launch Kit: Full Course + eBook
-      </h3>
+      <h3 style="font-size:1.3em; font-weight:700; color:#fff;">Full Launch Kit: Full Course + eBook</h3>
       <p>
         Our flagship course for beginners and intermediate learners. Includes 19 chapters covering Facebook, Instagram, and Pinterest ads — Plus our 7 figure templates ebook: 100 Downloadable templates and frameworks used to run high-converting campaigns.
       </p>
@@ -528,78 +526,97 @@ src="https://www.facebook.com/tr?id=1251864852856693&ev=PageView&noscript=1"
 
     <!-- Done-With-You Tier -->
     <div style="margin-bottom:2em; border-left:4px solid #FFBF00; padding-left:1em;">
-      <h3 style="font-size:1.3em; font-weight:700; color:#fff;">
-        Done-With-You Accelerator
-      </h3>
+      <h3 style="font-size:1.3em; font-weight:700; color:#fff;">Done-With-You Accelerator</h3>
       <p>
         A hands-on setup experience where we help you launch your next campaign. You provide the creatives, we configure your pixel, targeting, and ad structure — then hand it off with 7-day support. Perfect for DIY founders who want expert guidance.
       </p>
-      <a href="#"
-         onclick="loadCalendly(); return false;"
-         style="display:inline-block; margin-top:1em; padding:0.8em 1.5em;
-                background-color:#FFD700; color:#000; font-weight:bold;
-                font-size:1em; border-radius:8px; text-decoration:none;">
+      <a href="#" data-calendly style="display:inline-block; margin-top:1em; padding:0.8em 1.5em;
+         background-color:#FFD700; color:#000; font-weight:bold; font-size:1em; border-radius:8px;
+         text-decoration:none;">
         Join Us Live
       </a>
     </div>
 
     <!-- VIP Tier -->
     <div style="margin-bottom:2em; border-left:4px solid #B266FF; padding-left:1em;">
-      <h3 style="font-size:1.3em; font-weight:700; color:#fff;">
-        VIP: Conversion Kickoff
-      </h3>
+      <h3 style="font-size:1.3em; font-weight:700; color:#fff;">VIP: Conversion Kickoff</h3>
       <p>
         Hands-off setup. A one-time launch package for serious founders. Includes a custom landing page, up to 5 ad creatives, and a live strategy session. Ideal for product launches, service providers, and anyone ready to scale with clarity — no monthly commitment required.
       </p>
-      <a href="#"
-         onclick="loadCalendly(); return false;"
-         style="display:inline-block; margin-top:1em; padding:0.8em 1.5em;
-                background-color:#FFD700; color:#000; font-weight:bold;
-                font-size:1em; border-radius:8px; text-decoration:none;">
+      <a href="#" data-calendly style="display:inline-block; margin-top:1em; padding:0.8em 1.5em;
+         background-color:#FFD700; color:#000; font-weight:bold; font-size:1em; border-radius:8px;
+         text-decoration:none;">
         Join Us Live
       </a>
     </div>
 
-    <!-- Calendly Inline Widget Container -->
+    <!-- Calendly Embed Container -->
     <div id="calendly-widget" style="margin-top:2em;"></div>
   </div>
 </section>
 
-<!-- BEGIN: Lazy-Load Calendly Embed Script -->
+<!-- BEGIN: Calendly Inline Loader -->
 <script>
-  function loadCalendly() {
-    if (window.calendlyLoaded) return;
-    window.calendlyLoaded = true;
+  document.addEventListener('DOMContentLoaded', function () {
+    const calendlyContainer = document.getElementById('calendly-widget');
 
-    // 1. Preload Calendly CSS non-blocking
-    var link = document.createElement('link');
-    link.rel = 'preload';
-    link.href = 'https://assets.calendly.com/assets/external/widget.css';
-    link.as   = 'style';
-    link.onload = function() { this.rel = 'stylesheet'; };
-    document.head.appendChild(link);
+    // create spinner element
+    const spinner = document.createElement('div');
+    spinner.id = 'calendly-spinner';
+    spinner.style.display = 'none';
+    spinner.style.flexDirection = 'column';
+    spinner.style.alignItems = 'center';
+    spinner.style.justifyContent = 'center';
+    spinner.style.height = '400px';
+    spinner.style.fontFamily = 'sans-serif';
+    spinner.style.color = '#ccc';
+    spinner.innerHTML = 
+      '<div style="width:40px; height:40px; ' +
+      'border:4px solid #ccc; border-top:4px solid #32CD32; ' +
+      'border-radius:50%; animation:spin 1s linear infinite; margin-bottom:10px;"></div>' +
+      '<p style="margin:0; color:#ccc;">Loading scheduler...</p>';
 
-    // 2. Inject inline widget markup
-    var container = document.getElementById('calendly-widget');
-    container.innerHTML = ''
-      + '<div class="calendly-inline-widget" '
-      + 'data-url="https://calendly.com/stemsphere-support/'
-      + 'live-ads-page-diagnostics-with-stemsphere-academy'
-      + '?embed_domain=fbads.stemsphere.academy'
-      + '&embed_type=Inline" '
-      + 'style="min-width:320px;height:630px;"></div>';
+    const buttons = document.querySelectorAll('[data-calendly]');
 
-    // 3. Load Calendly JS asynchronously
-    var script = document.createElement('script');
-    script.src   = 'https://assets.calendly.com/assets/external/widget.js';
-    script.async = true;
-    document.body.appendChild(script);
+    buttons.forEach(btn => {
+      btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        calendlyContainer.innerHTML = '';
+        calendlyContainer.appendChild(spinner);
+        spinner.style.display = 'flex';
 
-    // 4. Smooth-scroll to the calendar
-    container.scrollIntoView({ behavior: 'smooth' });
-  }
+        const iframe = document.createElement('iframe');
+        iframe.src = 'https://calendly.com/stemsphere-support/live-ads-page-diagnostics-with-stemsphere-academy?embed_domain=fbads.stemsphere.academy&embed_type=Inline';
+        iframe.width = '100%';
+        iframe.height = '630';
+        iframe.style.border = 'none';
+        iframe.setAttribute('title', 'Schedule your diagnostic workshop');
+
+        iframe.onload = function() {
+          spinner.style.display = 'none';
+        };
+
+        calendlyContainer.appendChild(iframe);
+        calendlyContainer.scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+  });
 </script>
-<!-- END: Lazy-Load Calendly Embed Script -->
+<!-- END: Calendly Inline Loader -->
+
+<!-- BEGIN: Pulse Animation -->
+<style>
+@keyframes pulse {
+  0%   { transform: scale(1);   box-shadow: 0 0 10px #32CD32; }
+  50%  { transform: scale(1.05); box-shadow: 0 0 20px #32CD32; }
+  100% { transform: scale(1);    box-shadow: 0 0 10px #32CD32; }
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+</style>
+<!-- END: Pulse Animation -->
+<!-- END Entire What We Offer Block -->
 
 <!-- START: Countdown Timer -->
 <script>
@@ -767,7 +784,7 @@ src="https://www.facebook.com/tr?id=1251864852856693&ev=PageView&noscript=1"
 
   <p style="font-size:1.1em; color:#000; margin:1em 0;">
     <strong>There’s a reason our client retention is strong —</strong>
-    Show us your choice of either your landing page or ad campaign during our
+    Join us Live! Show us your choice of either your page or ad campaign during our
     <strong>free live diagnostic workshop</strong>.<br>
     This is
     <strong
@@ -815,18 +832,28 @@ src="https://www.facebook.com/tr?id=1251864852856693&ev=PageView&noscript=1"
 
   <!-- Enroll Button -->
   <a
-    href="#"
-    id="enroll-now"
+    href="#calendly-widget"
     style="display:inline-block; margin:1em auto; padding:0.8em 1.5em;
            background-color:#32CD32; color:#fff; font-weight:bold;
            font-size:1em; border-radius:8px; text-decoration:none;
-           box-shadow:0 0 10px #32CD32; animation:pulse 1.5s infinite; cursor:pointer;"
+           box-shadow:0 0 10px #32CD32; animation:pulse 1.5s infinite;"
   >
     Enroll Now
   </a>
 
-  <!-- Calendly Embed Container -->
-  <div id="calendly-widget" style="margin-top:2em;"></div>
+  <!-- Calendly Embed -->
+  <div id="calendly-widget" style="margin-top:2em;">
+    <div
+      class="calendly-inline-widget"
+      data-url="https://calendly.com/stemsphere-support/live-ads-page-diagnostics-with-stemsphere-academy"
+      style="min-width:320px;height:630px;"
+    ></div>
+    <script
+      type="text/javascript"
+      src="https://assets.calendly.com/assets/external/widget.js"
+      async
+    ></script>
+  </div>
 </section>
 <!-- END CALENDLY ZOOM DIAGNOSTIC WORKSHOP SECTION -->
 
