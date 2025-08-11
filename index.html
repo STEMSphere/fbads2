@@ -1030,11 +1030,21 @@ src="https://www.facebook.com/tr?id=1251864852856693&ev=PageView&noscript=1"
 
 <!-- START: Payment Buttons -->
 <style>
+  .payment-card {
+    background-color: #fff;
+    color: #000;
+    padding: 2em 1em;
+    border-radius: 12px;
+    max-width: 600px;
+    margin: 3em auto;
+    box-shadow: 0 0 20px rgba(255,255,255,0.1);
+  }
+
   .payment-buttons {
     display: flex;
     flex-direction: column;
     align-items: stretch;
-    gap: 0.4em;
+    gap: 0.6em;
   }
 
   .payment-buttons a {
@@ -1059,9 +1069,9 @@ src="https://www.facebook.com/tr?id=1251864852856693&ev=PageView&noscript=1"
   }
 
   @keyframes pulse {
-    0%   { transform: scale(1); box-shadow: 0 0 0px rgba(255, 255, 255, 0.2); }
-    50%  { transform: scale(1.02); box-shadow: 0 0 8px rgba(255, 255, 255, 0.3); }
-    100% { transform: scale(1); box-shadow: 0 0 0px rgba(255, 255, 255, 0.2); }
+    0%   { transform: scale(1); box-shadow: 0 0 0px rgba(0, 0, 0, 0.1); }
+    50%  { transform: scale(1.02); box-shadow: 0 0 8px rgba(0, 0, 0, 0.2); }
+    100% { transform: scale(1); box-shadow: 0 0 0px rgba(0, 0, 0, 0.1); }
   }
 
   .btn-usa     { background-color: #1E3A8A; }
@@ -1086,19 +1096,19 @@ src="https://www.facebook.com/tr?id=1251864852856693&ev=PageView&noscript=1"
   }
 </style>
 
-<div class="payment-card" style="margin-top:3em;">
+<div class="payment-card">
   <div style="text-align: center; font-weight: bold; font-size: 1.2em; margin-bottom: 0.6em;">
     🚨 Limited-Time Offer — <span id="countdown-timer" style="color: #ff4d4d;">Loading...</span> remaining
   </div>
   <div class="payment-intro" style="text-align: center; font-size: 1em; margin-bottom: 1em;">
-    🌐 Pay in your local currency or use global conversion
+    🌐 Pay in USD (converts for most countries), or INR, Naira
   </div>
   <div class="payment-buttons">
     <a href="https://buy.stripe.com/3cI3cuevT3PS35Jdk333W3h" class="btn-usa">
-      🌍 Global Conversion — Pay $75.99 USD <span class="strike-price">$149.99</span>
+      🌍 Pay $75.99 USD — Globally Converts <span class="strike-price">$149.99</span>
     </a>
-    <a href="https://buy.stripe.com/4gMbJ03Rfeuw6hV3Jt33W3r" class="btn-india">
-      🇮🇳 Pay ₹4,999 INR <span class="strike-price">₹13,200</span>
+    <a href="https://buy.stripe.com/7sY00icnL1HK5dR7ZJ33W3t" class="btn-india">
+      🇮🇳 Pay ₹4,999 INR <span class="strike-price">₹13,200</span> — Use code <strong>WINAUG25</strong>
     </a>
     <a href="https://paystack.com/buy/how-to-run-facebook-ads" class="btn-nigeria" target="_blank">
       🇳🇬 Pay ₦49,999 Naira <span class="strike-price">₦230,000</span>
