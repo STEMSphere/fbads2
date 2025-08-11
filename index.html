@@ -20,9 +20,8 @@ src="https://www.facebook.com/tr?id=1251864852856693&ev=PageView&noscript=1"
 /></noscript>
 <!-- End Meta Pixel Code -->
 
-  <!-- existing meta, title, CSS links, etc. -->
-</head>
-
+<!-- existing meta, title, CSS links, etc. --> 
+  </head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Not Just Clicks — Facebook Ads That Convert</title>
@@ -31,7 +30,6 @@ src="https://www.facebook.com/tr?id=1251864852856693&ev=PageView&noscript=1"
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
       background-color: #9B111E;
-
       color: #fff;
       text-align: center;
     }
@@ -46,7 +44,7 @@ src="https://www.facebook.com/tr?id=1251864852856693&ev=PageView&noscript=1"
       margin-bottom: 0.2em;
     }
 
-   .title-group span {
+    .title-group span {
       font-size: 2.8em;
       font-weight: 700;
       color: #FFDD00;
@@ -62,7 +60,6 @@ src="https://www.facebook.com/tr?id=1251864852856693&ev=PageView&noscript=1"
       margin-top: 0.8em;
     }
 
-    /* fluorescent course-bar styling (same as other page) */
     .course-bar {
       display: inline-flex;
       align-items: center;
@@ -78,7 +75,7 @@ src="https://www.facebook.com/tr?id=1251864852856693&ev=PageView&noscript=1"
       margin-left: 0.5em;
     }
 
-   @media (max-width: 600px) {
+    @media (max-width: 600px) {
       .title-group span { font-size: 2em; }
       h2 { font-size: 1.2em; }
       .arrow-up { font-size: 1.8em; }
@@ -131,8 +128,10 @@ src="https://www.facebook.com/tr?id=1251864852856693&ev=PageView&noscript=1"
     }
     .video-wrapper {
       position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
       background: #000;
       border-radius: 8px;
       overflow: hidden;
@@ -303,7 +302,142 @@ src="https://www.facebook.com/tr?id=1251864852856693&ev=PageView&noscript=1"
     <div class="arrow-up">↑↑↑↑</div>
     <div class="access-message">Watch Video🔁in Desktop Mode</div>
 
- 
+  </main>
+
+  <footer>
+    <!-- your footer content -->
+  </footer>
+
+  <!-- Hybrid embed & in-app browser detection -->
+  <script>
+    function isInAppBrowser() {
+      return /FBAN|FBAV|Instagram/.test(navigator.userAgent);
+    }
+
+    if (isInAppBrowser()) {
+      document.addEventListener('DOMContentLoaded', () => {
+        document.getElementById('video-container').innerHTML = `
+          <div class="video-wrapper">
+            <iframe
+              src="https://www.youtube.com/embed/KcRib2gRo2s?rel=0&modestbranding=1"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+              style="width:100%; height:100%; border-radius:8px;"
+            ></iframe>
+          </div>
+        `;
+      });
+    } else {
+      const tag = document.createElement('script');
+      tag.src = "https://www.youtube.com/iframe_api";
+      document.head.appendChild(tag);
+    }
+  </script>
+
+  <!-- Original YouTube API logic for full browsers only -->
+  <script>
+    if (!isInAppBrowser()) {
+      let player,
+          started    = false,
+          pauseTime  = 173,  // 2:53
+          signUpTime = 266,  // 4:26
+          intervalId,
+          flags = { form: false, signUp: false };
+
+      function onYouTubeIframeAPIReady() {
+        player = new YT.Player('player', {
+          host: 'https://www.youtube-nocookie.com',
+          videoId: 'KcRib2gRo2s',
+          playerVars: {
+            controls: 0,
+            disablekb: 1,
+            modestbranding: 1,
+            rel: 0,
+            iv_load_policy: 3,
+            enablejsapi: 1,
+            autoplay: 0
+          },
+          events: {
+            onReady: onPlayerReady,
+            onStateChange: onPlayerStateChange
+          }
+        });
+      }
+
+      function onPlayerReady() {
+        const placeholder = document.getElementById('placeholder');
+        const playBtn     = document.getElementById('playBtn');
+        const clickOv     = document.querySelector('.click-overlay');
+        const playerDiv   = document.getElementById('player');
+
+        clickOv.addEventListener('click', () => {
+          if (!started) {
+            started = true;
+            placeholder.style.display = 'none';
+            playBtn.style.display     = 'none';
+            playerDiv.style.display   = 'block';
+            player.playVideo();
+          } else if (player.getPlayerState() === YT.PlayerState.PLAYING) {
+            player.pauseVideo();
+          } else {
+            player.playVideo();
+          }
+        });
+      }
+
+      function onPlayerStateChange(event) {
+        const placeholder = document.getElementById('placeholder');
+        const playBtn     = document.getElementById('playBtn');
+        if (event.data === YT.PlayerState.PLAYING) {
+          placeholder.style.display = 'none';
+          playBtn.style.display     = 'none';
+          intervalId = setInterval(checkMilestones, 500);
+        } else if (event.data === YT.PlayerState.PAUSED) {
+          placeholder.style.display = 'block';
+          playBtn.style.display     = 'flex';
+          clearInterval(intervalId);
+        }
+      }
+
+      function checkMilestones() {
+        const t = player.getCurrentTime();
+        if (!flags.form && t >= pauseTime) {
+          flags.form = true;
+          clearInterval(intervalId);
+          player.pauseVideo();
+          document.getElementById('popup-form').style.display = 'flex';
+        }
+        if (!flags.signUp && t >= signUpTime) {
+          flags.signUp = true;
+          document.getElementById('signUpBtn').style.display = 'block';
+        }
+      }
+
+      document.addEventListener('DOMContentLoaded', () => {
+        document.getElementById('submitForm').addEventListener('click', () => {
+          document.getElementById('popup-form').style.display = 'none';
+          player.playVideo();
+
+          const formData = new FormData();
+          formData.append('name', document.querySelector('#popup-form input[name="name"]').value);
+          formData.append('email', document.querySelector('#popup-form input[name="email"]').value);
+
+          fetch(
+            'https://script.google.com/macros/s/AKfycbxE9j8YIo-M_VtpwzoylRaVIbO5gUI6KSv0IFOtkzRFRq6LGVNUheh4HG5AqY3-Obuc/exec',
+            { method: 'POST', body: formData, mode: 'no-cors' }
+          );
+        });
+
+        document.getElementById('signUpBtn').addEventListener('click', () => {
+          window.location = 'https://buy.stripe.com/3cI3cuevT3PS35Jdk333W3h';
+        });
+      });
+    }
+  </script>
+</body>
+</html>
+
 <!-- Reviews loader script End -->
     
 <script>
