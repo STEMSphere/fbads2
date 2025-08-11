@@ -662,24 +662,18 @@ src="https://www.facebook.com/tr?id=1251864852856693&ev=PageView&noscript=1"
     max-width: 500px;
     font-size: 1em;
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.2);
     transition: transform 0.15s ease;
-    animation: pulse 2.8s ease-in-out infinite;
+    /* removed box-shadow to eliminate glow */
   }
 
   .payment-buttons a:hover {
     transform: translateY(-2px);
   }
 
-  @keyframes pulse {
-    0%   { transform: scale(1); box-shadow: 0 0 0px rgba(0, 0, 0, 0.1); }
-    50%  { transform: scale(1.02); box-shadow: 0 0 8px rgba(0, 0, 0, 0.2); }
-    100% { transform: scale(1); box-shadow: 0 0 0px rgba(0, 0, 0, 0.1); }
-  }
-
-  .btn-usa     { background-color: #1E3A8A; }
-  .btn-india   { background-color: #ff9900; }
-  .btn-nigeria { background-color: #065F46; }
+  /* Freshened country‐specific colors */
+  .btn-usa     { background-color: #4A90E2; }
+  .btn-india   { background-color: #FF8C00; }
+  .btn-nigeria { background-color: #2E7D32; }
 
   .strike-price {
     text-decoration: line-through;
@@ -700,20 +694,41 @@ src="https://www.facebook.com/tr?id=1251864852856693&ev=PageView&noscript=1"
 </style>
 
 <div class="payment-card">
-  <div style="text-align:center; font-weight:bold; font-size:1.4em; margin-bottom:0.4em;
-    background: linear-gradient(135deg, #B30000, #FF4D4D, #B30000);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-shadow: 0 0 2px rgba(255,0,0,0.3);">
+  <div style="
+      text-align:center;
+      font-weight:bold;
+      font-size:1.4em;
+      margin-bottom:0.4em;
+      background: linear-gradient(135deg, #B30000, #FF4D4D, #B30000);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 2px rgba(255,0,0,0.3);
+    ">
     Full Launch Kit Pricing
   </div>
-  <div style="text-align: center; font-weight: bold; font-size: 1.2em; margin-bottom: 0.6em;">
-    🚨 Limited-Time Offer — <span id="countdown-timer" style="color: #ff4d4d;">Loading...</span> remaining  
-    <br><span style="color:#B30000; font-weight:600;">Use code <strong>WINAUG25</strong> at checkout</span>
+
+  <div style="
+      text-align: center;
+      font-weight: bold;
+      font-size: 1.2em;
+      margin-bottom: 0.6em;
+    ">
+    🚨 Limited-Time Offer — 
+    <span id="countdown-timer" style="color: #ff4d4d;">Loading...</span> remaining  
+    <br>
+    <span style="color:#B30000; font-weight:600;">
+      Use code <strong>WINAUG25</strong> at checkout
+    </span>
   </div>
-  <div class="payment-intro" style="text-align: center; font-size: 1em; margin-bottom: 1em;">
+
+  <div class="payment-intro" style="
+      text-align: center;
+      font-size: 1em;
+      margin-bottom: 1em;
+    ">
     🌐 Pay in USD (globally accepted), or INR or Naira
   </div>
+
   <div class="payment-buttons">
     <a href="https://buy.stripe.com/3cI3cuevT3PS35Jdk333W3h" class="btn-usa">
       🌍 Pay $75.99 USD <span class="strike-price">$149.99</span>
