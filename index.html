@@ -594,6 +594,17 @@ src="https://www.facebook.com/tr?id=1251864852856693&ev=PageView&noscript=1"
     box-sizing: border-box;
   }
 
+  .payment-image {
+    margin: 1.5em 0;
+    text-align: center;
+  }
+
+  .payment-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+  }
+
   .payment-buttons {
     display: flex;
     flex-direction: column;
@@ -632,17 +643,6 @@ src="https://www.facebook.com/tr?id=1251864852856693&ev=PageView&noscript=1"
     font-weight: 400;
     margin-left: 0.5em;
     font-size: 0.9em;
-  }
-
-  .payment-image {
-    margin-top: 2em;
-    text-align: center;
-  }
-
-  .payment-image img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 12px;
   }
 
   @media (max-width: 600px) {
@@ -691,6 +691,10 @@ src="https://www.facebook.com/tr?id=1251864852856693&ev=PageView&noscript=1"
     🌐 Pay in USD ( Converts globally), or INR or Naira
   </div>
 
+  <div class="payment-image">
+    <img src="https://i.postimg.cc/jj3XJPMH/In-Shot-20250807-130152090.jpg" alt="Launch Kit Preview">
+  </div>
+
   <div class="payment-buttons">
     <a href="https://buy.stripe.com/3cI3cuevT3PS35Jdk333W3h" class="btn-usa">
       🌍 Pay $75.99 USD <span class="strike-price">$149.99</span>
@@ -701,10 +705,6 @@ src="https://www.facebook.com/tr?id=1251864852856693&ev=PageView&noscript=1"
     <a href="https://paystack.com/buy/how-to-run-facebook-ads" class="btn-nigeria" target="_blank">
       🇳🇬 Pay ₦49,999 Naira <span class="strike-price">₦230,000</span>
     </a>
-  </div>
-
-  <div class="payment-image">
-    <img src="https://i.postimg.cc/jj3XJPMH/In-Shot-20250807-130152090.jpg" alt="Launch Kit Preview">
   </div>
 </div>
 <!-- END: Payment Buttons -->
