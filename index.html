@@ -616,14 +616,12 @@ src="https://www.facebook.com/tr?id=1251864852856693&ev=PageView&noscript=1"
     font-size: 1em;
     border-radius: 8px;
     transition: transform 0.15s ease;
-    /* removed box-shadow to eliminate glow */
   }
 
   .payment-buttons a:hover {
     transform: translateY(-2px);
   }
 
-  /* Freshened country‐specific colors */
   .btn-usa     { background-color: #4A90E2; }
   .btn-india   { background-color: #FF8C00; }
   .btn-nigeria { background-color: #2E7D32; }
@@ -634,6 +632,17 @@ src="https://www.facebook.com/tr?id=1251864852856693&ev=PageView&noscript=1"
     font-weight: 400;
     margin-left: 0.5em;
     font-size: 0.9em;
+  }
+
+  .payment-image {
+    margin-top: 2em;
+    text-align: center;
+  }
+
+  .payment-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
   }
 
   @media (max-width: 600px) {
@@ -679,7 +688,7 @@ src="https://www.facebook.com/tr?id=1251864852856693&ev=PageView&noscript=1"
       font-size: 1em;
       margin-bottom: 1em;
     ">
-    🌐 Pay in USD (globally accepted), or INR or Naira
+    🌐 Pay in USD ( Converts globally), or INR or Naira
   </div>
 
   <div class="payment-buttons">
@@ -692,6 +701,10 @@ src="https://www.facebook.com/tr?id=1251864852856693&ev=PageView&noscript=1"
     <a href="https://paystack.com/buy/how-to-run-facebook-ads" class="btn-nigeria" target="_blank">
       🇳🇬 Pay ₦49,999 Naira <span class="strike-price">₦230,000</span>
     </a>
+  </div>
+
+  <div class="payment-image">
+    <img src="https://i.postimg.cc/jj3XJPMH/In-Shot-20250807-130152090.jpg" alt="Launch Kit Preview">
   </div>
 </div>
 <!-- END: Payment Buttons -->
