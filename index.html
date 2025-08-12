@@ -33,18 +33,16 @@ src="https://www.facebook.com/tr?id=1251864852856693&ev=PageView&noscript=1"
       background-color: #9B111E;
       color: #fff;
       text-align: center;
+      line-height: 1.4;
     }
-
     header {
       padding: 3em 1em 0.5em;
     }
-
     .title-group {
       display: inline-block;
       line-height: 1.4em;
       margin-bottom: 0.2em;
     }
-
     .title-group span {
       font-size: 2.8em;
       font-weight: 700;
@@ -53,15 +51,12 @@ src="https://www.facebook.com/tr?id=1251864852856693&ev=PageView&noscript=1"
       letter-spacing: 1px;
       line-height: 1.4em;
     }
-
     h2 {
       font-size: 1.4em;
       color: #ccc;
       font-weight: normal;
       margin-top: 0.8em;
     }
-
-    /* fluorescent course-bar styling (same as other page) */
     .course-bar {
       display: inline-flex;
       align-items: center;
@@ -76,22 +71,11 @@ src="https://www.facebook.com/tr?id=1251864852856693&ev=PageView&noscript=1"
     .course-bar span + span {
       margin-left: 0.5em;
     }
-
-    @media (max-width: 600px) {
-      .title-group span { font-size: 2em; }
-      h2 { font-size: 1.2em; }
-      .arrow-up { font-size: 1.8em; }
-      .access-message { font-size: 1.2em; }
-      .stat-message { font-size: 0.95em; }
-      .course-bar { font-size: 0.85em; }
-    }
-
     main {
       max-width: 850px;
-      margin: auto;
-      padding: 1em 1em 3em;
+      margin: 2em auto 3em;
+      padding: 0 1em;
     }
-
     .electric-frame {
       position: relative;
       padding: 10px;
@@ -105,7 +89,6 @@ src="https://www.facebook.com/tr?id=1251864852856693&ev=PageView&noscript=1"
       animation: flicker 1.5s infinite alternate;
       max-width: 800px;
     }
-
     @keyframes flicker {
       0% {
         box-shadow:
@@ -120,21 +103,25 @@ src="https://www.facebook.com/tr?id=1251864852856693&ev=PageView&noscript=1"
           0 0 24px #ffeb3b;
       }
     }
-
     .video-container {
       position: relative;
+      width: 100%;
       padding-bottom: 56.25%;
       height: 0;
       overflow: hidden;
       border-radius: 8px;
+      background: #000;
     }
     .video-wrapper {
       position: absolute;
       top: 0; left: 0;
       width: 100%; height: 100%;
-      background: #000;
       border-radius: 8px;
       overflow: hidden;
+    }
+    /* prevent YouTube’s native controls or share buttons from ever receiving touches */
+    .video-wrapper iframe {
+      pointer-events: none;
     }
     .placeholder-frame {
       position: absolute;
@@ -145,6 +132,7 @@ src="https://www.facebook.com/tr?id=1251864852856693&ev=PageView&noscript=1"
       background-position: center;
       cursor: pointer;
       z-index: 100;
+      transition: opacity 0.2s ease;
     }
     .play-button {
       position: absolute;
@@ -158,6 +146,8 @@ src="https://www.facebook.com/tr?id=1251864852856693&ev=PageView&noscript=1"
       align-items: center;
       justify-content: center;
       z-index: 101;
+      cursor: pointer;
+      transition: opacity 0.2s ease;
     }
     .play-button::after {
       content: '';
@@ -171,8 +161,8 @@ src="https://www.facebook.com/tr?id=1251864852856693&ev=PageView&noscript=1"
       position: absolute;
       top: 0; left: 0;
       width: 100%; height: 100%;
+      z-index: 1;
       display: none;
-      z-index: 0;
     }
     .click-overlay {
       position: absolute;
@@ -180,16 +170,21 @@ src="https://www.facebook.com/tr?id=1251864852856693&ev=PageView&noscript=1"
       width: 100%; height: 100%;
       z-index: 200;
       cursor: pointer;
+      /* disable long-press context menus */
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+         -moz-user-select: none;
+          -ms-user-select: none;
+              user-select: none;
     }
-
     #popup-form {
       display: none;
       position: absolute;
       top: 0; left: 0;
       width: 100%; height: 100%;
       background: rgba(0,0,0,0.85);
-      color: #fff;
       z-index: 300;
+      display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
@@ -210,23 +205,20 @@ src="https://www.facebook.com/tr?id=1251864852856693&ev=PageView&noscript=1"
     #popup-form button {
       padding: 0.8em 1.2em;
       margin-top: 0.5em;
-      border: none; border-radius: 4px;
       background: #FFDD00; color: #000;
+      border: none; border-radius: 4px;
       font-weight: 700; cursor: pointer;
     }
-
     .sign-up-btn {
       display: none;
       position: absolute;
-      bottom: 15%;
-      left: 10%;
+      bottom: 15%; left: 10%;
       padding: 0.8em 1.2em;
-      border: none; border-radius: 4px;
       background: #00FF00; color: #000;
-      font-weight: 700; box-shadow: 0 0 8px rgba(0,255,0,0.7);
+      font-weight: 700; border: none; border-radius: 4px;
+      box-shadow: 0 0 8px rgba(0,255,0,0.7);
       cursor: pointer; z-index: 250;
     }
-
     .arrow-up {
       font-size: 2.2em;
       color: #FFA500;
@@ -234,7 +226,6 @@ src="https://www.facebook.com/tr?id=1251864852856693&ev=PageView&noscript=1"
       letter-spacing: 0.5em;
       margin: 0.3em 0 0;
     }
-
     .access-message {
       font-size: 1.35em;
       font-weight: 700;
@@ -242,7 +233,6 @@ src="https://www.facebook.com/tr?id=1251864852856693&ev=PageView&noscript=1"
       font-family: 'Segoe UI Semibold', sans-serif;
       margin-top: 0.3em;
     }
-
     .stat-message {
       font-size: 1.05em;
       color: #ccc;
@@ -250,15 +240,27 @@ src="https://www.facebook.com/tr?id=1251864852856693&ev=PageView&noscript=1"
       padding: 0 1em;
       line-height: 1.5em;
     }
-
     footer {
       font-size: 0.85em;
       color: #bbb;
       padding: 2em 1em;
       border-top: 1px solid #333;
     }
+    @media (max-width: 600px) {
+      .title-group span { font-size: 2em; }
+      h2 { font-size: 1.2em; }
+      .play-button { width: 60px; height: 60px; }
+      .play-button::after {
+        border-left: 20px solid #000;
+        border-top: 12px solid transparent;
+        border-bottom: 12px solid transparent;
+      }
+      .course-bar { font-size: 0.85em; }
+      .access-message { font-size: 1.2em; }
+      .stat-message { font-size: 0.95em; }
+      .arrow-up { font-size: 1.8em; }
+    }
   </style>
-</head>
 
 <body>
   <header>
@@ -268,22 +270,18 @@ src="https://www.facebook.com/tr?id=1251864852856693&ev=PageView&noscript=1"
     </div>
     <h2>Strategy → Traffic → Measurable ROI</h2>
     <div class="course-bar">
-      <span>Run Ads</span>
-      <span>|</span>
-      <span>Gain Traffic</span>
-      <span>|</span>
-      <span>Increase Sales</span>
+      <span>Run Ads</span><span>|</span><span>Gain Traffic</span><span>|</span><span>Increase Sales</span>
     </div>
   </header>
 
   <main>
     <div class="electric-frame">
-      <div class="video-container" id="video-container">
+      <div class="video-container">
         <div class="video-wrapper">
           <div class="placeholder-frame" id="placeholder"></div>
           <div class="play-button" id="playBtn"></div>
           <div id="player"></div>
-          <div class="click-overlay"></div>
+          <div class="click-overlay" id="clickOv"></div>
         </div>
       </div>
 
@@ -301,147 +299,123 @@ src="https://www.facebook.com/tr?id=1251864852856693&ev=PageView&noscript=1"
 
     <div class="arrow-up">↑↑↑↑</div>
     <div class="access-message">Watch Video🔁in Desktop Mode</div>
+    <div class="stat-message">
+      Our proven system helps you capture leads and scale your ad spend with confidence. No fluff, just measurable ROI.
+    </div>
   </main>
 
-  <!-- Reviews loader script End -->
-    
+  <footer>
+    © 2025 STEMSphere Academy. All rights reserved.
+  </footer>
+
   <script>
-    function isInAppBrowser() {
-      return /FBAN|FBAV|Instagram/.test(navigator.userAgent);
+    // always use YouTube IFrame API (no in-app fallback)
+    const tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    document.head.appendChild(tag);
+
+    let player,
+        started    = false,
+        intervalId = null,
+        pauseTime  = 173,  // 2:53
+        signUpTime = 266,  // 4:26
+        flags      = { form: false, signUp: false };
+
+    function onYouTubeIframeAPIReady() {
+      player = new YT.Player('player', {
+        host: 'https://www.youtube-nocookie.com',
+        videoId: 'KcRib2gRo2s',
+        playerVars: {
+          controls: 0,
+          disablekb: 1,
+          modestbranding: 1,
+          rel: 0,
+          iv_load_policy: 3,
+          fs: 0,
+          playsinline: 1,
+          enablejsapi: 1,
+          autoplay: 0
+        },
+        events: {
+          onReady: onPlayerReady,
+          onStateChange: onPlayerStateChange
+        }
+      });
     }
 
-    if (isInAppBrowser()) {
-      // Fallback for Facebook/Instagram in-app browsers
-      document.addEventListener('DOMContentLoaded', () => {
-        const placeholder = document.getElementById('placeholder');
-        const playBtn     = document.getElementById('playBtn');
-        const clickOv     = document.querySelector('.click-overlay');
-        const playerDiv   = document.getElementById('player');
+    function onPlayerReady() {
+      const placeholder = document.getElementById('placeholder');
+      const playBtn     = document.getElementById('playBtn');
+      const overlay     = document.getElementById('clickOv');
 
-        clickOv.addEventListener('click', () => {
-          placeholder.style.display = 'none';
-          playBtn.style.display     = 'none';
-          clickOv.style.display     = 'none';
-
-          playerDiv.innerHTML = `
-            <div style="position:relative; width:100%; height:100%;">
-              <iframe
-                src="https://www.youtube.com/embed/KcRib2gRo2s?rel=0&modestbranding=1&controls=0&disablekb=1&iv_load_policy=3"
-                frameborder="0"
-                style="width:100%; height:100%; border-radius:8px; border:none;"
-              ></iframe>
-              <div style="position:absolute; top:0; left:0; width:100%; height:100%; z-index:999; background:transparent;"></div>
-            </div>
-          `;
-          playerDiv.style.display = 'block';
-        });
-      });
-
-    } else {
-      // Original YouTube API flow for full browsers
-      const tag = document.createElement('script');
-      tag.src = "https://www.youtube.com/iframe_api";
-      document.head.appendChild(tag);
-
-      let player,
-          started    = false,
-          pauseTime  = 173,  // 2:53
-          signUpTime = 266,  // 4:26
-          intervalId,
-          flags = { form: false, signUp: false };
-
-      function onYouTubeIframeAPIReady() {
-        player = new YT.Player('player', {
-          host: 'https://www.youtube-nocookie.com',
-          videoId: 'KcRib2gRo2s',
-          playerVars: {
-            controls: 0,
-            disablekb: 1,
-            modestbranding: 1,
-            rel: 0,
-            iv_load_policy: 3,
-            enablejsapi: 1,
-            autoplay: 0
-          },
-          events: {
-            onReady: onPlayerReady,
-            onStateChange: onPlayerStateChange
-          }
-        });
-      }
-
-      function onPlayerReady() {
-        const placeholder = document.getElementById('placeholder');
-        const playBtn     = document.getElementById('playBtn');
-        const clickOv     = document.querySelector('.click-overlay');
-        const playerDiv   = document.getElementById('player');
-
-        clickOv.addEventListener('click', () => {
-          if (!started) {
-            started = true;
-            placeholder.style.display = 'none';
-            playBtn.style.display     = 'none';
-            playerDiv.style.display   = 'block';
-            player.playVideo();
-          } else if (player.getPlayerState() === YT.PlayerState.PLAYING) {
-            player.pauseVideo();
-          } else {
-            player.playVideo();
-          }
-        });
-      }
-
-      function onPlayerStateChange(event) {
-        const placeholder = document.getElementById('placeholder');
-        const playBtn     = document.getElementById('playBtn');
-        if (event.data === YT.PlayerState.PLAYING) {
-          placeholder.style.display = 'none';
-          playBtn.style.display     = 'none';
-          intervalId = setInterval(checkMilestones, 500);
-        } else if (event.data === YT.PlayerState.PAUSED) {
-          placeholder.style.display = 'block';
-          playBtn.style.display     = 'flex';
-          clearInterval(intervalId);
-        }
-      }
-
-      function checkMilestones() {
-        const t = player.getCurrentTime();
-        if (!flags.form && t >= pauseTime) {
-          flags.form = true;
-          clearInterval(intervalId);
-          player.pauseVideo();
-          document.getElementById('popup-form').style.display = 'flex';
-        }
-        if (!flags.signUp && t >= signUpTime) {
-          flags.signUp = true;
-          document.getElementById('signUpBtn').style.display = 'block';
-        }
-      }
-
-      document.addEventListener('DOMContentLoaded', () => {
-        document.getElementById('submitForm').addEventListener('click', () => {
-          document.getElementById('popup-form').style.display = 'none';
+      overlay.addEventListener('click', () => {
+        if (!started) {
+          started = true;
+          placeholder.style.opacity = '0';
+          playBtn.style.opacity     = '0';
+          document.getElementById('player').style.display = 'block';
           player.playVideo();
-
-          const formData = new FormData();
-          formData.append('name', document.querySelector('#popup-form input[name="name"]').value);
-          formData.append('email', document.querySelector('#popup-form input[name="email"]').value);
-
-          fetch(
-            'https://script.google.com/macros/s/AKfycbxE9j8YIo-M_VtpwzoylRaVIbO5gUI6KSv0IFOtkzRFRq6LGVNUheh4HG5AqY3-Obuc/exec',
-            { method: 'POST', body: formData, mode: 'no-cors' }
-          );
-        });
-
-        document.getElementById('signUpBtn').addEventListener('click', () => {
-          window.location = 'https://buy.stripe.com/3cI3cuevT3PS35Jdk333W3h';
-        });
+          intervalId = setInterval(checkMilestones, 500);
+        } else {
+          const state = player.getPlayerState();
+          if (state === YT.PlayerState.PLAYING) {
+            player.pauseVideo();
+          } else if (state === YT.PlayerState.PAUSED) {
+            player.playVideo();
+            intervalId = setInterval(checkMilestones, 500);
+          }
+        }
       });
     }
+
+    function onPlayerStateChange(event) {
+      const placeholder = document.getElementById('placeholder');
+      const playBtn     = document.getElementById('playBtn');
+      if (event.data === YT.PlayerState.PLAYING) {
+        placeholder.style.opacity = '0';
+        playBtn.style.opacity     = '0';
+      } else if (event.data === YT.PlayerState.PAUSED) {
+        placeholder.style.opacity = '1';
+        playBtn.style.opacity     = '1';
+        clearInterval(intervalId);
+      }
+    }
+
+    function checkMilestones() {
+      const t = player.getCurrentTime();
+      if (!flags.form && t >= pauseTime) {
+        flags.form = true;
+        clearInterval(intervalId);
+        player.pauseVideo();
+        document.getElementById('popup-form').style.display = 'flex';
+      }
+      if (!flags.signUp && t >= signUpTime) {
+        flags.signUp = true;
+        document.getElementById('signUpBtn').style.display = 'block';
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('submitForm').addEventListener('click', () => {
+        document.getElementById('popup-form').style.display = 'none';
+        player.playVideo();
+        intervalId = setInterval(checkMilestones, 500);
+
+        const formData = new FormData();
+        formData.append('name', document.querySelector('#popup-form input[name="name"]').value);
+        formData.append('email', document.querySelector('#popup-form input[name="email"]').value);
+
+        fetch(
+          'https://script.google.com/macros/s/AKfycbxE9j8YIo-M_VtpwzoylRaVIbO5gUI6KSv0IFOtkzRFRq6LGVNUheh4HG5AqY3-Obuc/exec',
+          { method: 'POST', body: formData, mode: 'no-cors' }
+        );
+      });
+
+      document.getElementById('signUpBtn').addEventListener('click', () => {
+        window.location.href = 'https://buy.stripe.com/3cI3cuevT3PS35Jdk333W3h';
+      });
+    });
   </script>
-</body>
-</html>
 
 
 
