@@ -323,11 +323,14 @@ src="https://www.facebook.com/tr?id=1251864852856693&ev=PageView&noscript=1"
           playBtn.style.display     = 'none';
           clickOv.style.display     = 'none';
           playerDiv.innerHTML = `
-            <iframe
-              src="https://www.youtube.com/embed/KcRib2gRo2s?rel=0&modestbranding=1&controls=0&disablekb=1&iv_load_policy=3"
-              frameborder="0"
-              style="width:100%; height:100%; border-radius:8px; border:none; pointer-events:none;"
-            ></iframe>
+            <div style="position:relative; width:100%; height:100%;">
+              <iframe
+                src="https://www.youtube.com/embed/KcRib2gRo2s?rel=0&modestbranding=1&controls=0&disablekb=1&iv_load_policy=3"
+                frameborder="0"
+                style="width:100%; height:100%; border-radius:8px; border:none;"
+              ></iframe>
+              <div style="position:absolute; top:0; left:0; width:100%; height:100%; z-index:999; background:transparent;"></div>
+            </div>
           `;
           playerDiv.style.display = 'block';
         });
@@ -436,6 +439,8 @@ src="https://www.facebook.com/tr?id=1251864852856693&ev=PageView&noscript=1"
   </script>
 </body>
 </html>
+
+
 
 <!-- Reviews loader script End -->
     
