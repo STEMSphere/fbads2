@@ -498,11 +498,7 @@ src="https://www.facebook.com/tr?id=1251864852856693&ev=PageView&noscript=1"
         Hands-off setup. A one-time launch package for serious founders. Includes a custom landing page, up to 5 ad creatives, and a live strategy session. Ideal for product launches, service providers, and anyone ready to scale with clarity — no monthly commitment required.
       </p>
       <p style="margin-top:0.8em; font-weight:bold; color:#FFD700;">
-        Starting price:
-        <span style="text-decoration:line-through; color:#FFD700;">
-          $5,000 (₹ 437,350 | ₦ 7,667,000)
-        </span>
-        $3,500 (₹ 306,145 | ₦ 5,366,900)
+        Starting price: $3,500 (₹ 306,145 | ₦ 5,366,900)
       </p>
       <a
         href="#"
@@ -544,9 +540,7 @@ src="https://www.facebook.com/tr?id=1251864852856693&ev=PageView&noscript=1"
     spinner.style.fontFamily = 'sans-serif';
     spinner.style.color = '#ccc';
     spinner.innerHTML =
-      '<div style="width:40px; height:40px;' +
-      'border:4px solid #ccc; border-top:4px solid #32CD32;' +
-      'border-radius:50%; animation:spin 1s linear infinite; margin-bottom:10px;"></div>' +
+      '<div style="width:40px; height:40px; border:4px solid #ccc; border-top:4px solid #32CD32; border-radius:50%; animation:spin 1s linear infinite; margin-bottom:10px;"></div>' +
       '<p style="margin:0; color:#ccc;">Loading scheduler...</p>';
 
     const buttons = document.querySelectorAll('a[onclick^="adsStep"]');
@@ -578,29 +572,18 @@ src="https://www.facebook.com/tr?id=1251864852856693&ev=PageView&noscript=1"
 </script>
 <!-- END: Calendly Inline Loader -->
 
-<!-- BEGIN: Pulse Animation -->
+<!-- BEGIN: Pulse & Spin Animations -->
 <style>
   @keyframes pulse {
-    0% {
-      transform: scale(1);
-      box-shadow: 0 0 10px #32CD32;
-    }
-    50% {
-      transform: scale(1.05);
-      box-shadow: 0 0 20px #32CD32;
-    }
-    100% {
-      transform: scale(1);
-      box-shadow: 0 0 10px #32CD32;
-    }
+    0% { transform: scale(1); box-shadow: 0 0 10px #32CD32; }
+    50% { transform: scale(1.05); box-shadow: 0 0 20px #32CD32; }
+    100% { transform: scale(1); box-shadow: 0 0 10px #32CD32; }
   }
   @keyframes spin {
-    to {
-      transform: rotate(360deg);
-    }
+    to { transform: rotate(360deg); }
   }
 </style>
-<!-- END: Pulse Animation -->
+<!-- END: Pulse & Spin Animations -->
 <!-- END Entire What We Offer Block -->
 
 <!-- START: Countdown Timer -->
