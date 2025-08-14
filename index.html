@@ -420,9 +420,15 @@ src="https://www.facebook.com/tr?id=1251864852856693&ev=PageView&noscript=1"
   </h2>
   <div style="max-width:800px; margin:0 auto; text-align:left;">
 
+    <!-- Level 1 -->
+    <div style="text-align:left; font-weight:bold; margin-bottom:0.5em;">
+      Level 1
+    </div>
     <!-- Starter Tier -->
     <div style="margin-bottom:2em; border-left:4px solid #00CED1; padding-left:1em;">
-      <h3 style="font-size:1.3em; font-weight:700; color:#fff;">Full Launch Kit: Full Course + eBook</h3>
+      <h3 style="font-size:1.3em; font-weight:700; color:#fff;">
+        Full Launch Kit: Full Course + eBook
+      </h3>
       <p>
         Our flagship course for beginners and intermediate learners. Includes 19 chapters covering Facebook, Instagram, and Pinterest ads — Plus our 7 figure templates ebook.
       </p>
@@ -445,41 +451,73 @@ src="https://www.facebook.com/tr?id=1251864852856693&ev=PageView&noscript=1"
       </p>
     </div>
 
+    <!-- Level 2 -->
+    <div style="text-align:left; font-weight:bold; margin-bottom:0.5em;">
+      Level 2
+    </div>
     <!-- Done-With-You Tier -->
     <div style="margin-bottom:2em; border-left:4px solid #FFBF00; padding-left:1em;">
-      <h3 style="font-size:1.3em; font-weight:700; color:#fff;">Done-With-You Accelerator</h3>
+      <h3 style="font-size:1.3em; font-weight:700; color:#fff;">
+        Done-With-You Accelerator
+      </h3>
       <p>
         A hands-on setup experience where we help you launch your next campaign. You provide the creatives, we configure your pixel, targeting, and ad structure — then hand it off with 7-day support. Perfect for DIY founders who want expert guidance.
       </p>
       <p style="margin-top:0.8em; font-weight:bold; color:#FFD700;">
-        Starting price: $700
+        Starting price: $700 (₹ 61,229 | ₦ 1,073,380)
       </p>
       <a
         href="#"
         onclick="adsStep = 0; renderAdsStep(); document.getElementById('adsWizard').style.display = 'block'; return false;"
-        style="display:inline-block; margin-top:1em; padding:0.8em 1.5em;
-               background-color:#FFD700; color:#000; font-weight:bold;
-               font-size:1em; border-radius:8px; text-decoration:none;"
+        style="
+          display:inline-block;
+          margin-top:1em;
+          padding:0.8em 1.5em;
+          background-color:#FFD700;
+          color:#000;
+          font-weight:bold;
+          font-size:1em;
+          border-radius:8px;
+          text-decoration:none;
+        "
       >
         Join Us Live (Free)
       </a>
     </div>
 
+    <!-- Level 3 -->
+    <div style="text-align:left; font-weight:bold; margin-bottom:0.5em;">
+      Level 3
+    </div>
     <!-- VIP Tier -->
     <div style="margin-bottom:2em; border-left:4px solid #B266FF; padding-left:1em;">
-      <h3 style="font-size:1.3em; font-weight:700; color:#fff;">VIP: Conversion Kickoff</h3>
+      <h3 style="font-size:1.3em; font-weight:700; color:#fff;">
+        VIP: Conversion Kickoff
+      </h3>
       <p>
         Hands-off setup. A one-time launch package for serious founders. Includes a custom landing page, up to 5 ad creatives, and a live strategy session. Ideal for product launches, service providers, and anyone ready to scale with clarity — no monthly commitment required.
       </p>
       <p style="margin-top:0.8em; font-weight:bold; color:#FFD700;">
-        Starting price: <span style="text-decoration:line-through; color:#FFD700;">$5,000</span> $3,500
+        Starting price:
+        <span style="text-decoration:line-through; color:#FFD700;">
+          $5,000 (₹ 437,350 | ₦ 7,667,000)
+        </span>
+        $3,500 (₹ 306,145 | ₦ 5,366,900)
       </p>
       <a
         href="#"
         onclick="adsStep = 0; renderAdsStep(); document.getElementById('adsWizard').style.display = 'block'; return false;"
-        style="display:inline-block; margin-top:1em; padding:0.8em 1.5em;
-               background-color:#FFD700; color:#000; font-weight:bold;
-               font-size:1em; border-radius:8px; text-decoration:none;"
+        style="
+          display:inline-block;
+          margin-top:1em;
+          padding:0.8em 1.5em;
+          background-color:#FFD700;
+          color:#000;
+          font-weight:bold;
+          font-size:1em;
+          border-radius:8px;
+          text-decoration:none;
+        "
       >
         Join Us Live (Free)
       </a>
@@ -505,13 +543,13 @@ src="https://www.facebook.com/tr?id=1251864852856693&ev=PageView&noscript=1"
     spinner.style.height = '400px';
     spinner.style.fontFamily = 'sans-serif';
     spinner.style.color = '#ccc';
-    spinner.innerHTML = 
-      '<div style="width:40px; height:40px; ' +
-      'border:4px solid #ccc; border-top:4px solid #32CD32; ' +
+    spinner.innerHTML =
+      '<div style="width:40px; height:40px;' +
+      'border:4px solid #ccc; border-top:4px solid #32CD32;' +
       'border-radius:50%; animation:spin 1s linear infinite; margin-bottom:10px;"></div>' +
       '<p style="margin:0; color:#ccc;">Loading scheduler...</p>';
 
-    const buttons = document.querySelectorAll('[data-calendly]');
+    const buttons = document.querySelectorAll('a[onclick^="adsStep"]');
 
     buttons.forEach(btn => {
       btn.addEventListener('click', function (e) {
@@ -521,13 +559,14 @@ src="https://www.facebook.com/tr?id=1251864852856693&ev=PageView&noscript=1"
         spinner.style.display = 'flex';
 
         const iframe = document.createElement('iframe');
-        iframe.src = 'https://calendly.com/stemsphere-support/live-ads-page-diagnostics-with-stemsphere-academy?embed_domain=fbads.stemsphere.academy&embed_type=Inline';
+        iframe.src =
+          'https://calendly.com/stemsphere-support/live-ads-page-diagnostics-with-stemsphere-academy?embed_domain=fbads.stemsphere.academy&embed_type=Inline';
         iframe.width = '100%';
         iframe.height = '630';
         iframe.style.border = 'none';
         iframe.setAttribute('title', 'Schedule your diagnostic workshop');
 
-        iframe.onload = function() {
+        iframe.onload = function () {
           spinner.style.display = 'none';
         };
 
@@ -541,14 +580,25 @@ src="https://www.facebook.com/tr?id=1251864852856693&ev=PageView&noscript=1"
 
 <!-- BEGIN: Pulse Animation -->
 <style>
-@keyframes pulse {
-  0%   { transform: scale(1);   box-shadow: 0 0 10px #32CD32; }
-  50%  { transform: scale(1.05); box-shadow: 0 0 20px #32CD32; }
-  100% { transform: scale(1);    box-shadow: 0 0 10px #32CD32; }
-}
-@keyframes spin {
-  to { transform: rotate(360deg); }
-}
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+      box-shadow: 0 0 10px #32CD32;
+    }
+    50% {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px #32CD32;
+    }
+    100% {
+      transform: scale(1);
+      box-shadow: 0 0 10px #32CD32;
+    }
+  }
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
 </style>
 <!-- END: Pulse Animation -->
 <!-- END Entire What We Offer Block -->
