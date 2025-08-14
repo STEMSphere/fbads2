@@ -1364,127 +1364,137 @@ src="https://www.facebook.com/tr?id=1251864852856693&ev=PageView&noscript=1"
   let adsData = { interest:"", budget:"", years:"", site:"", timeline:"" };
   let adsStep = 0;
 
-  document.getElementById("adsLauncher").addEventListener("click",()=>{
+  document.getElementById("adsLauncher").addEventListener("click", ()=>{
     adsStep = 0;
     renderAdsStep();
-    document.getElementById("adsWizard").style.display="block";
+    document.getElementById("adsWizard").style.display = "block";
   });
 
   function updateProgress(pct){
-    document.getElementById("progressFill").style.width = pct+"%";
+    document.getElementById("progressFill").style.width = pct + "%";
   }
 
   function renderAdsStep(){
-    const container = document.getElementById("adsStepContent");
+    const c = document.getElementById("adsStepContent");
 
-    if(adsStep===0){
+    if(adsStep === 0){
       updateProgress(10);
-      container.innerHTML=`
+      c.innerHTML = `
         <h2 style="padding:0 20px;">🚀 What are you most interested in?</h2>
         <div style="display:flex;flex-wrap:wrap;gap:10px;padding:20px;">
           ${["Starter: Ads Course","Growth: Done-With-You Setup","VIP: Done-For-You Launch Package"]
-            .map(opt=>
+            .map(opt => 
               `<button onclick="adsData.interest='${opt}'; adsStep=1; renderAdsStep()"
                        style="background:#009688;color:#fff;padding:10px 20px;border:none;">
                  ${opt}
-               </button>`).join("")}
+               </button>`
+            ).join("")}
         </div>`;
     }
-    else if(adsStep===1){
+    else if(adsStep === 1){
       updateProgress(30);
-      container.innerHTML=`
+      c.innerHTML = `
         <h2 style="padding:0 20px;">💰 What’s your current budget?</h2>
         <div style="display:flex;flex-wrap:wrap;gap:10px;padding:20px;">
           ${[
-            "Under $500 (₹ 43,735 | ₦ 766,700)",
-            "$500–$1,500 (₹ 43,735–131,205 | ₦ 766,700–2,300,100)",
-            "$1,500–$5,000 (₹ 131,205–437,350 | ₦ 2,300,100–7,667,000)",
-            "$5,000–$20,000 (₹ 437,350–1,749,400 | ₦ 7,667,000–30,668,000)",
-            "$20,000+ (₹ 1,749,400+ | ₦ 30,668,000+)"
+            { usd:"Under $500",   inr:"₹ 43,735",          ngn:"₦ 766,700"         },
+            { usd:"$500–$1,500",   inr:"₹ 43,735–₹ 131,205", ngn:"₦ 766,700–₦ 2,300,100" },
+            { usd:"$1,500–$5,000", inr:"₹ 131,205–₹ 437,350", ngn:"₦ 2,300,100–₦ 7,667,000" },
+            { usd:"$5,000–$20,000",inr:"₹ 437,350–₹ 1,749,400", ngn:"₦ 7,667,000–₦ 30,668,000" },
+            { usd:"$20,000+",      inr:"₹ 1,749,400+",       ngn:"₦ 30,668,000+"      }
           ].map(b =>
-            `<button onclick="adsData.budget='${b}'; adsStep=2; renderAdsStep()"
+            `<button onclick="adsData.budget='${b.usd}|${b.inr}|${b.ngn}'; adsStep=2; renderAdsStep()"
                      style="
                        background:#009688;
                        color:#fff;
-                       padding:10px 16px;
+                       padding:10px;
                        border:none;
-                       font-size:14px;
-                       line-height:1.4;
+                       text-align:left;
+                       display:flex;
+                       flex-direction:column;
+                       line-height:1.2;
                      ">
-               ${b}
+               <span>${b.usd}</span>
+               <span style="font-size:13px;opacity:0.8;">${b.inr}</span>
+               <span style="font-size:13px;opacity:0.8;">${b.ngn}</span>
              </button>`
           ).join("")}
         </div>`;
     }
-    else if(adsStep===2){
+    else if(adsStep === 2){
       updateProgress(50);
-      container.innerHTML=`
+      c.innerHTML = `
         <h2 style="padding:0 20px;">📊 How long have you been in business?</h2>
         <div style="display:flex;flex-wrap:wrap;gap:10px;padding:20px;">
           ${["0–6 months","6 months – 2 years","2–5 years","5+ years"]
-            .map(y=>
+            .map(y =>
               `<button onclick="adsData.years='${y}'; adsStep=3; renderAdsStep()"
                        style="background:#009688;color:#fff;padding:10px 20px;border:none;">
                  ${y}
-               </button>`).join("")}
+               </button>`
+            ).join("")}
         </div>`;
     }
-    else if(adsStep===3){
+    else if(adsStep === 3){
       updateProgress(70);
-      container.innerHTML=`
+      c.innerHTML = `
         <h2 style="padding:0 20px;">Free Diagnostic: What’s your website or social media page?</h2>
         <p style="padding:0 20px;">
           We’ll analyze your page/site free of charge and return feedback during the live session.
         </p>
         <textarea id="adsSiteInput" placeholder="Type details here..."
                   style="width:90%;margin:20px;padding:10px;height:100px;font-size:14px;"></textarea>
-        <button onclick="adsData.site=document.getElementById('adsSiteInput').value;
-                          adsStep=4; renderAdsStep()"
-                style="margin:0 20px 20px;background:#009688;color:#fff;
-                       padding:10px 20px;border:none;">
+        <button onclick="adsData.site=document.getElementById('adsSiteInput').value; adsStep=4; renderAdsStep()"
+                style="margin:0 20px 20px;background:#009688;color:#fff;padding:10px 20px;border:none;">
           Continue
         </button>`;
     }
-    else if(adsStep===4){
+    else if(adsStep === 4){
       updateProgress(90);
-      container.innerHTML=`
+      c.innerHTML = `
         <h2 style="padding:0 20px;">⏱️ When are you hoping to launch or improve your ads?</h2>
         <div style="display:flex;flex-wrap:wrap;gap:10px;padding:20px;">
           ${["Within 7 days","This month","Just exploring"]
-            .map(t=>
+            .map(t =>
               `<button onclick="adsData.timeline='${t}'; adsStep=5; renderAdsStep()"
                        style="background:#009688;color:#fff;padding:10px 20px;border:none;">
                  ${t}
-               </button>`).join("")}
+               </button>`
+            ).join("")}
         </div>`;
     }
-    else if(adsStep===5){
+    else if(adsStep === 5){
       updateProgress(100);
-      container.innerHTML=`
+      c.innerHTML = `
         <h2 style="padding:0 20px;">🎥 Join Us Live!</h2>
         <p style="padding:0 20px;font-size:1.1em;">
           There’s a reason our client retention is strong.
         </p>
         <div id="calendlyFrame" style="width:100%;height:calc(100vh - 120px);"></div>`;
 
-      const calendlyScript = document.createElement("script");
-      calendlyScript.src = "https://assets.calendly.com/assets/external/widget.js";
-      calendlyScript.async = true;
-      calendlyScript.onload = ()=>{
+      const s = document.createElement("script");
+      s.src = "https://assets.calendly.com/assets/external/widget.js";
+      s.async = true;
+      s.onload = ()=> {
         Calendly.initInlineWidget({
           url: "https://calendly.com/stemsphere-support/live-ads-page-diagnostics-with-stemsphere-academy",
           parentElement: document.getElementById("calendlyFrame"),
-          prefill:{customAnswers:{
-            a1:adsData.interest,a2:adsData.budget,a3:adsData.years,
-            a4:adsData.site,a5:adsData.timeline
-          }}
+          prefill: {
+            customAnswers: {
+              a1: adsData.interest,
+              a2: adsData.budget,
+              a3: adsData.years,
+              a4: adsData.site,
+              a5: adsData.timeline
+            }
+          }
         });
       };
-      document.body.appendChild(calendlyScript);
+      document.body.appendChild(s);
 
-      window.addEventListener("message",(e)=>{
-        if(e.data.event&&e.data.event.includes("calendly")){
-          document.getElementById("adsCloseBtn").style.display="inline";
+      window.addEventListener("message", e => {
+        if(e.data.event && e.data.event.includes("calendly")){
+          document.getElementById("adsCloseBtn").style.display = "inline";
         }
       });
     }
