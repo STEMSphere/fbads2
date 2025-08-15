@@ -499,8 +499,11 @@ src="https://www.facebook.com/tr?id=1251864852856693&ev=PageView&noscript=1"
       });
 
       document.getElementById('signUpBtn').addEventListener('click', () => {
-        window.location = 'https://buy.stripe.com/3cI3cuevT3PS35Jdk333W3h';
-      });
+  adsStep = 0;
+  renderAdsStep();
+  document.getElementById('adsWizard').style.display = 'block';
+    });
+
     });
   </script>
 </body>
