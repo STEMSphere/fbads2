@@ -607,7 +607,10 @@ src="https://www.facebook.com/tr?id=1251864852856693&ev=PageView&noscript=1"
     const secs = Math.floor((diff % 60000) / 1000);
     const display = document.getElementById("countdown-timer");
     if (display) {
-      display.textContent = String(hrs).padStart(2, '0') + ":" + String(mins).padStart(2, '0') + ":" + String(secs).padStart(2, '0');
+      display.textContent =
+        String(hrs).padStart(2, '0') + ":" +
+        String(mins).padStart(2, '0') + ":" +
+        String(secs).padStart(2, '0');
     }
   }
   document.addEventListener("DOMContentLoaded", function(){
@@ -689,15 +692,26 @@ body {
 </style>
 
 <div class="payment-card">
-  <div style="text-align:center; font-weight:bold; font-size:1.4em; margin-bottom:0.4em; background: linear-gradient(135deg, #002147, #4A90E2); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-shadow: 0 0 2px rgba(0,0,255,0.3);">
+  <div style="text-align:center; font-weight:bold; font-size:1.4em; margin-bottom:0.4em;
+              background: linear-gradient(135deg, #002147, #4A90E2);
+              -webkit-background-clip: text;
+              -webkit-text-fill-color: transparent;
+              text-shadow: 0 0 2px rgba(0,0,255,0.3);">
     Full Launch Kit Pricing
   </div>
 
-  <div style="text-align: center; font-size: 1.1em; font-weight: bold; color: #000; margin-bottom: 0.6em;">
+  <div style="text-align: center;
+              font-size: 1.1em;
+              font-weight: bold;
+              color: #000;
+              margin-bottom: 0.6em;">
     Because we’re confident you’ll be back. Try for a fraction of the cost.
   </div>
 
-  <div style="text-align: center; font-size: 1.8em; font-weight: bold; margin-bottom: 0.4em;">
+  <div style="text-align: center;
+              font-size: 1.8em;
+              font-weight: bold;
+              margin-bottom: 0.4em;">
     <div style="margin-bottom: 0.3em;">
       <span style="color:#999; text-decoration: line-through;">$299</span>
       <span style="color:#002147;"> → $50</span>
@@ -712,20 +726,29 @@ body {
     </div>
   </div>
 
-  <div style="text-align: center; font-size: 1em; margin-bottom: 1em;">
+  <div style="text-align: center;
+              font-size: 1em;
+              margin-bottom: 1em;">
     80% of our course graduates return for continued work with us — so we’re confident you’ll be back.
   </div>
 
-  <div style="text-align: center; font-weight: bold; font-size: 1.2em; margin-bottom: 0.6em;">
-    Use code <strong style="color:#002147;">AUGZPQY</strong> at checkout ⏳ <span id="countdown-timer" style="color: #ff4d4d;">Loading...</span>
+  <div style="text-align: center;
+              font-weight: bold;
+              font-size: 1.2em;
+              margin-bottom: 0.6em;">
+    Use code <strong style="color:#002147;">AUGZPQY</strong> at checkout ⏳
+    <span id="countdown-timer" style="color: #ff4d4d;">Loading...</span>
   </div>
 
-  <div style="text-align: center; font-size: 1em; margin-bottom: 1em;">
+  <div style="text-align: center;
+              font-size: 1em;
+              margin-bottom: 1em;">
     🌐 Pay in your local currency
   </div>
 
   <div class="payment-image">
-    <img src="https://i.postimg.cc/jj3XJPMH/In-Shot-20250807-130152090.jpg" alt="Launch Kit Preview">
+    <img src="https://i.postimg.cc/jj3XJPMH/In-Shot-20250807-130152090.jpg"
+         alt="Launch Kit Preview">
   </div>
 
   <div class="payment-buttons">
@@ -735,7 +758,9 @@ body {
     <a href="https://buy.stripe.com/8x214m4Vj2LO9u7a7R33W3y" class="btn-india">
       🇮🇳 Pay ₹999 <span class="strike-price">₹24,999</span>
     </a>
-    <a href="https://paystack.com/buy/how-to-run-facebook-ads" class="btn-nigeria" target="_blank">
+    <a href="https://paystack.com/buy/how-to-run-facebook-ads"
+       class="btn-nigeria"
+       target="_blank">
       🇳🇬 Pay ₦19,999 <span class="strike-price">₦370,000</span>
     </a>
   </div>
