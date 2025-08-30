@@ -1,110 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Agro Grow — Natural Hair Growth Complex</title>
-  <meta name="description" content="Agro Grow: all-in-one, naturally powerful hair growth formula with secret herbs & minerals from Nigeria.">
-  
+  <meta name="description" content="Agro Grow: all-in-one, naturally powerful hair growth formula powered by secret herbs & minerals from Nigeria.">
+
+  <!-- 1) Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
+
   <style>
     :root {
       --green-dark: #006400;
-      --gold-accent: #FFD700;
-      --text-color: #333;
-      --bg-white: #fff;
+      --gold: #FFD700;
+      --leaf-pattern: url('<!-- LEAF PATTERN PNG or SVG URL -->');
     }
 
-    /* Global resets */
-    *, *::before, *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
+    /* Reset & Base */
+    *, *::before, *::after { box-sizing: border-box; margin:0; padding:0; }
+    body { font-family: 'Montserrat', sans-serif; background: #fff; color: #333; overflow-x: hidden; }
+
+    /* Container */
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 1rem; }
+
+    /* HEADER with Logo + Brand */
+    #header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 0 1rem;
+      background: var(--leaf-pattern) center/400px no-repeat;
+    }
+    #header img.logo { width: 60px; margin-right: 0.5rem; }
+    #header h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 3rem;
+      color: var(--green-dark);
+      line-height: 1;
     }
 
-    body.agro-grow {
-      font-family: "Helvetica Neue", Arial, sans-serif;
-      background: var(--bg-white);
-      color: var(--text-color);
-      line-height: 1.5;
-      position: relative;
-      overflow-x: hidden;
-    }
-
-    /* Decorative leaf in top-left corner */
-    body.agro-grow::before {
-      content: "";
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 200px;
-      height: 200px;
-      background: url('<!-- LEAF VECTOR URL -->') no-repeat;
-      background-size: contain;
-      pointer-events: none;
-    }
-
-    /* Hero Section */
+    /* HERO */
     #hero {
       text-align: center;
+      background: var(--leaf-pattern) center/cover no-repeat;
       padding: 4rem 1rem 6rem;
+      position: relative;
     }
-    #hero h1 {
-      font-size: 2.75rem;
-      margin-bottom: 1rem;
-      color: var(--green-dark);
+    #hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(255,255,255,0.85);
     }
-    #hero p {
-      max-width: 600px;
-      margin: 0 auto 2rem;
-      font-size: 1.1rem;
+    #hero .content {
+      position: relative;
+      z-index: 1;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    #hero .tagline {
+      font-size: 1.25rem;
+      margin-bottom: 1.5rem;
+      color: #555;
+      line-height: 1.4;
     }
     #hero .btn-primary {
       background: var(--green-dark);
-      color: var(--bg-white);
-      padding: 0.75rem 1.5rem;
+      color: #fff;
       border: none;
+      padding: 0.75rem 1.75rem;
       border-radius: 4px;
+      font-weight: 700;
       font-size: 1rem;
       cursor: pointer;
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      transition: background 0.3s ease;
+      transition: background .3s ease;
     }
-    #hero .btn-primary:hover {
-      background: darken(var(--green-dark), 10%);
-    }
+    #hero .btn-primary:hover { background: #004d00; }
     #hero .product-image {
       display: block;
       margin: 3rem auto 0;
-      max-width: 350px;
+      max-width: 360px;
       width: 100%;
       border: 4px solid var(--green-dark);
       border-radius: 8px;
     }
 
-    /* Gold divider */
+    /* GOLD DIVIDER */
     .gold-divider {
-      width: 80px;
-      height: 3px;
-      background: var(--gold-accent);
-      margin: 2rem auto;
+      width: 100px;
+      height: 4px;
+      background: var(--gold);
+      margin: 3rem auto;
+      border-radius: 2px;
     }
 
-    /* Add-Ons Section */
-    #addons {
-      padding: 3rem 1rem 6rem;
-      max-width: 1000px;
-      margin: 0 auto;
-    }
+    /* ADD-ONS */
+    #addons { padding: 4rem 1rem 6rem; }
     #addons h2 {
       text-align: center;
-      font-size: 2rem;
-      margin-bottom: 1rem;
+      font-size: 2.25rem;
       color: var(--green-dark);
+      margin-bottom: 1rem;
     }
     .addon-grid {
       display: grid;
+      gap: 2rem;
       grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
-      gap: 1.5rem;
       margin-top: 2rem;
     }
     .addon-item {
@@ -117,44 +119,52 @@
       border-radius: 6px;
     }
     .addon-item h3 {
-      margin: 0.75rem 0 0.5rem;
-      font-size: 1.1rem;
+      font-size: 1.15rem;
       color: var(--green-dark);
+      margin: 0.75rem 0 0.5rem;
+      font-weight: 500;
     }
     .addon-item p {
       font-size: 0.9rem;
       color: #555;
     }
 
-    /* Responsive typography */
+    /* RESPONSIVE */
     @media (min-width: 768px) {
-      #hero h1 { font-size: 3.5rem; }
-      #addons h2 { font-size: 2.5rem; }
+      #header h1 { font-size: 4rem; }
+      #hero .tagline { font-size: 1.4rem; }
+      #addons h2 { font-size: 2.75rem; }
     }
   </style>
 </head>
 
-<body class="agro-grow">
+<body>
 
-  <!-- HERO SECTION -->
-  <section id="hero">
+  <!-- HEADER -->
+  <header id="header">
+    <img src="<!-- LEAF LOGO URL -->" alt="Agro Grow logo" class="logo">
     <h1>Agro Grow</h1>
-    <p>
-      All-in-one, naturally powerful hair growth formula—powered by secret herbs & minerals
-      harvested in the Motherland of Nigeria.
-    </p>
-    <button class="btn-primary">Shop Now</button>
-    <img
-      src="<!-- HERO PRODUCT IMAGE URL -->"
-      alt="Agro Grow Hair Growth Complex"
-      class="product-image"
-    />
+  </header>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="content container">
+      <p class="tagline">
+        All-in-one, naturally powerful hair growth complex—powered by secret herbs & minerals harvested exclusively in the Motherland of Nigeria.
+      </p>
+      <button class="btn-primary">Shop Now</button>
+      <img
+        src="<!-- HERO PRODUCT IMAGE URL -->"
+        alt="Agro Grow Hair Growth Complex"
+        class="product-image"
+      />
+    </div>
   </section>
 
   <div class="gold-divider"></div>
 
-  <!-- ADD-ONS SECTION -->
-  <section id="addons">
+  <!-- ADD-ONS -->
+  <section id="addons" class="container">
     <h2>Complete Your Routine</h2>
     <div class="addon-grid">
       <div class="addon-item">
