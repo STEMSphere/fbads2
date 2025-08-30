@@ -12,159 +12,191 @@
   <style>
     :root {
       --green-dark: #006400;
+      --gold: #FFD700;
       --leaf-wallpaper: url('https://i.postimg.cc/XYzp9GSK/1000069141.jpg');
     }
-
-    /* RESET & BASE */
     *, *::before, *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
+      box-sizing: border-box; margin:0; padding:0;
     }
     body {
       font-family: 'Montserrat', sans-serif;
       background: var(--leaf-wallpaper) center/cover no-repeat #fff;
       color: #333;
       overflow-x: hidden;
+      line-height: 1.6;
     }
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 1rem;
-    }
+    .container { max-width:1200px; margin:0 auto; padding:0 1rem; }
 
     /* HEADER */
     #header {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 2rem 0 1rem;
-      background: rgba(255,255,255,0.8);
+      display:flex; align-items:center; justify-content:center;
+      background: rgba(255,255,255,0.9);
+      padding:2rem 1rem;
     }
-    #header img.logo {
-      width: 60px;
-      margin-right: 0.5rem;
-    }
+    #header img.logo { width:60px; margin-right:0.5rem; }
     #header h1 {
       font-family: 'Great Vibes', cursive;
-      font-size: 3rem;
-      color: var(--green-dark);
-      line-height: 1;
+      font-size:3rem; color:var(--green-dark); line-height:1;
     }
 
-    /* HERO */
-    #hero {
-      text-align: center;
-      padding: 4rem 1rem 6rem;
-      background: rgba(255,255,255,0.85);
-      margin: 0 1rem;
-      border-radius: 8px;
+    /* SLIDER */
+    #slider { position:relative; max-width:800px; margin:2rem auto; }
+    .slides {
+      position:relative; overflow:hidden; border-radius:8px;
+      box-shadow:0 2px 8px rgba(0,0,0,0.1);
     }
-    #hero .tagline {
-      font-size: 1.25rem;
-      margin-bottom: 1.5rem;
-      color: #555;
-      line-height: 1.4;
+    .slide {
+      display:none; width:100%;
     }
-    #hero .btn-primary {
-      background: var(--green-dark);
-      color: #fff;
-      border: none;
-      padding: 0.75rem 1.75rem;
-      border-radius: 4px;
-      font-weight: 700;
-      font-size: 1rem;
-      cursor: pointer;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      transition: background .3s ease;
+    .slide img {
+      width:100%; display:block;
     }
-    #hero .btn-primary:hover {
-      background: #004d00;
+    .slide.active { display:block; }
+    .slider-control {
+      position:absolute; top:50%; transform:translateY(-50%);
+      background:rgba(255,255,255,0.7); border:none;
+      padding:0.5rem 1rem; cursor:pointer; font-size:1.25rem;
+      color:var(--green-dark); border-radius:4px;
     }
-    #hero .product-image {
-      display: block;
-      margin: 3rem auto 0;
-      max-width: 360px;
-      width: 100%;
-      border: 4px solid var(--green-dark);
-      border-radius: 8px;
+    .slider-control.prev { left:10px; }
+    .slider-control.next { right:10px; }
+
+    /* HERO TEXT */
+    #hero-text {
+      text-align:center; margin:1rem auto 2rem; max-width:700px;
+      background:rgba(255,255,255,0.85); padding:1.5rem; border-radius:8px;
     }
+    #hero-text p {
+      font-size:1.2rem;
+      color:#555;
+    }
+    #hero-text .btn-primary {
+      background:var(--green-dark); color:#fff; border:none;
+      padding:0.75rem 1.75rem; border-radius:4px; font-weight:700;
+      cursor:pointer; margin-top:1rem;
+      transition:background .3s;
+    }
+    #hero-text .btn-primary:hover { background:#004d00; }
 
     /* GOLD DIVIDER */
     .gold-divider {
-      width: 100px;
-      height: 4px;
-      background: #FFD700;
-      margin: 3rem auto;
-      border-radius: 2px;
+      width:100px; height:4px; background:var(--gold);
+      margin:3rem auto; border-radius:2px;
     }
+
+    /* ABOUT & BENEFITS */
+    #about, #how-to-use {
+      background:rgba(255,255,255,0.85); padding:3rem 1rem; margin:2rem 0; border-radius:8px;
+    }
+    #about h2, #how-to-use h2 {
+      text-align:center; color:var(--green-dark); margin-bottom:1rem;
+    }
+    #about p { max-width:800px; margin:0 auto 1rem; }
+    #benefits {
+      display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:1.5rem; margin-top:2rem;
+    }
+    .benefit-item {
+      background:#fff; border:2px solid var(--green-dark);
+      border-radius:6px; padding:1rem; text-align:center;
+    }
+    .benefit-item h3 { color:var(--green-dark); margin-bottom:0.5rem; }
+    .benefit-item p { color:#555; font-size:0.9rem; }
 
     /* ADD-ONS */
-    #addons {
-      padding: 4rem 1rem 6rem;
-    }
-    #addons h2 {
-      text-align: center;
-      font-size: 2.25rem;
-      color: var(--green-dark);
-      margin-bottom: 1rem;
-    }
+    #addons { padding:3rem 1rem 6rem; }
+    #addons h2 { text-align:center; color:var(--green-dark); margin-bottom:1rem; }
     .addon-grid {
-      display: grid;
-      gap: 2rem;
-      grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
-      margin-top: 2rem;
+      display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+      gap:2rem; margin-top:2rem;
     }
     .addon-item {
-      text-align: center;
+      text-align:center;
     }
     .addon-item img {
-      width: 100%;
-      max-width: 180px;
-      border: 3px solid var(--green-dark);
-      border-radius: 6px;
+      width:100%; max-width:180px;
+      border:3px solid var(--green-dark);
+      border-radius:6px;
     }
     .addon-item h3 {
-      font-size: 1.15rem;
-      color: var(--green-dark);
-      margin: 0.75rem 0 0.5rem;
-      font-weight: 500;
+      color:var(--green-dark); margin:0.75rem 0 0.5rem; font-weight:500;
     }
-    .addon-item p {
-      font-size: 0.9rem;
-      color: #555;
-    }
+    .addon-item p { color:#555; font-size:0.9rem; }
 
-    /* RESPONSIVE */
-    @media (min-width: 768px) {
-      #header h1 { font-size: 4rem; }
-      #hero .tagline { font-size: 1.4rem; }
-      #addons h2 { font-size: 2.75rem; }
+    @media (min-width:768px) {
+      #header h1 { font-size:4rem; }
+      #hero-text p { font-size:1.3rem; }
     }
   </style>
 </head>
 
 <body>
-
   <!-- HEADER -->
   <header id="header">
     <img src="https://i.postimg.cc/LsghD92c/1000069144.png" alt="Agro Grow logo" class="logo">
     <h1>Agro Grow</h1>
   </header>
 
-  <!-- HERO -->
-  <section id="hero">
-    <div class="content container">
-      <p class="tagline">
-        All-in-one, naturally powerful hair growth complex—infused with botanics and minerals harvested exclusively in West Africa, Nigeria.
-      </p>
-      <button class="btn-primary">Shop Now</button>
-      <img
-        src="<!-- HERO PRODUCT IMAGE URL -->"
-        alt="Agro Grow Hair Growth Complex"
-        class="product-image"
-      />
+  <!-- SLIDER -->
+  <div id="slider">
+    <div class="slides">
+      <div class="slide active">
+        <img src="https://i.postimg.cc/NFjcNDRK/71r-JAGWs-A5-S-UF1000-1000-QL80.jpg" alt="Agro Grow Application">
+      </div>
+      <div class="slide">
+        <img src="https://i.postimg.cc/fyqh1dvB/il-fullxfull-6252354832-tlgo.jpg" alt="Natural Ingredients">
+      </div>
+      <div class="slide">
+        <img src="https://i.postimg.cc/bYm8GXjk/71d9i-BBRBAS-UF894-1000-QL80.jpg" alt="Hair Growth Results">
+      </div>
+      <div class="slide">
+        <img src="https://i.postimg.cc/gk5WDvj0/HTB1-IQGIXPzu-K1-Rj-Ssppq6xz0-XXaj.jpg" alt="Agro Grow Bottle">
+      </div>
     </div>
+    <button class="slider-control prev">&#10094;</button>
+    <button class="slider-control next">&#10095;</button>
+  </div>
+
+  <!-- HERO TEXT & CTA -->
+  <section id="hero-text" class="container">
+    <p>
+      All-in-one, naturally powerful hair growth complex infused with botanics and minerals 
+      harvested exclusively in West Africa, Nigeria.
+    </p>
+    <div style="text-align:center;">
+      <button class="btn-primary">Shop Now</button>
+    </div>
+  </section>
+
+  <div class="gold-divider"></div>
+
+  <!-- ABOUT -->
+  <section id="about" class="container">
+    <h2>Why Agro Grow Works</h2>
+    <p>Our secret blend of West African botanics and mineral-rich clays:</p>
+    <div id="benefits">
+      <div class="benefit-item">
+        <h3>Deep Nourishment</h3>
+        <p>Penetrates scalp to fortify follicles at the root.</p>
+      </div>
+      <div class="benefit-item">
+        <h3>Stimulates Growth</h3>
+        <p>Clinically shown to boost hair-growth rate by up to 30%.</p>
+      </div>
+      <div class="benefit-item">
+        <h3>Thicker Strands</h3>
+        <p>Mineral complex plumps each shaft for fuller volume.</p>
+      </div>
+      <div class="benefit-item">
+        <h3>100% Natural</h3>
+        <p>Free from silicones, parabens, sulfates; always cruelty-free.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW TO USE -->
+  <section id="how-to-use" class="container">
+    <h2>How to Use</h2>
+    <p>Apply 2–3 pumps to clean, damp scalp. Massage in small circles for 2 minutes. Leave in—no rinse needed. Use daily for maximum results.</p>
   </section>
 
   <div class="gold-divider"></div>
@@ -196,5 +228,22 @@
     </div>
   </section>
 
+  <!-- SLIDER SCRIPT -->
+  <script>
+    (function(){
+      const slides = document.querySelectorAll('.slide');
+      let idx = 0;
+      document.querySelector('.next').onclick = () => {
+        slides[idx].classList.remove('active');
+        idx = (idx + 1) % slides.length;
+        slides[idx].classList.add('active');
+      };
+      document.querySelector('.prev').onclick = () => {
+        slides[idx].classList.remove('active');
+        idx = (idx - 1 + slides.length) % slides.length;
+        slides[idx].classList.add('active');
+      };
+    })();
+  </script>
 </body>
 </html>
