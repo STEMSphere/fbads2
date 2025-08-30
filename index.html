@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Agro Grow — Natural Hair Growth Complex</title>
-  <meta name="description" content="Agro Grow: all-in-one, naturally powerful hair growth formula powered by secret herbs & minerals from Nigeria.">
+  <meta name="description" content="Agro Grow: all-in-one, naturally powerful hair growth formula infused with botanics and minerals harvested exclusively in West Africa, Nigeria.">
 
   <!-- 1) Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
@@ -13,12 +13,17 @@
     :root {
       --green-dark: #006400;
       --gold: #FFD700;
-      --leaf-pattern: url('<!-- LEAF PATTERN PNG or SVG URL -->');
+      --leaf-wallpaper: url('<!-- LEAF WALLPAPER URL -->');
     }
 
     /* Reset & Base */
-    *, *::before, *::after { box-sizing: border-box; margin:0; padding:0; }
-    body { font-family: 'Montserrat', sans-serif; background: #fff; color: #333; overflow-x: hidden; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: var(--leaf-wallpaper) center/cover no-repeat #fff;
+      color: #333;
+      overflow-x: hidden;
+    }
 
     /* Container */
     .container { max-width: 1200px; margin: 0 auto; padding: 0 1rem; }
@@ -29,7 +34,6 @@
       align-items: center;
       justify-content: center;
       padding: 2rem 0 1rem;
-      background: var(--leaf-pattern) center/400px no-repeat;
     }
     #header img.logo { width: 60px; margin-right: 0.5rem; }
     #header h1 {
@@ -42,27 +46,23 @@
     /* HERO */
     #hero {
       text-align: center;
-      background: var(--leaf-pattern) center/cover no-repeat;
       padding: 4rem 1rem 6rem;
-      position: relative;
-    }
-    #hero::after {
-      content: '';
-      position: absolute;
-      inset: 0;
       background: rgba(255,255,255,0.85);
+      margin: 0 1rem;
+      border-radius: 8px;
     }
-    #hero .content {
-      position: relative;
-      z-index: 1;
-      max-width: 700px;
-      margin: 0 auto;
-    }
+    #hero .content { max-width: 700px; margin: 0 auto; }
     #hero .tagline {
       font-size: 1.25rem;
       margin-bottom: 1.5rem;
       color: #555;
       line-height: 1.4;
+    }
+    #hero .highlight {
+      background: var(--gold);
+      color: var(--green-dark);
+      padding: 0.1em 0.3em;
+      border-radius: 2px;
     }
     #hero .btn-primary {
       background: var(--green-dark);
@@ -150,7 +150,7 @@
   <section id="hero">
     <div class="content container">
       <p class="tagline">
-        All-in-one, naturally powerful hair growth complex—powered by secret herbs & minerals harvested exclusively in the Motherland of Nigeria.
+        All-in-one, naturally powerful hair growth complex—<span class="highlight">infused with botanics and minerals harvested exclusively in West Africa, Nigeria</span>.
       </p>
       <button class="btn-primary">Shop Now</button>
       <img
