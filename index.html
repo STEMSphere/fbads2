@@ -1,1049 +1,184 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <head>
-<!-- Meta Pixel Code -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '1251864852856693');
-fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1251864852856693&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
-
-<!-- existing meta, title, CSS links, etc. -->
-</head>
-
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Not Just Clicks — Facebook Ads That Convert</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Agro Grow — Natural Hair Growth Complex</title>
+  <meta name="description" content="Agro Grow: all-in-one, naturally powerful hair growth formula with secret herbs & minerals from Nigeria.">
+  
   <style>
-    body {
+    :root {
+      --green-dark: #006400;
+      --gold-accent: #FFD700;
+      --text-color: #333;
+      --bg-white: #fff;
+    }
+
+    /* Global resets */
+    *, *::before, *::after {
+      box-sizing: border-box;
       margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #001F3F;
-      color: #fff;
+      padding: 0;
+    }
+
+    body.agro-grow {
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      background: var(--bg-white);
+      color: var(--text-color);
+      line-height: 1.5;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Decorative leaf in top-left corner */
+    body.agro-grow::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 200px;
+      height: 200px;
+      background: url('<!-- LEAF VECTOR URL -->') no-repeat;
+      background-size: contain;
+      pointer-events: none;
+    }
+
+    /* Hero Section */
+    #hero {
+      text-align: center;
+      padding: 4rem 1rem 6rem;
+    }
+    #hero h1 {
+      font-size: 2.75rem;
+      margin-bottom: 1rem;
+      color: var(--green-dark);
+    }
+    #hero p {
+      max-width: 600px;
+      margin: 0 auto 2rem;
+      font-size: 1.1rem;
+    }
+    #hero .btn-primary {
+      background: var(--green-dark);
+      color: var(--bg-white);
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 4px;
+      font-size: 1rem;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      transition: background 0.3s ease;
+    }
+    #hero .btn-primary:hover {
+      background: darken(var(--green-dark), 10%);
+    }
+    #hero .product-image {
+      display: block;
+      margin: 3rem auto 0;
+      max-width: 350px;
+      width: 100%;
+      border: 4px solid var(--green-dark);
+      border-radius: 8px;
+    }
+
+    /* Gold divider */
+    .gold-divider {
+      width: 80px;
+      height: 3px;
+      background: var(--gold-accent);
+      margin: 2rem auto;
+    }
+
+    /* Add-Ons Section */
+    #addons {
+      padding: 3rem 1rem 6rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    #addons h2 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: var(--green-dark);
+    }
+    .addon-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    .addon-item {
       text-align: center;
     }
-
-    header {
-      padding: 3em 1em 0.5em;
+    .addon-item img {
+      width: 100%;
+      max-width: 180px;
+      border: 3px solid var(--green-dark);
+      border-radius: 6px;
+    }
+    .addon-item h3 {
+      margin: 0.75rem 0 0.5rem;
+      font-size: 1.1rem;
+      color: var(--green-dark);
+    }
+    .addon-item p {
+      font-size: 0.9rem;
+      color: #555;
     }
 
-    .title-group {
-      display: inline-block;
-      line-height: 1.4em;
-      margin-bottom: 0.2em;
-    }
-
-    .title-group span {
-      font-size: 2.8em;
-      font-weight: 700;
-      color: #FFDD00;
-      display: block;
-      letter-spacing: 1px;
-      line-height: 1.4em;
-    }
-
-    h2 {
-      font-size: 1.4em;
-      color: #ccc;
-      font-weight: normal;
-      margin-top: 0.8em;
-    }
-
-    /* fluorescent course-bar styling (same as other page) */
-    .course-bar {
-      display: inline-flex;
-      align-items: center;
-      padding: 0.4em 1em;
-      border-radius: 999px;
-      background: linear-gradient(90deg, #00f8ff, #ff00d0);
-      font-weight: 700;
-      font-size: 0.95em;
-      color: #fff;
-      margin-top: 0.6em;
-    }
-    .course-bar span + span {
-      margin-left: 0.5em;
-    }
-
- @media (max-width: 600px) {
-      .title-group span { font-size: 2em; }
-      h2 { font-size: 1.2em; }
-      .arrow-up { font-size: 1.8em; }
-      .access-message { font-size: 1.2em; }
-      .stat-message { font-size: 0.95em; }
-      .course-bar { font-size: 0.85em; }
-    }
-
-    main {
-      max-width: 850px;
-      margin: auto;
-      padding: 1em 1em 3em;
-    }
-
-    .electric-frame {
-      position: relative;
-      padding: 10px;
-      border-radius: 12px;
-      margin: 2em auto;
-      background-color: #000;
-      box-shadow:
-        0 0 10px #fdf200,
-        0 0 16px #ffe600,
-        0 0 22px #fff000;
-      animation: flicker 1.5s infinite alternate;
-      max-width: 800px;
-    }
-
-    @keyframes flicker {
-      0% {
-        box-shadow:
-          0 0 8px #ffeb3b,
-          0 0 12px #fdf200,
-          0 0 18px #ffe600;
-      }
-      100% {
-        box-shadow:
-          0 0 12px #fdf200,
-          0 0 18px #fff000,
-          0 0 24px #ffeb3b;
-      }
-    }
-
-    .video-container {
-      position: relative;
-      padding-bottom: 56.25%;
-      height: 0;
-      overflow: hidden;
-      border-radius: 8px;
-    }
-    .video-wrapper {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: #000;
-      border-radius: 8px;
-      overflow: hidden;
-    }
-    .placeholder-frame {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background-image: url('https://img.youtube.com/vi/KcRib2gRo2s/maxresdefault.jpg');
-      background-size: cover;
-      background-position: center;
-      cursor: pointer;
-      z-index: 100;
-    }
-    .play-button {
-      position: absolute;
-      top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
-      width: 80px; height: 80px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.85);
-      box-shadow: 0 0 15px #ffeb3b;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 101;
-    }
-    .play-button::after {
-      content: '';
-      display: block;
-      width: 0; height: 0;
-      border-left: 25px solid #000;
-      border-top: 15px solid transparent;
-      border-bottom: 15px solid transparent;
-    }
-    #player {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      display: none;
-      z-index: 0;
-    }
-    .click-overlay {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      z-index: 200;
-      cursor: pointer;
-    }
-
-    #popup-form {
-      display: none;
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0,0,0,0.85);
-      color: #fff;
-      z-index: 300;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 1em;
-    }
-    #popup-form h3 {
-      margin-bottom: 0.5em;
-      font-size: 1.4em;
-      font-weight: 700;
-    }
-    #popup-form input {
-      width: 80%; max-width: 300px;
-      padding: 0.8em; margin: 0.4em 0;
-      border: none; border-radius: 4px;
-      background: #222; color: #fff;
-      font-size: 1em;
-    }
-    #popup-form button {
-      padding: 0.8em 1.2em;
-      margin-top: 0.5em;
-      border: none; border-radius: 4px;
-      background: #FFDD00; color: #000;
-      font-weight: 700; cursor: pointer;
-    }
-
-    .sign-up-btn {
-      display: none;
-      position: absolute;
-      bottom: 15%;
-      left: 10%;
-      padding: 0.8em 1.2em;
-      border: none; border-radius: 4px;
-      background: #00FF00; color: #000;
-      font-weight: 700; box-shadow: 0 0 8px rgba(0,255,0,0.7);
-      cursor: pointer; z-index: 250;
-    }
-
-    .arrow-up {
-      font-size: 2.2em;
-      color: #FFA500;
-      text-shadow: 0 0 6px #ffcc66;
-      letter-spacing: 0.5em;
-      margin: 0.3em 0 0;
-    }
-
-    .access-message {
-      font-size: 1.35em;
-      font-weight: 700;
-      color: #fff;
-      font-family: 'Segoe UI Semibold', sans-serif;
-      margin-top: 0.3em;
-    }
-
-    .stat-message {
-      font-size: 1.05em;
-      color: #ccc;
-      margin-top: 1.2em;
-      padding: 0 1em;
-      line-height: 1.5em;
-    }
-
-    footer {
-      font-size: 0.85em;
-      color: #bbb;
-      padding: 2em 1em;
-      border-top: 1px solid #333;
+    /* Responsive typography */
+    @media (min-width: 768px) {
+      #hero h1 { font-size: 3.5rem; }
+      #addons h2 { font-size: 2.5rem; }
     }
   </style>
 </head>
 
-<body>
-  <header>
-    <div class="title-group">
-      <span>Not Just Clicks.</span>
-      <span>Ads That Convert.</span>
+<body class="agro-grow">
+
+  <!-- HERO SECTION -->
+  <section id="hero">
+    <h1>Agro Grow</h1>
+    <p>
+      All-in-one, naturally powerful hair growth formula—powered by secret herbs & minerals
+      harvested in the Motherland of Nigeria.
+    </p>
+    <button class="btn-primary">Shop Now</button>
+    <img
+      src="<!-- HERO PRODUCT IMAGE URL -->"
+      alt="Agro Grow Hair Growth Complex"
+      class="product-image"
+    />
+  </section>
+
+  <div class="gold-divider"></div>
+
+  <!-- ADD-ONS SECTION -->
+  <section id="addons">
+    <h2>Complete Your Routine</h2>
+    <div class="addon-grid">
+      <div class="addon-item">
+        <img src="<!-- EDGE BRUSH IMAGE URL -->" alt="Edge Brush">
+        <h3>Edge Brush</h3>
+        <p>Precision smoothing for your hairline.</p>
+      </div>
+      <div class="addon-item">
+        <img src="<!-- SILK HAIR BONNET IMAGE URL -->" alt="Silk Hair Bonnet">
+        <h3>Silk Hair Bonnet</h3>
+        <p>Protect strands overnight and reduce breakage.</p>
+      </div>
+      <div class="addon-item">
+        <img src="<!-- SCALP MASSAGER IMAGE URL -->" alt="Wooden Scalp Massager">
+        <h3>Wooden Scalp Massager</h3>
+        <p>Stimulate blood flow for faster growth.</p>
+      </div>
+      <div class="addon-item">
+        <img src="<!-- GROWTH SERUM IMAGE URL -->" alt="Herbal Growth Serum">
+        <h3>Herbal Growth Serum</h3>
+        <p>Concentrated blend to activate dormant follicles.</p>
+      </div>
     </div>
-    <h2>Strategy → Traffic → Measurable ROI</h2>
-    <div class="course-bar">
-      <span>Run Ads</span>
-      <span>|</span>
-      <span>Gain Traffic</span>
-      <span>|</span>
-      <span>Increase Sales</span>
-    </div>
-  </header>
+  </section>
 
-  <main>
-    <div class="electric-frame">
-      <div class="video-container" id="video-container">
-        <div class="video-wrapper">
-          <div class="placeholder-frame" id="placeholder"></div>
-          <div class="play-button" id="playBtn"></div>
-          <div id="player"></div>
-          <div class="click-overlay"></div>
-        </div>
-      </div>
-
-      <div id="popup-form">
-        <h3>Enter your details to continue watching</h3>
-        <input type="text" name="name" placeholder="Your Name" required />
-        <input type="email" name="email" placeholder="Your Email" required />
-        <button id="submitForm">Submit & Continue</button>
-      </div>
-
-      <button class="sign-up-btn" id="signUpBtn">
-        Sign Up Now
-      </button>
-    </div>
-
-    <div class="arrow-up">↑↑↑↑</div>
-    <div class="access-message">Play 🔁in regular Browser</div>
-
-
-
-<!-- Reviews Loader Under video -->
-<div id="reviews-container" style="margin-top:1.5em;"></div>
-
-<!-- Reviews loader script -->
-<script>
-  (async () => {
-    const slug    = 'facebookads';
-    const csvUrl  = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRSWqhCcu_XZW7SW5uZ3UZdKzvLm2zNw8DvMZV2TD_gcts6K-DBrLwd88pnXVn0xl0fxRRfGW0Y4iyN/pub?output=csv';
-    const formUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSd0lD5dU8nsUbBzfqqRkLflTkJVrAQyvZXI81uXXyOPXpoUdA/viewform?usp=header';
-
-    // Fetch and parse CSV
-    const res  = await fetch(csvUrl);
-    const text = await res.text();
-    const rows = text.trim()
-      .split('\n').slice(1)
-      .map(r => r.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/)
-                 .map(c => c.replace(/^"|"$/g, '')));
-
-    // Filter & sort reviews
-    const reviews = rows
-      .filter(r => r[4] && r[4].toLowerCase() === slug)
-      .sort((a, b) => new Date(b[3]) - new Date(a[3]));
-    if (!reviews.length) return;
-
-    const count = reviews.length;
-    const avg   = (reviews.reduce((s,r) => s + (parseFloat(r[2])||0), 0) / count).toFixed(1);
-
-    // Build markup
-    const wrapper = document.createElement('div');
-    wrapper.style = 'border-top:1px solid #444; padding-top:1em; font-family:inherit; color:#ccc;';
-    wrapper.innerHTML = `
-      <div style="margin-bottom:0.5em;">
-        <span style="
-          background:#2e7d32; color:#fff;
-          padding:0.3em 0.8em; border-radius:20px;
-          font-size:0.9em; font-weight:bold;
-        ">
-          Purchased by students worldwide
-        </span>
-      </div>
-      <h3 style="margin:0.8em 0 0.6em; color:#fff; font-weight:600;">
-        <span style="color:#FFD700; font-size:1.2em;">★</span>
-        ${avg} (${count} review${count>1?'s':''})
-      </h3>
-      <div style="display:flex; gap:0.8em; margin:1em 0;">
-        <button id="toggle-reviews" style="
-          padding:0.5em 1em; background:#222; color:#f1f1f1;
-          border:1px solid #555; border-radius:6px; cursor:pointer;
-        ">See all reviews</button>
-        <button id="submit-review" style="
-          padding:0.5em 1em; background:#222; color:#f1f1f1;
-          border:1px solid #555; border-radius:6px; cursor:pointer;
-        ">Submit a review</button>
-      </div>
-      <div id="reviews-body" style="display:none;">
-        ${reviews.map(r => `
-          <div style="margin-bottom:1.5em;">
-            <strong style="color:#eee;">${r[0]||'Anonymous'}</strong>
-            <div>
-              ${'★'.repeat(+r[2]).padEnd(5,'☆')
-                .replace(/★/g, '<span style="color:#FFD700;">★</span>')
-                .replace(/☆/g, '<span style="color:#ccc;">★</span>')}
-            </div>
-            <small style="color:#aaa;">
-              ${new Date(r[3]).toLocaleDateString()}
-            </small>
-            <p style="margin:0.4em 0 0; color:#ccc; line-height:1.4;">
-              ${r[1]}
-            </p>
-            ${r[5] ? `
-            <div style="margin:0.3em 0 0 1em;">
-              <div style="font-size:0.85em; color:#89c4ff; font-weight:600;">
-                Instructor Reply:
-              </div>
-              <div style="font-size:0.85em; color:#7fbfff; font-style:italic;">
-                ${r[5]}
-              </div>
-            </div>` : ''}
-          </div>
-        `).join('')}
-      </div>
-    `;
-    document.getElementById('reviews-container').appendChild(wrapper);
-
-    // Button events
-    document.getElementById('submit-review')
-      .addEventListener('click', () => window.open(formUrl, '_blank'));
-    document.getElementById('toggle-reviews')
-      .addEventListener('click', e => {
-        const body = document.getElementById('reviews-body');
-        const isOpen = body.style.display === 'block';
-        body.style.display = isOpen ? 'none' : 'block';
-        e.target.textContent = isOpen ? 'See all reviews' : 'Hide reviews';
-      });
-  })();
-</script>
-<!-- Reviews loader script End -->
-    
-<script>
-    const tag = document.createElement('script');
-    tag.src = "https://www.youtube.com/iframe_api";
-    document.head.appendChild(tag);
-
-    let player,
-        started    = false,
-        pauseTime  = 173,  // 2:53
-        signUpTime = 266,  // 4:26
-        intervalId,
-        flags = { form: false, signUp: false };
-
-    function onYouTubeIframeAPIReady() {
-      player = new YT.Player('player', {
-        host: 'https://www.youtube-nocookie.com',
-        videoId: 'KcRib2gRo2s',
-        playerVars: {
-          controls: 0,
-          disablekb: 1,
-          modestbranding: 1,
-          rel: 0,
-          iv_load_policy: 3,
-          enablejsapi: 1,
-          autoplay: 0
-        },
-        events: {
-          onReady: onPlayerReady,
-          onStateChange: onPlayerStateChange
-        }
-      });
-    }
-
-    function onPlayerReady() {
-      const placeholder = document.getElementById('placeholder');
-      const playBtn     = document.getElementById('playBtn');
-      const clickOv     = document.querySelector('.click-overlay');
-      const playerDiv   = document.getElementById('player');
-
-      clickOv.addEventListener('click', () => {
-        if (!started) {
-          started = true;
-          placeholder.style.display = 'none';
-          playBtn.style.display     = 'none';
-          playerDiv.style.display   = 'block';
-          player.playVideo();
-        } else if (player.getPlayerState() === YT.PlayerState.PLAYING) {
-          player.pauseVideo();
-        } else {
-          player.playVideo();
-        }
-      });
-    }
-
-    function onPlayerStateChange(event) {
-      const placeholder = document.getElementById('placeholder');
-      const playBtn     = document.getElementById('playBtn');
-      if (event.data === YT.PlayerState.PLAYING) {
-        placeholder.style.display = 'none';
-        playBtn.style.display     = 'none';
-        intervalId = setInterval(checkMilestones, 500);
-      } else if (event.data === YT.PlayerState.PAUSED) {
-        placeholder.style.display = 'block';
-        playBtn.style.display     = 'flex';
-        clearInterval(intervalId);
-      }
-    }
-
-    function checkMilestones() {
-      const t = player.getCurrentTime();
-      if (!flags.form && t >= pauseTime) {
-        flags.form = true;
-        clearInterval(intervalId);
-        player.pauseVideo();
-        document.getElementById('popup-form').style.display = 'flex';
-      }
-      if (!flags.signUp && t >= signUpTime) {
-        flags.signUp = true;
-        document.getElementById('signUpBtn').style.display = 'block';
-      }
-    }
-
-    document.addEventListener('DOMContentLoaded', () => {
-      document.getElementById('submitForm').addEventListener('click', () => {
-        document.getElementById('popup-form').style.display = 'none';
-        player.playVideo();
-
-        const formData = new FormData();
-        formData.append('name', document.querySelector('#popup-form input[name="name"]').value);
-        formData.append('email', document.querySelector('#popup-form input[name="email"]').value);
-
-        fetch(
-          'https://script.google.com/macros/s/AKfycbxE9j8YIo-M_VtpwzoylRaVIbO5gUI6KSv0IFOtkzRFRq6LGVNUheh4HG5AqY3-Obuc/exec',
-          { method: 'POST', body: formData, mode: 'no-cors' }
-        );
-      });
-
-      document.getElementById('adsLauncher').addEventListener('click', () => {
-  adsStep = 0;
-  renderAdsStep();
-  document.getElementById('adsWizard').style.display = 'block';
-    });
-
-    });
-  </script>
 </body>
 </html>
-
-
-<!-- BEGIN: What We Offer Section -->
-<section style="background:#000; color:#fff; padding:3em 1.5em; text-align:center;">
-  <h2 style="font-size:1.8em; font-weight:700; color:#FFD700; margin-bottom:1em;">
-    What We Offer
-  </h2>
-  <div style="max-width:800px; margin:0 auto; text-align:left;">
-
-    <!-- Level 1 -->
-    <div style="text-align:left; font-weight:bold; margin-bottom:0.5em;">
-      Level 1
-    </div>
-    <!-- Starter Tier -->
-    <div style="margin-bottom:2em; border-left:4px solid #00CED1; padding-left:1em;">
-      <h3 style="font-size:1.3em; font-weight:700; color:#fff;">
-        Full Launch Kit: Full Course + eBook
-      </h3>
-      <p>
-        Our flagship course for beginners and intermediate learners. Includes 19 chapters covering Facebook, Instagram, and Pinterest ads — Plus our 7 figure templates ebook.
-      </p>
-      <ul style="list-style:none; padding-left:0; margin-top:1em;">
-        <li style="margin-bottom:0.5em;">
-          <span style="color:#FFD700; margin-right:0.5em;">&#10003;</span>All 19 chapters
-        </li>
-        <li style="margin-bottom:0.5em;">
-          <span style="color:#FFD700; margin-right:0.5em;">&#10003;</span>7-figure copy-paste ads template
-        </li>
-        <li style="margin-bottom:0.5em;">
-          <span style="color:#FFD700; margin-right:0.5em;">&#10003;</span>Content Creation
-        </li>
-        <li style="margin-bottom:0.5em;">
-          <span style="color:#FFD700; margin-right:0.5em;">&#10003;</span>How to launch in 7 days
-        </li>
-      </ul>
-      <p style="margin-top:1em; font-weight:bold; color:#FFD700;">
-        See price below
-      </p>
-    </div>
-
-    <!-- Level 2 -->
-    <div style="text-align:left; font-weight:bold; margin-bottom:0.5em;">
-      Level 2
-    </div>
-    <!-- Done-With-You Tier -->
-    <div style="margin-bottom:2em; border-left:4px solid #FFBF00; padding-left:1em;">
-      <h3 style="font-size:1.3em; font-weight:700; color:#fff;">
-        Done-With-You Accelerator
-      </h3>
-      <p>
-        A hands-on setup experience where we help you launch your next campaign. You provide the creatives, we configure your pixel, targeting, and ad structure — then hand it off with 7-day support. Perfect for DIY founders who want expert guidance.
-      </p>
-      <p style="margin-top:0.8em; font-weight:bold; color:#FFD700;">
-        Starting price: $700 (₹ 61,229 | ₦ 1,073,380)
-      </p>
-      <a
-        href="#"
-        onclick="adsStep = 0; renderAdsStep(); document.getElementById('adsWizard').style.display = 'block'; return false;"
-        style="
-          display:inline-block;
-          margin-top:1em;
-          padding:0.8em 1.5em;
-          background-color:#FFD700;
-          color:#000;
-          font-weight:bold;
-          font-size:1em;
-          border-radius:8px;
-          text-decoration:none;
-        "
-      >
-        Join Us Live (Free)
-      </a>
-    </div>
-
-    <!-- Level 3 -->
-    <div style="text-align:left; font-weight:bold; margin-bottom:0.5em;">
-      Level 3
-    </div>
-    <!-- VIP Tier -->
-    <div style="margin-bottom:2em; border-left:4px solid #B266FF; padding-left:1em;">
-      <h3 style="font-size:1.3em; font-weight:700; color:#fff;">
-        VIP: Conversion Kickoff
-      </h3>
-      <p>
-        Hands-off setup. A one-time launch package for serious founders. Includes a custom landing page, up to 5 ad creatives, and a live strategy session. Ideal for product launches, service providers, and anyone ready to scale with clarity — no monthly commitment required.
-      </p>
-      <p style="margin-top:0.8em; font-weight:bold; color:#FFD700;">
-        Starting price: $3,500 (₹ 306,145 | ₦ 5,366,900)
-      </p>
-      <a
-        href="#"
-        onclick="adsStep = 0; renderAdsStep(); document.getElementById('adsWizard').style.display = 'block'; return false;"
-        style="
-          display:inline-block;
-          margin-top:1em;
-          padding:0.8em 1.5em;
-          background-color:#FFD700;
-          color:#000;
-          font-weight:bold;
-          font-size:1em;
-          border-radius:8px;
-          text-decoration:none;
-        "
-      >
-        Join Us Live (Free)
-      </a>
-    </div>
-
-    <!-- Calendly Embed Container -->
-    <div id="calendly-widget" style="margin-top:2em;"></div>
-  </div>
-</section>
-
-<!-- BEGIN: Calendly Inline Loader -->
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-    const calendlyContainer = document.getElementById('calendly-widget');
-
-    // create spinner element
-    const spinner = document.createElement('div');
-    spinner.id = 'calendly-spinner';
-    spinner.style.display = 'none';
-    spinner.style.flexDirection = 'column';
-    spinner.style.alignItems = 'center';
-    spinner.style.justifyContent = 'center';
-    spinner.style.height = '400px';
-    spinner.style.fontFamily = 'sans-serif';
-    spinner.style.color = '#ccc';
-    spinner.innerHTML =
-      '<div style="width:40px; height:40px; border:4px solid #ccc; border-top:4px solid #32CD32; border-radius:50%; animation:spin 1s linear infinite; margin-bottom:10px;"></div>' +
-      '<p style="margin:0; color:#ccc;">Loading scheduler...</p>';
-
-    const buttons = document.querySelectorAll('a[onclick^="adsStep"]');
-
-    buttons.forEach(btn => {
-      btn.addEventListener('click', function (e) {
-        e.preventDefault();
-        calendlyContainer.innerHTML = '';
-        calendlyContainer.appendChild(spinner);
-        spinner.style.display = 'flex';
-
-        const iframe = document.createElement('iframe');
-        iframe.src =
-          'https://calendly.com/stemsphere-support/live-ads-page-diagnostics-with-stemsphere-academy?embed_domain=fbads.stemsphere.academy&embed_type=Inline';
-        iframe.width = '100%';
-        iframe.height = '630';
-        iframe.style.border = 'none';
-        iframe.setAttribute('title', 'Schedule your diagnostic workshop');
-
-        iframe.onload = function () {
-          spinner.style.display = 'none';
-        };
-
-        calendlyContainer.appendChild(iframe);
-        calendlyContainer.scrollIntoView({ behavior: 'smooth' });
-      });
-    });
-  });
-</script>
-<!-- END: Calendly Inline Loader -->
-
-<!-- BEGIN: Pulse & Spin Animations -->
-<style>
-  @keyframes pulse {
-    0% { transform: scale(1); box-shadow: 0 0 10px #32CD32; }
-    50% { transform: scale(1.05); box-shadow: 0 0 20px #32CD32; }
-    100% { transform: scale(1); box-shadow: 0 0 10px #32CD32; }
-  }
-  @keyframes spin {
-    to { transform: rotate(360deg); }
-  }
-</style>
-<!-- END: Pulse & Spin Animations -->
-<!-- END Entire What We Offer Block -->
-
-<!-- START: Countdown Timer -->
-<script>
-(function(){
-  function getNextResetTime() {
-    const now = new Date();
-    const next = new Date(now);
-    const currentHour = now.getHours();
-    const nextHour = Math.ceil((currentHour + 1) / 6) * 6;
-    next.setHours(nextHour, 0, 0, 0);
-    if (next <= now) next.setHours(nextHour + 6, 0, 0, 0);
-    return next;
-  }
-  function updateCountdown() {
-    const now = new Date();
-    const resetTime = getNextResetTime();
-    const diff = resetTime - now;
-    const hrs = Math.floor(diff / 3600000);
-    const mins = Math.floor((diff % 3600000) / 60000);
-    const secs = Math.floor((diff % 60000) / 1000);
-    const display = document.getElementById("countdown-timer");
-    if (display) {
-      display.textContent =
-        String(hrs).padStart(2, '0') + ":" +
-        String(mins).padStart(2, '0') + ":" +
-        String(secs).padStart(2, '0');
-    }
-  }
-  document.addEventListener("DOMContentLoaded", function(){
-    updateCountdown();
-    setInterval(updateCountdown, 1000);
-  });
-})();
-</script>
-<!-- END: Countdown Timer -->
-
-<!-- START: Payment Section -->
-<style>
-.payment-card {
-  background-color: #fff;
-  color: #000;
-  padding: 3em 1.5em;
-  width: 100%;
-  box-sizing: border-box;
-}
-.payment-image {
-  margin: 1.5em 0;
-  text-align: center;
-}
-.payment-image img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 12px;
-}
-.payment-buttons {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.6em;
-  margin-top: 1.5em;
-}
-.payment-buttons a {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5em;
-  text-decoration: none;
-  color: #fff;
-  padding: 0.9em 1.2em;
-  font-weight: 700;
-  width: 100%;
-  max-width: 500px;
-  font-size: 1em;
-  border-radius: 8px;
-  transition: transform 0.15s ease;
-}
-.payment-buttons a:hover {
-  transform: translateY(-2px);
-}
-.btn-usa { background-color: #4A90E2; }
-.btn-india { background-color: #FF8C00; }
-.btn-nigeria { background-color: #2E7D32; }
-.strike-price {
-  text-decoration: line-through;
-  color: #ccc;
-  font-weight: 400;
-  margin-left: 0.5em;
-  font-size: 0.9em;
-}
-@media (max-width: 600px) {
-  .payment-buttons a {
-    display: block;
-    width: 90%;
-    margin: 0.4em auto;
-    font-size: 1em;
-  }
-}
-</style>
-
-<div class="payment-card">
-  <div style="text-align:center; font-weight:bold; font-size:1.4em; margin-bottom:0.4em;
-              background: linear-gradient(135deg, #B30000, #FF4D4D, #B30000);
-              -webkit-background-clip: text;
-              -webkit-text-fill-color: transparent;
-              text-shadow: 0 0 2px rgba(255,0,0,0.3);">
-    Full Launch Kit Pricing
-  </div>
-
-  <div style="text-align: center; font-size: 1.1em; font-weight: bold; color: #000; margin-bottom: 0.6em;">
-    Because we’re confident you’ll be back. Try for a fraction of the cost.
-  </div>
-
-  <div style="text-align: center; font-size: 1.8em; font-weight: bold; margin-bottom: 0.4em;">
-    <div style="margin-bottom: 0.3em;">
-      <span style="color:#999; text-decoration: line-through;">$299</span>
-      <span style="color:#B30000;"> → $50</span>
-    </div>
-    <div style="margin-bottom: 0.3em;">
-      <span style="color:#999; text-decoration: line-through;">₹24,999</span>
-      <span style="color:#B30000;"> → ₹999</span>
-    </div>
-    <div>
-      <span style="color:#999; text-decoration: line-through;">₦370,000</span>
-      <span style="color:#B30000;"> → ₦19,999</span>
-    </div>
-  </div>
-
-  <div style="text-align: center; font-size: 1em; margin-bottom: 1em;">
-    80% of our course graduates return for continued work with us — so we’re confident you’ll be back.
-  </div>
-
-  <div style="text-align: center; font-weight: bold; font-size: 1.2em; margin-bottom: 0.6em;">
-    Use code <strong style="color:#B30000;">AUGZPQY</strong> at checkout ⏳
-    <span id="countdown-timer" style="color: #ff4d4d;">Loading...</span>
-  </div>
-
-  <div class="payment-intro" style="text-align: center; font-size: 1em; margin-bottom: 1em;">
-    🌐 Pay in USD (Converts globally), INR or NGN
-  </div>
-
-  <div class="payment-image">
-    <img src="https://i.postimg.cc/jj3XJPMH/In-Shot-20250807-130152090.jpg" alt="Launch Kit Preview">
-  </div>
-
-  <div class="payment-buttons">
-    <a href="https://buy.stripe.com/7sY14mafDgCE21F5RB33W3x" class="btn-usa">
-      🌍 Pay $50 <span class="strike-price">$299</span>
-    </a>
-    <a href="https://buy.stripe.com/bJedR873raegcGj2Fp33W3z" class="btn-india">
-      🇮🇳 Pay ₹999 <span class="strike-price">₹24,999</span>
-    </a>
-    <a href="https://paystack.com/buy/how-to-run-facebook-ads" class="btn-nigeria" target="_blank">
-      🇳🇬 Pay ₦19,999 <span class="strike-price">₦370,000</span>
-    </a>
-  </div>
-</div>
-<!-- END: Payment Section -->
-
-<!-- START: 100% Risk-Free Guarantee Block -->
-<section class="guarantee-section">
-  <div class="guarantee-wrapper">
-    <!-- Ribbon / Badge -->
-    <div class="guarantee-badge">
-      <img
-        src="https://i.postimg.cc/BZgN0mXb/1000064108.png"
-        alt="100% Money Back Guarantee"
-      />
-    </div>
-
-    <!-- Text -->
-    <div class="guarantee-text">
-      <h3>100% Risk Free</h3>
-      <p>
-        If you do not see an increase in traffic after implementing our system and can show proof that you have implemented everything covered in the course, we will refund 100% of your investment—no questions asked.
-      </p>
-    </div>
-  </div>
-</section>
-
-<!-- Styles -->
-<style>
-  /* Section wrapper */
-  .guarantee-section {
-    background: #F0FCFF;
-    padding: 3em 1.5em;
-    text-align: center;
-    overflow: visible;
-  }
-
-  /* Flex container */
-  .guarantee-wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 2em;
-    max-width: 800px;
-    margin: 0 auto;
-    flex-wrap: wrap;
-  }
-
-  /* Badge styling */
-  .guarantee-badge img {
-    width: 140px;
-    height: auto;
-    display: block;
-  }
-
-  /* Text styling */
-  .guarantee-text {
-    color: #004a66;
-    font-size: 0.9em;
-    line-height: 1.4;
-    text-align: left;
-    max-width: 500px;
-  }
-  .guarantee-text h3 {
-    margin: 0 0 0.5em;
-    font-size: 1.5em;
-    font-weight: 800;
-    background: linear-gradient(120deg, #00bfff, #007fff);
-    -webkit-background-clip: text;
-    color: transparent;
-  }
-  .guarantee-text p {
-    margin: 0;
-  }
-
-  /* Mobile adjustments */
-  @media (max-width: 600px) {
-    .guarantee-wrapper {
-      gap: 1em;
-    }
-    .guarantee-text {
-      text-align: center;
-      max-width: 100%;
-    }
-  }
-</style>
-<!-- END: 100% Risk-Free Guarantee Block -->
-
-<!-- START: FAQ Section -->
-<section class="faq-section">
-  <h2 class="faq-title">Frequently Asked Questions</h2>
-  <div class="faq-container">
-    <details>
-      <summary>What results can I expect from this course?</summary>
-      <p>Most students begin seeing measurable improvements in ad performance within 30–60 days after launching their ads. Results vary based on implementation, niche, and budget—but we provide templates and strategies proven to drive ROI.</p>
-    </details>
-    <details>
-      <summary>Do I need prior experience with ads to succeed?</summary>
-      <p>No prior experience is required. The course is beginner-friendly and includes step-by-step walkthroughs, templates, and support to help you launch confidently.</p>
-    </details>
-    <details>
-      <summary>Does this cover more than just Facebook Ads?</summary>
-      <p>Yes! You’ll learn strategies for Facebook, Instagram, and Pinterest—plus how to repurpose creatives across platforms for maximum impact.</p>
-    </details>
-    <details>
-      <summary>Will I get help setting up my pixel, funnel, or tracking?</summary>
-      <p>Absolutely. Our Done-With-You Accelerator includes hands-on support for pixel installation, funnel setup, and audience configuration.</p>
-    </details>
-    <details>
-      <summary>What if I’m in a niche you haven’t worked with before?</summary>
-      <p>We’ve helped over 60,000 students across 70+ industries—from ecommerce to coaching to brick-and-mortar businesses. Our frameworks are flexible and adaptable.</p>
-    </details>
-    <details>
-      <summary>Is retargeting expensive or hard to set up?</summary>
-      <p>Retargeting is one of the most cost-effective strategies. We show you how to set it up using simple tools and scripts that convert cold traffic into buyers.</p>
-    </details>
-    <details>
-      <summary>What if I don’t get results?</summary>
-      <p>We offer a 100% money-back guarantee if you implement the system and don’t see an increase in traffic. Your success is our priority.</p>
-    </details>
-    <details>
-      <summary>Will you run my ads for me?</summary>
-      <p>Yes — both the Done-With-You Accelerator and Conversion Kickoff packages include ad setup and launch. We configure your campaign, install tracking, and help you go live. However, these are one-time services. Monthly ad management is available for an additional fee..</p>
-    </details>
-    <details>
-      <summary>What do I need to provide for the Done-With-You setup?</summary>
-      <p>You’ll send us your ad creatives (images or videos), and we’ll handle the technical setup including campaign structure, pixel, and audience targeting.</p>
-    </details>
-    <details>
-      <summary>Can service providers like salons or barbershops use the Conversion Kickoff package?</summary>
-      <p>Yes. This package works perfectly for service-based businesses who want a single, high-converting page to drive bookings or inquiries. It’s ideal for local providers who need a clean, effective funnel without ongoing complexity.</p>
-    </details>
-    <details>
-      <summary>Is the Conversion Kickoff a monthly service?</summary>
-      <p>No. It’s a one-time setup that includes a custom landing page, ad creatives, and a live strategy session. Ongoing management is available separately if needed.</p>
-    </details>
-  </div>
-</section>
-
-<!-- Styles -->
-<style>
-  .faq-section {
-    background: #111;
-    color: #fff;
-    padding: 3em 1.5em;
-    text-align: left;
-    max-width: 800px;
-    margin: 0 auto;
-  }
-
-  .faq-title {
-    font-size: 1.8em;
-    font-weight: 700;
-    margin-bottom: 1em;
-    text-align: center;
-    color: #FFD700;
-  }
-
-  .faq-container details {
-    background: #222;
-    border: 1px solid #333;
-    border-radius: 6px;
-    margin-bottom: 1em;
-    padding: 1em;
-    cursor: pointer;
-  }
-
-  .faq-container summary {
-    font-weight: 600;
-    font-size: 1.1em;
-    color: #00f8ff;
-  }
-
-  .faq-container p {
-    margin-top: 0.8em;
-    font-size: 0.95em;
-    line-height: 1.5;
-    color: #ccc;
-  }
-
-  @media (max-width: 600px) {
-    .faq-title {
-      font-size: 1.5em;
-    }
-    .faq-container summary {
-      font-size: 1em;
-    }
-    .faq-container p {
-      font-size: 0.9em;
-    }
-  }
-</style>
-<!-- END: FAQ Section -->
-
-<!-- No Page Widening -->
-<style>
-  /* prevent any element from pushing page wider */
-  *, *::before, *::after { box-sizing: border-box; }
-  body { margin: 0; overflow-x: hidden; }
-</style>  <!-- <-- close this No Page widening section tag -->
-
-
-
-<!-- START: Footer -->
-<footer style="background: #000; color: #bbb; padding: 2em 1em; text-align: center; font-size: 0.85em;">
-  <p>© 2025 STEMSphere Academy. All rights reserved.</p>
-  <p>
-    <a href="#faq" style="color: #00bfff; text-decoration: underline; margin-right: 1em;">FAQs</a>
-    <a href="#privacy-policy" style="color: #00bfff; text-decoration: underline;">Privacy Policy</a>
-  </p>
-  <p>Need help? Contact us at <a href="mailto:support@stemsphere.academy" style="color: #FFD700;">support@stemsphere.academy</a></p>
-</footer>
-<!-- END: Footer -->
