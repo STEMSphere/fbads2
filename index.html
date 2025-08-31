@@ -15,7 +15,9 @@
       --gold: #c9a14f;
       --leaf-pattern: url('https://i.postimg.cc/s2ZWH93D/Screenshot-2025-08-30-182438.png');
     }
-    *, *::before, *::after {
+    *,
+    *::before,
+    *::after {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
@@ -117,7 +119,9 @@
       margin-top: 1rem;
       transition: background .3s;
     }
-    #hero-text .btn-primary:hover { background: #004d00; }
+    #hero-text .btn-primary:hover {
+      background: #004d00;
+    }
 
     /* GOLD DIVIDER */
     .gold-divider {
@@ -197,7 +201,9 @@
       text-align: center;
     }
     @media (min-width: 768px) {
-      .nigeria-content { grid-template-columns: 1fr 1fr; }
+      .nigeria-content {
+        grid-template-columns: 1fr 1fr;
+      }
     }
 
     /* HOW TO USE */
@@ -261,8 +267,12 @@
     }
 
     @media (min-width: 768px) {
-      #header h1 { font-size: 4rem; }
-      #hero-text p { font-size: 1.3rem; }
+      #header h1 {
+        font-size: 4rem;
+      }
+      #hero-text p {
+        font-size: 1.3rem;
+      }
     }
   </style>
 </head>
@@ -370,14 +380,14 @@
         <p>Protect strands overnight and reduce breakage.</p>
       </div>
       <div class="addon-item">
-        <img src="<!-- CONDITIONER IMAGE URL -->" alt="Hydrating Conditioner">
-        <h3>Hydrating Conditioner</h3>
-        <p>Deeply moisturizes and detangles for silky smooth strands.</p>
-      </div>
-      <div class="addon-item">
         <img src="<!-- SHAMPOO IMAGE URL -->" alt="Hair Repair Anti-Dandruff Shampoo">
         <h3>Hair Repair Shampoo</h3>
         <p>Anti-dandruff formula gently cleanses and restores scalp balance.</p>
+      </div>
+      <div class="addon-item">
+        <img src="<!-- CONDITIONER IMAGE URL -->" alt="Hydrating Conditioner">
+        <h3>Hydrating Conditioner</h3>
+        <p>Deeply moisturizes and detangles for silky smooth strands.</p>
       </div>
     </div>
   </section>
